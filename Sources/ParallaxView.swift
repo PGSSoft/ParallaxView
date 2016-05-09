@@ -17,6 +17,15 @@ public class ParallaxView: UICollectionViewCell {
     /// Maximum deviation of the shadow relative to the center
     public var shadowPanDeviation = 15
 
+    /**
+     Property allow to customize parallax effect (pan, angles, etc.)
+
+     - seealso:
+     [ParallaxEffect.swift](ParallaxEffect.swift)
+
+     */
+    public var parallaxEffect = ParallaxMotionEffect()
+
     /// Alpha of the glow effect
     public var glowEffectAlpha = CGFloat(1.0) {
         didSet {
@@ -167,7 +176,7 @@ public class ParallaxView: UICollectionViewCell {
 
     internal func addParallaxMotionEffects() {
         // Cell parallax effect
-        let parallaxMotionEffect = ParallaxMotionEffect()
+        let parallaxMotionEffect = parallaxEffect
 
         // Shadow effect
         let veriticalShadowEffect = UIInterpolatingMotionEffect(keyPath: "layer.shadowOffset.height", type: .TiltAlongVerticalAxis)
