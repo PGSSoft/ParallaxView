@@ -8,14 +8,26 @@
 
 import UIKit
 
-public class ParallaxView: UICollectionViewCell {
+public class ParallaxView: UIView {
 
     // MARK: Properties
 
-    private let glowEffect: UIImageView
+    internal let glowEffect: UIImageView
+
+    var glowEffectContainerView: UIView? {
+        didSet {
+            glowEffectContainerView?.layer.cornerRadius = layer.cornerRadius
+            glowEffectContainerView?.clipsToBounds = true
+            glowEffectContainerView?.addSubview(glowEffect)
+            glowEffectContainerView?.opaque = true
+            glowEffectContainerView?.layer.shouldRasterize = true
+        }
+    }
+
+    var parallaxEffectView: UIView?
 
     /// Maximum deviation of the shadow relative to the center
-    public var shadowPanDeviation = 15
+    public var shadowPanDeviation = 15.0
 
     /**
      Property allow to customize parallax effect (pan, angles, etc.)
@@ -37,7 +49,7 @@ public class ParallaxView: UICollectionViewCell {
     public var cornerRadius = CGFloat(10) {
         didSet {
             layer.cornerRadius = cornerRadius
-            contentView.layer.cornerRadius = layer.cornerRadius
+            glowEffectContainerView?.layer.cornerRadius = layer.cornerRadius
         }
     }
 
@@ -156,10 +168,6 @@ public class ParallaxView: UICollectionViewCell {
 
     internal func commonInit() {
         layer.cornerRadius = cornerRadius
-        contentView.layer.cornerRadius = layer.cornerRadius
-        contentView.clipsToBounds = true
-        contentView.addSubview(glowEffect)
-        contentView.opaque = true
 
         glowEffect.alpha = glowEffectAlpha
 
@@ -190,7 +198,7 @@ public class ParallaxView: UICollectionViewCell {
         let motionGroup = UIMotionEffectGroup()
         motionGroup.motionEffects = [parallaxMotionEffect, veriticalShadowEffect, horizontalShadowEffect]
 
-        addMotionEffect(motionGroup)
+        parallaxEffectView?.addMotionEffect(motionGroup)
 
         // Glow effect
         let verticalGlowEffect = UIInterpolatingMotionEffect(keyPath: "center.y", type: .TiltAlongVerticalAxis)
@@ -208,7 +216,7 @@ public class ParallaxView: UICollectionViewCell {
     }
 
     internal func removeParallaxMotionEffects() {
-        motionEffects.removeAll()
+        parallaxEffectView?.motionEffects.removeAll()
         glowEffect.motionEffects.removeAll()
     }
 
@@ -232,16 +240,12 @@ public class ParallaxView: UICollectionViewCell {
 
     // MARK: Public
 
-    public func setupUnfocusedState() {
-    }
+    public func setupUnfocusedState() {}
 
-    public func setupFocusedState() {
-    }
+    public func setupFocusedState() {}
 
-    public func beforeBecomeFocusedAnimation() {
-    }
+    public func beforeBecomeFocusedAnimation() {}
 
-    public func beforeResignFocusAnimation() {
-    }
+    public func beforeResignFocusAnimation() {}
 
 }
