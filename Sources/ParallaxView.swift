@@ -57,6 +57,10 @@ public class ParallaxView: UICollectionViewCell {
         setupUnfocusedState()
     }
 
+    public override func canBecomeFocused() -> Bool {
+        return true
+    }
+
     // MARK: UIView
 
     public override func layoutSubviews() {
@@ -154,7 +158,7 @@ public class ParallaxView: UICollectionViewCell {
     }
 
     internal class func loadGlowImage() -> UIImageView {
-        if let glowImage = UIImage(named: "gloweffect") {
+        if case let bundle = NSBundle(forClass: self), let glowImage = UIImage(named: "gloweffect", inBundle: bundle, compatibleWithTraitCollection: nil) {
             return UIImageView(image: glowImage)
         } else {
             fatalError("Can't initialize gloweffect image")

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C851AC781CE068E900EA3A71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C851AC771CE068E900EA3A71 /* Assets.xcassets */; };
 		C8F1DB3B1CDCC4400043B419 /* ParallaxView tvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = C8F1DB3A1CDCC4400043B419 /* ParallaxView tvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8F1DB431CDCC6DD0043B419 /* ParallaxCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F1DB411CDCC6DD0043B419 /* ParallaxCollectionViewCell.swift */; };
 		C8F1DB441CDCC6DD0043B419 /* ParallaxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F1DB421CDCC6DD0043B419 /* ParallaxView.swift */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C851AC771CE068E900EA3A71 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C8F1DB371CDCC4400043B419 /* ParallaxView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ParallaxView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8F1DB3A1CDCC4400043B419 /* ParallaxView tvOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ParallaxView tvOS.h"; sourceTree = "<group>"; };
 		C8F1DB3C1CDCC4400043B419 /* Info-tvOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-tvOS.plist"; sourceTree = "<group>"; };
@@ -33,10 +35,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C851AC761CE068D400EA3A71 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C851AC771CE068E900EA3A71 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		C8F1DB2B1CDCC3D60043B419 = {
 			isa = PBXGroup;
 			children = (
 				C8F1DB401CDCC4720043B419 /* Sources */,
+				C851AC761CE068D400EA3A71 /* Resources */,
 				C8F1DB381CDCC4400043B419 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -128,6 +139,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C851AC781CE068E900EA3A71 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,6 +301,7 @@
 				C8F1DB3F1CDCC4400043B419 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
