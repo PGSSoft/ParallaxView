@@ -1,0 +1,14 @@
+PODS:
+  - ParallaxView (0.1)
+
+DEPENDENCIES:
+  - ParallaxView (from `../`)
+
+EXTERNAL SOURCES:
+  ParallaxView:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  ParallaxView: 27754ac0345852360f5761d359bc68fa38cefbfe
+
+COCOAPODS: 0.39.0
