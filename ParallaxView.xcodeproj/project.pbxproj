@@ -8,20 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		C851AC781CE068E900EA3A71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C851AC771CE068E900EA3A71 /* Assets.xcassets */; };
+		C8AFF06D1CE1FA0E00A78342 /* ParallaxableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AFF0671CE1FA0E00A78342 /* ParallaxableView.swift */; };
+		C8AFF06E1CE1FA0E00A78342 /* ParallaxableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AFF0681CE1FA0E00A78342 /* ParallaxableView+Extensions.swift */; };
+		C8AFF06F1CE1FA0E00A78342 /* ParallaxCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AFF0691CE1FA0E00A78342 /* ParallaxCollectionViewCell.swift */; };
+		C8AFF0701CE1FA0E00A78342 /* ParallaxMotionEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AFF06A1CE1FA0E00A78342 /* ParallaxMotionEffect.swift */; };
+		C8AFF0711CE1FA0E00A78342 /* ParallaxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AFF06B1CE1FA0E00A78342 /* ParallaxView.swift */; };
+		C8AFF0721CE1FA0E00A78342 /* SubviewsParallaxType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AFF06C1CE1FA0E00A78342 /* SubviewsParallaxType.swift */; };
 		C8F1DB3B1CDCC4400043B419 /* ParallaxView tvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = C8F1DB3A1CDCC4400043B419 /* ParallaxView tvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C8F1DB431CDCC6DD0043B419 /* ParallaxCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F1DB411CDCC6DD0043B419 /* ParallaxCollectionViewCell.swift */; };
-		C8F1DB441CDCC6DD0043B419 /* ParallaxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F1DB421CDCC6DD0043B419 /* ParallaxView.swift */; };
-		C8F1DB6A1CDCD7B00043B419 /* ParallaxMotionEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F1DB691CDCD7B00043B419 /* ParallaxMotionEffect.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C851AC771CE068E900EA3A71 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C8AFF0671CE1FA0E00A78342 /* ParallaxableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParallaxableView.swift; sourceTree = "<group>"; };
+		C8AFF0681CE1FA0E00A78342 /* ParallaxableView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ParallaxableView+Extensions.swift"; sourceTree = "<group>"; };
+		C8AFF0691CE1FA0E00A78342 /* ParallaxCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParallaxCollectionViewCell.swift; sourceTree = "<group>"; };
+		C8AFF06A1CE1FA0E00A78342 /* ParallaxMotionEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParallaxMotionEffect.swift; sourceTree = "<group>"; };
+		C8AFF06B1CE1FA0E00A78342 /* ParallaxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParallaxView.swift; sourceTree = "<group>"; };
+		C8AFF06C1CE1FA0E00A78342 /* SubviewsParallaxType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubviewsParallaxType.swift; sourceTree = "<group>"; };
 		C8F1DB371CDCC4400043B419 /* ParallaxView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ParallaxView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8F1DB3A1CDCC4400043B419 /* ParallaxView tvOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ParallaxView tvOS.h"; sourceTree = "<group>"; };
 		C8F1DB3C1CDCC4400043B419 /* Info-tvOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-tvOS.plist"; sourceTree = "<group>"; };
-		C8F1DB411CDCC6DD0043B419 /* ParallaxCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParallaxCollectionViewCell.swift; sourceTree = "<group>"; };
-		C8F1DB421CDCC6DD0043B419 /* ParallaxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParallaxView.swift; sourceTree = "<group>"; };
-		C8F1DB691CDCD7B00043B419 /* ParallaxMotionEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParallaxMotionEffect.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,9 +69,12 @@
 		C8F1DB401CDCC4720043B419 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				C8F1DB411CDCC6DD0043B419 /* ParallaxCollectionViewCell.swift */,
-				C8F1DB421CDCC6DD0043B419 /* ParallaxView.swift */,
-				C8F1DB691CDCD7B00043B419 /* ParallaxMotionEffect.swift */,
+				C8AFF0671CE1FA0E00A78342 /* ParallaxableView.swift */,
+				C8AFF0681CE1FA0E00A78342 /* ParallaxableView+Extensions.swift */,
+				C8AFF0691CE1FA0E00A78342 /* ParallaxCollectionViewCell.swift */,
+				C8AFF06A1CE1FA0E00A78342 /* ParallaxMotionEffect.swift */,
+				C8AFF06B1CE1FA0E00A78342 /* ParallaxView.swift */,
+				C8AFF06C1CE1FA0E00A78342 /* SubviewsParallaxType.swift */,
 				C8F1DB3C1CDCC4400043B419 /* Info-tvOS.plist */,
 				C8F1DB3A1CDCC4400043B419 /* ParallaxView tvOS.h */,
 			);
@@ -150,9 +159,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C8F1DB431CDCC6DD0043B419 /* ParallaxCollectionViewCell.swift in Sources */,
-				C8F1DB441CDCC6DD0043B419 /* ParallaxView.swift in Sources */,
-				C8F1DB6A1CDCD7B00043B419 /* ParallaxMotionEffect.swift in Sources */,
+				C8AFF0721CE1FA0E00A78342 /* SubviewsParallaxType.swift in Sources */,
+				C8AFF06D1CE1FA0E00A78342 /* ParallaxableView.swift in Sources */,
+				C8AFF0711CE1FA0E00A78342 /* ParallaxView.swift in Sources */,
+				C8AFF0701CE1FA0E00A78342 /* ParallaxMotionEffect.swift in Sources */,
+				C8AFF06E1CE1FA0E00A78342 /* ParallaxableView+Extensions.swift in Sources */,
+				C8AFF06F1CE1FA0E00A78342 /* ParallaxCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

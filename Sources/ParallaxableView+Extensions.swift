@@ -56,7 +56,7 @@ public extension ParallaxableView {
     }
 
     func addParallaxMotionEffects() {
-        var motionGroup = UIMotionEffectGroup()
+        let motionGroup = UIMotionEffectGroup()
         motionGroup.motionEffects = []
 
         // Cell parallax effect
