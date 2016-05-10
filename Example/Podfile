@@ -1,9 +1,0 @@
-platform :tvos, '9.0'
-
-use_frameworks!
-
-target 'ParallaxViewExample', :exclusive => true do
-
-	pod 'ParallaxView', :path => '../'
-
-end

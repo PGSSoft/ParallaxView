@@ -1,0 +1,356 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C89E12C81CE2045C00D2570F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89E12C71CE2045C00D2570F /* AppDelegate.swift */; };
+		C89E12CA1CE2045C00D2570F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89E12C91CE2045C00D2570F /* ViewController.swift */; };
+		C89E12CD1CE2045C00D2570F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C89E12CB1CE2045C00D2570F /* Main.storyboard */; };
+		C89E12CF1CE2045C00D2570F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C89E12CE1CE2045C00D2570F /* Assets.xcassets */; };
+		C89E12EF1CE2069E00D2570F /* ParallaxView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C89E12EE1CE2069A00D2570F /* ParallaxView.framework */; };
+		C89E12F01CE2069E00D2570F /* ParallaxView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C89E12EE1CE2069A00D2570F /* ParallaxView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C89E12ED1CE2069A00D2570F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C89E12E91CE2069A00D2570F /* ParallaxView.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C8F1DB371CDCC4400043B419;
+			remoteInfo = "ParallaxView tvOS";
+		};
+		C89E12F11CE2069E00D2570F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C89E12E91CE2069A00D2570F /* ParallaxView.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = C8F1DB361CDCC4400043B419;
+			remoteInfo = "ParallaxView tvOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C89E12E71CE205D000D2570F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C89E12F01CE2069E00D2570F /* ParallaxView.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		C89E12C41CE2045C00D2570F /* ParallaxViewExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParallaxViewExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C89E12C71CE2045C00D2570F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C89E12C91CE2045C00D2570F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C89E12CC1CE2045C00D2570F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C89E12CE1CE2045C00D2570F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C89E12D01CE2045C00D2570F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C89E12E91CE2069A00D2570F /* ParallaxView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ParallaxView.xcodeproj; path = ../ParallaxView.xcodeproj; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C89E12C11CE2045C00D2570F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C89E12EF1CE2069E00D2570F /* ParallaxView.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C89E12BB1CE2045C00D2570F = {
+			isa = PBXGroup;
+			children = (
+				C89E12E91CE2069A00D2570F /* ParallaxView.xcodeproj */,
+				C89E12C61CE2045C00D2570F /* ParallaxViewExample */,
+				C89E12C51CE2045C00D2570F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C89E12C51CE2045C00D2570F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C89E12C41CE2045C00D2570F /* ParallaxViewExample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C89E12C61CE2045C00D2570F /* ParallaxViewExample */ = {
+			isa = PBXGroup;
+			children = (
+				C89E12C71CE2045C00D2570F /* AppDelegate.swift */,
+				C89E12C91CE2045C00D2570F /* ViewController.swift */,
+				C89E12CB1CE2045C00D2570F /* Main.storyboard */,
+				C89E12CE1CE2045C00D2570F /* Assets.xcassets */,
+				C89E12D01CE2045C00D2570F /* Info.plist */,
+			);
+			path = ParallaxViewExample;
+			sourceTree = "<group>";
+		};
+		C89E12EA1CE2069A00D2570F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C89E12EE1CE2069A00D2570F /* ParallaxView.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C89E12C31CE2045C00D2570F /* ParallaxViewExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C89E12D31CE2045C00D2570F /* Build configuration list for PBXNativeTarget "ParallaxViewExample" */;
+			buildPhases = (
+				C89E12C01CE2045C00D2570F /* Sources */,
+				C89E12C11CE2045C00D2570F /* Frameworks */,
+				C89E12C21CE2045C00D2570F /* Resources */,
+				C89E12E71CE205D000D2570F /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C89E12F21CE2069E00D2570F /* PBXTargetDependency */,
+			);
+			name = ParallaxViewExample;
+			productName = ParallaxViewExample;
+			productReference = C89E12C41CE2045C00D2570F /* ParallaxViewExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C89E12BC1CE2045C00D2570F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Łukasz Śliwiński";
+				TargetAttributes = {
+					C89E12C31CE2045C00D2570F = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+				};
+			};
+			buildConfigurationList = C89E12BF1CE2045C00D2570F /* Build configuration list for PBXProject "ParallaxViewExample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C89E12BB1CE2045C00D2570F;
+			productRefGroup = C89E12C51CE2045C00D2570F /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = C89E12EA1CE2069A00D2570F /* Products */;
+					ProjectRef = C89E12E91CE2069A00D2570F /* ParallaxView.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				C89E12C31CE2045C00D2570F /* ParallaxViewExample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		C89E12EE1CE2069A00D2570F /* ParallaxView.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ParallaxView.framework;
+			remoteRef = C89E12ED1CE2069A00D2570F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C89E12C21CE2045C00D2570F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C89E12CF1CE2045C00D2570F /* Assets.xcassets in Resources */,
+				C89E12CD1CE2045C00D2570F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C89E12C01CE2045C00D2570F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C89E12CA1CE2045C00D2570F /* ViewController.swift in Sources */,
+				C89E12C81CE2045C00D2570F /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C89E12F21CE2069E00D2570F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ParallaxView tvOS";
+			targetProxy = C89E12F11CE2069E00D2570F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C89E12CB1CE2045C00D2570F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C89E12CC1CE2045C00D2570F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C89E12D11CE2045C00D2570F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = appletvos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.2;
+			};
+			name = Debug;
+		};
+		C89E12D21CE2045C00D2570F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = appletvos;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C89E12D41CE2045C00D2570F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				INFOPLIST_FILE = ParallaxViewExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pgs.ParallaxViewExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C89E12D51CE2045C00D2570F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				INFOPLIST_FILE = ParallaxViewExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pgs.ParallaxViewExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C89E12BF1CE2045C00D2570F /* Build configuration list for PBXProject "ParallaxViewExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C89E12D11CE2045C00D2570F /* Debug */,
+				C89E12D21CE2045C00D2570F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C89E12D31CE2045C00D2570F /* Build configuration list for PBXNativeTarget "ParallaxViewExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C89E12D41CE2045C00D2570F /* Debug */,
+				C89E12D51CE2045C00D2570F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C89E12BC1CE2045C00D2570F /* Project object */;
+}
