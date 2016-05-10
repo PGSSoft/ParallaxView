@@ -64,7 +64,6 @@ public class ParallaxView: UIView, ParallaxableView {
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
-
         commonInit()
     }
 
@@ -78,7 +77,6 @@ public class ParallaxView: UIView, ParallaxableView {
 
     internal func commonInit() {
         glowEffect.alpha = 1.0
-
 
         if parallaxContainerView == nil {
             parallaxContainerView = self
@@ -174,9 +172,13 @@ public class ParallaxView: UIView, ParallaxableView {
 
         guard let nextFocusedView = context.nextFocusedView else { return }
         if nextFocusedView == self {
+            print(">> becomeFocusedUsingAnimationCoordinator", self, context.nextFocusedView?.backgroundColor)
+
             // Add parallax effect to focused cell
             becomeFocusedUsingAnimationCoordinator(coordinator)
         } else {
+            print(">> resignFocusUsingAnimationCoordinator", self, context.previouslyFocusedView?.backgroundColor)
+
             // Remove parallax effect
             resignFocusUsingAnimationCoordinator(coordinator)
         }

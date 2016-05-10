@@ -23,7 +23,7 @@ public extension ParallaxableView {
             return glowEffect.alpha
         }
         set {
-            glowEffect.alpha = glowEffectAlpha
+            glowEffect.alpha = newValue
         }
     }
 
@@ -78,7 +78,6 @@ public extension ParallaxableView {
         }
 
         parallaxContainerView.addMotionEffect(motionGroup)
-
         if case .None = subviewsParallaxType {
         } else {
             parallaxContainerView.subviews
