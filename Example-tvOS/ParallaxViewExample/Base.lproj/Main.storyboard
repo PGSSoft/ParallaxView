@@ -20,66 +20,79 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XgF-kg-j3t" customClass="ParallaxView" customModule="ParallaxView">
                                 <rect key="frame" x="585" y="340" width="750" height="400"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Parallax View" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Wf-dX-b3R">
-                                        <rect key="frame" x="66" y="140" width="618" height="120"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="100"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PGS SOFTWARE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Wf-dX-b3R">
+                                        <rect key="frame" x="38" y="142" width="675" height="117"/>
+                                        <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="100"/>
                                         <color key="textColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="0.11026400862068965" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Parallax View" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pYN-9b-hEg">
-                                        <rect key="frame" x="158" y="158" width="434" height="84"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="70"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PGS SOFTWARE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pYN-9b-hEg">
+                                        <rect key="frame" x="139" y="159" width="473" height="82"/>
+                                        <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="70"/>
                                         <color key="textColor" red="1" green="0.99997437000274658" blue="0.99999129772186279" alpha="0.27896012931034481" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Parallax View" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ncD-6s-H7i">
-                                        <rect key="frame" x="224" y="171" width="301" height="58"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="48"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                        <size key="shadowOffset" width="0.0" height="0.0"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="1" green="0.46274509803921571" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="400" id="0YX-Cr-8mb"/>
-                                    <constraint firstAttribute="width" constant="750" id="CSt-e0-Efw"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eq3-3N-8QG" customClass="ParallaxView" customModule="ParallaxView">
-                                <rect key="frame" x="585" y="756" width="750" height="304"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3m4-JM-h6e" customClass="ParallaxView" customModule="ParallaxView">
-                                        <rect key="frame" x="255" y="88" width="240" height="128"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bKz-Ac-PnS">
+                                        <rect key="frame" x="241" y="99" width="268" height="201"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PGS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ncD-6s-H7i">
+                                                <rect key="frame" x="20" y="21" width="172" height="117"/>
+                                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="100"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                                <size key="shadowOffset" width="0.0" height="0.0"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SOFTWARE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XK3-ZP-gKW">
+                                                <rect key="frame" x="20" y="125" width="228" height="56"/>
+                                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="48"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                                <size key="shadowOffset" width="0.0" height="0.0"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iS4-NA-Daa">
+                                                <rect key="frame" x="197" y="39" width="51" height="82"/>
+                                                <color key="backgroundColor" red="1" green="0.46274509800000002" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="51" id="39o-c1-128"/>
+                                                    <constraint firstAttribute="height" constant="82" id="kTI-J9-IaK"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="128" id="ReJ-47-bWF"/>
-                                            <constraint firstAttribute="width" constant="240" id="VXZ-GI-37U"/>
+                                            <constraint firstItem="XK3-ZP-gKW" firstAttribute="leading" secondItem="ncD-6s-H7i" secondAttribute="leading" id="4Ca-7H-fHG"/>
+                                            <constraint firstAttribute="width" constant="268" id="8bo-t7-Zx5"/>
+                                            <constraint firstItem="iS4-NA-Daa" firstAttribute="centerY" secondItem="ncD-6s-H7i" secondAttribute="centerY" constant="0.5" id="Qpo-fA-pE9"/>
+                                            <constraint firstItem="ncD-6s-H7i" firstAttribute="top" secondItem="bKz-Ac-PnS" secondAttribute="top" constant="21" id="bfe-Tz-5yS"/>
+                                            <constraint firstAttribute="trailing" secondItem="iS4-NA-Daa" secondAttribute="trailing" constant="20" id="eGd-XG-a36"/>
+                                            <constraint firstItem="ncD-6s-H7i" firstAttribute="leading" secondItem="bKz-Ac-PnS" secondAttribute="leading" constant="20" id="gt5-1f-M87"/>
+                                            <constraint firstItem="XK3-ZP-gKW" firstAttribute="top" secondItem="ncD-6s-H7i" secondAttribute="bottom" constant="-13" id="j69-eg-Jfc"/>
+                                            <constraint firstAttribute="height" constant="201" id="yLX-h2-XD4"/>
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="304" id="9Uj-XK-7pb"/>
-                                    <constraint firstItem="3m4-JM-h6e" firstAttribute="centerY" secondItem="eq3-3N-8QG" secondAttribute="centerY" id="asJ-Ad-2hz"/>
-                                    <constraint firstItem="3m4-JM-h6e" firstAttribute="centerX" secondItem="eq3-3N-8QG" secondAttribute="centerX" id="qYd-fN-lDw"/>
+                                    <constraint firstAttribute="height" constant="400" id="0YX-Cr-8mb"/>
+                                    <constraint firstAttribute="width" constant="750" id="CSt-e0-Efw"/>
+                                    <constraint firstItem="pYN-9b-hEg" firstAttribute="centerY" secondItem="XgF-kg-j3t" secondAttribute="centerY" id="GCC-sO-8mr"/>
+                                    <constraint firstItem="6Wf-dX-b3R" firstAttribute="centerX" secondItem="XgF-kg-j3t" secondAttribute="centerX" id="UgL-51-px0"/>
+                                    <constraint firstItem="bKz-Ac-PnS" firstAttribute="centerX" secondItem="XgF-kg-j3t" secondAttribute="centerX" id="WAa-V4-3hx"/>
+                                    <constraint firstItem="bKz-Ac-PnS" firstAttribute="centerY" secondItem="XgF-kg-j3t" secondAttribute="centerY" id="ecT-Bq-3kp"/>
+                                    <constraint firstItem="6Wf-dX-b3R" firstAttribute="centerY" secondItem="XgF-kg-j3t" secondAttribute="centerY" id="gCg-Ry-Ebd"/>
+                                    <constraint firstItem="pYN-9b-hEg" firstAttribute="centerX" secondItem="XgF-kg-j3t" secondAttribute="centerX" id="s9k-VA-E5o"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="XgF-kg-j3t" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4Ok-R9-aRs"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="eq3-3N-8QG" secondAttribute="bottom" constant="20" id="7KM-J1-UC0"/>
-                            <constraint firstItem="eq3-3N-8QG" firstAttribute="trailing" secondItem="XgF-kg-j3t" secondAttribute="trailing" id="BHS-5J-RmM"/>
-                            <constraint firstItem="eq3-3N-8QG" firstAttribute="leading" secondItem="XgF-kg-j3t" secondAttribute="leading" id="Nin-1B-TzV"/>
                             <constraint firstItem="XgF-kg-j3t" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="grN-1K-fvN"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Parallax View" id="8YS-J7-7nw"/>
                     <connections>
                         <outlet property="biggerLabel" destination="pYN-9b-hEg" id="dF5-gq-DE5"/>
-                        <outlet property="label" destination="ncD-6s-H7i" id="ZMx-k2-Wgj"/>
-                        <outlet property="parallaxInside" destination="3m4-JM-h6e" id="jS1-Yf-Z5D"/>
+                        <outlet property="logoView" destination="bKz-Ac-PnS" id="qOk-nE-UJ8"/>
                         <outlet property="parallaxView" destination="XgF-kg-j3t" id="9al-NE-2qz"/>
                         <outlet property="theBiggestLabel" destination="6Wf-dX-b3R" id="D7O-ZL-oNV"/>
                     </connections>
@@ -109,16 +122,16 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="ypg-uA-3u7" customClass="CollectionViewCell" customModule="ParallaxViewExample" customModuleProvider="target">
+                                    <collectionViewCell multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="ypg-uA-3u7" customClass="CollectionViewCell" customModule="ParallaxViewExample" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="627" height="395"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="627" height="395"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parallax Cell" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N4Z-KF-Kl3">
-                                                    <rect key="frame" x="177" y="168" width="273" height="60"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="50"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PGS SOFTWARE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N4Z-KF-Kl3">
+                                                    <rect key="frame" x="145" y="168" width="338" height="59"/>
+                                                    <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="50"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>

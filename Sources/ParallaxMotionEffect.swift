@@ -1,6 +1,5 @@
 //
 //  ParallaxMotionEffect.swift
-//  Jenkins
 //
 //  Created by Łukasz Śliwiński on 20/04/16.
 //  Copyright © 2016 Łukasz Śliwiński. All rights reserved.

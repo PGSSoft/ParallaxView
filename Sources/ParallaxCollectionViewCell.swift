@@ -1,6 +1,5 @@
 //
 //  ParallaxCollectionViewCell.swift
-//  Jenkins
 //
 //  Created by Łukasz Śliwiński on 20/04/16.
 //  Copyright © 2016 Łukasz Śliwiński. All rights reserved.
@@ -16,30 +15,37 @@ public class ParallaxCollectionViewCell: UICollectionViewCell, ParallaxableView 
         return ParallaxView.loadGlowImage()
     }()
 
-    weak public var parallaxContainerView: UIView! {
-        return self
-    }
-
-    public lazy var glowEffectContainerView: UIView? = {
-        self.contentView.layer.cornerRadius = self.layer.cornerRadius
-        self.contentView.clipsToBounds = true
-        self.contentView.addSubview(self.glowEffect)
-        self.contentView.opaque = true
-        self.contentView.layer.shouldRasterize = true
-        return self.contentView
-    }()
-
-    public var cornerRadius: CGFloat = 0.0 {
+    /// A View that will be a container for the glow effect. Default it will be contentView.
+    public weak var glowEffectContainerView: UIView? {
+        willSet(newValue) {
+            if let glowEffectContainerView = glowEffectContainerView where glowEffectContainerView != self && glowEffectContainerView != contentView {
+                glowEffectContainerView.removeFromSuperview()
+            }
+        }
         didSet {
-            self.layer.cornerRadius = cornerRadius
             glowEffectContainerView?.layer.cornerRadius = cornerRadius
+            glowEffectContainerView?.clipsToBounds = true
+            glowEffectContainerView?.opaque = true
+            glowEffectContainerView?.layer.shouldRasterize = true
+            glowEffectContainerView?.addSubview(glowEffect)
+            setNeedsLayout()
+            layoutIfNeeded()
         }
     }
 
+    /// Specify parallax effect of subiviews of the `parallaxEffectView`
     public var subviewsParallaxType: SubviewsParallaxType = .None
 
+    /// Maximum deviation of the shadow relative to the center
     public var shadowPanDeviation = 15.0
 
+    /**
+     Property allow to customize parallax effect (pan, angles, etc.)
+
+     - seealso:
+     [ParallaxEffect.swift](ParallaxEffect.swift)
+
+     */
     public var parallaxEffect = ParallaxMotionEffect()
 
 
@@ -54,37 +60,42 @@ public class ParallaxCollectionViewCell: UICollectionViewCell, ParallaxableView 
 
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-    }
-
-    public override func awakeFromNib() {
-        super.awakeFromNib()
 
         commonInit()
         setupUnfocusedState()
     }
 
-    public override func canBecomeFocused() -> Bool {
-        return true
-    }
-
-    func commonInit() {
+    internal func commonInit() {
+        layer.shadowOpacity = 0.0
         layer.shadowColor = UIColor.blackColor().CGColor
         layer.shadowOpacity = 0.35
         layer.shouldRasterize = true
+
+        if glowEffectContainerView == nil {
+            glowEffectContainerView = contentView
+        }
     }
 
     // MARK: UIView
 
+    public override func canBecomeFocused() -> Bool {
+        return true
+    }
+
     public override func layoutSubviews() {
         super.layoutSubviews()
 
-        guard let glowEffectSuperViewBounds = glowEffectContainerView?.superview?.bounds else { return }
+        guard let glowEffectContainerView = glowEffectContainerView else { return }
 
-        let maxSize = max(glowEffectSuperViewBounds.width, glowEffectSuperViewBounds.height)
-        // Make glow a litte bit bigger than cell
+        if glowEffectContainerView != self && glowEffectContainerView != contentView, let glowSuperView = glowEffectContainerView.superview {
+            glowEffectContainerView.frame = glowSuperView.bounds
+        }
+
+        let maxSize = max(glowEffectContainerView.frame.width, glowEffectContainerView.frame.height)
+        // Make glow a litte bit bigger than the superview
         glowEffect.frame = CGRect(x: 0, y: 0, width: maxSize*1.7, height: maxSize*1.7)
-        // Position in the middle and under the top edge of the cell
-        glowEffect.center = CGPoint(x: glowEffectSuperViewBounds.width/2, y: -glowEffect.frame.height*0.95)
+        // Position in the middle and under the top edge of the superview
+        glowEffect.center = CGPoint(x: glowEffectContainerView.frame.width/2, y: -glowEffect.frame.height*0.95)
     }
 
     // MARK: UIResponder
@@ -147,11 +158,10 @@ public class ParallaxCollectionViewCell: UICollectionViewCell, ParallaxableView 
     public override func didUpdateFocusInContext(context: UIFocusUpdateContext, withAnimationCoordinator coordinator: UIFocusAnimationCoordinator) {
         super.didUpdateFocusInContext(context, withAnimationCoordinator: coordinator)
 
-        guard let nextFocusedView = context.nextFocusedView else { return }
-        if nextFocusedView == self {
+        if self == context.nextFocusedView {
             // Add parallax effect to focused cell
             becomeFocusedUsingAnimationCoordinator(coordinator)
-        } else {
+        } else if self == context.previouslyFocusedView {
             // Remove parallax effect
             resignFocusUsingAnimationCoordinator(coordinator)
         }
