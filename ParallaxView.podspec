@@ -8,8 +8,8 @@ Pod::Spec.new do |s|
     s.version = "0.3"
     s.license = { :type => "MIT", :file => "LICENSE" }
     s.author = { "[Łukasz Śliwiński]" => "[lsliwinski@pgs-soft.com]" }
-    s.homepage = "https://bitbucket.org/plum/parallaxview"
-    s.source = { :git => "https://bitbucket.org/plum/parallaxview.git", :tag => "0.3" }
+    s.homepage = "https://bitbucket.pgs-soft.com/scm/mosp/pgs-parallaxview.git"
+    s.source = { :git => "https://bitbucket.pgs-soft.com/scm/mosp/pgs-parallaxview.git", :tag => "0.3" }
     s.framework = "UIKit"
     s.source_files = "Sources/**/*.{swift}"
     s.resources = "Resources/**/*.xcassets"
