@@ -102,21 +102,19 @@ public class ParallaxCollectionViewCell: UICollectionViewCell, ParallaxableView 
 
     public override func pressesBegan(presses: Set<UIPress>, withEvent event: UIPressesEvent?) {
         for press in presses {
-            switch press.type {
-            case .Select:
+            if case .Select = press.type {
                 UIView.animateWithDuration(0.1, animations: {
                     self.transform = CGAffineTransformMakeScale(0.95, 0.95)
                 })
-            default:
-                super.pressesBegan(presses, withEvent: event)
             }
         }
+
+        super.pressesBegan(presses, withEvent: event)
     }
 
     public override func pressesCancelled(presses: Set<UIPress>, withEvent event: UIPressesEvent?) {
         for press in presses {
-            switch press.type {
-            case .Select:
+            if case .Select = press.type {
                 UIView.animateWithDuration(0.1, animations: {
                     if self.focused {
                         self.setupFocusedState()
@@ -124,16 +122,15 @@ public class ParallaxCollectionViewCell: UICollectionViewCell, ParallaxableView 
                         self.setupUnfocusedState()
                     }
                 })
-            default:
-                super.pressesCancelled(presses, withEvent: event)
             }
         }
+
+        super.pressesCancelled(presses, withEvent: event)
     }
 
     public override func pressesEnded(presses: Set<UIPress>, withEvent event: UIPressesEvent?) {
         for press in presses {
-            switch press.type {
-            case .Select:
+            if case .Select = press.type {
                 UIView.animateWithDuration(0.2, animations: {
                     if self.focused {
                         self.transform = CGAffineTransformIdentity
@@ -143,10 +140,10 @@ public class ParallaxCollectionViewCell: UICollectionViewCell, ParallaxableView 
                         self.setupUnfocusedState()
                     }
                 })
-            default:
-                super.pressesEnded(presses, withEvent: event)
             }
         }
+
+        super.pressesEnded(presses, withEvent: event)
     }
 
     public override func pressesChanged(presses: Set<UIPress>, withEvent event: UIPressesEvent?) {
