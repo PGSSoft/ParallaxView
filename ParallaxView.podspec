@@ -5,11 +5,11 @@ Pod::Spec.new do |s|
     s.name = "ParallaxView"
     s.summary = "Add parallax effect like in tvOS applications to any view."
     s.requires_arc = true
-    s.version = "0.3"
+    s.version = "1.0.1"
     s.license = { :type => "MIT", :file => "LICENSE" }
     s.author = { "[Łukasz Śliwiński]" => "[lsliwinski@pgs-soft.com]" }
     s.homepage = "https://bitbucket.pgs-soft.com/scm/mosp/pgs-parallaxview.git"
-    s.source = { :git => "https://bitbucket.pgs-soft.com/scm/mosp/pgs-parallaxview.git", :tag => "0.3" }
+    s.source = { :git => "https://bitbucket.pgs-soft.com/scm/mosp/pgs-parallaxview.git", :tag => "1.0.1" }
     s.framework = "UIKit"
     s.source_files = "Sources/**/*.{swift}"
     s.resources = "Resources/**/*.xcassets"
