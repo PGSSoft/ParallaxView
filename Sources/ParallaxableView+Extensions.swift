@@ -88,8 +88,8 @@ public extension ParallaxableView where Self: UIView {
                     let relativePanValue: Double
 
                     switch subviewsParallaxType {
-                    case .BasedOnHierarchyInParallaxView(let maxOffset):
-                        relativePanValue = maxOffset / (Double(index+1))
+                    case .BasedOnHierarchyInParallaxView(let maxOffset, let multipler):
+                        relativePanValue = maxOffset / (Double(index+1)) * (multipler ?? 1.0)
                     case .BasedOnTag:
                         relativePanValue = Double(subview.tag)
                     default:

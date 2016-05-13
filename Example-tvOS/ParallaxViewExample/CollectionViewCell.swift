@@ -30,7 +30,7 @@ class CollectionViewCell: ParallaxCollectionViewCell {
     }
 
     override func setupFocusedState() {
-        transform = CGAffineTransformScale(transform, 1.15, 1.15)
+        transform = CGAffineTransformMakeScale(1.15, 1.15)
 
         layer.shadowOffset = CGSize(width: 0, height: 20)
         layer.shadowOpacity = 0.4

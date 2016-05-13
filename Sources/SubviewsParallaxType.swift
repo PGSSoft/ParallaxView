@@ -10,8 +10,17 @@ import Foundation
 public enum SubviewsParallaxType {
     /// maxParallaxOffset will be divided by the index of the subview inside `ParallaxView`.
     /// So view that is the last subview of the `ParallaxView` will be have the biggest offset equal to `maxParallaxOffset`
-    case BasedOnHierarchyInParallaxView(maxParallaxOffset: Double)
-    /// Tag value will be used as maximum offset for parallax effect
+
+    /**
+     *  Subview deeper on the hierarchy moves more depending on its index.
+     *
+     *  @param Double Deepest view on the hierarchy will have this maximum movement offset
+     *  @param Double Jump between successive values can be adjusted by multipler. Param is optional, default it will be equal to 1.0
+     */
+    case BasedOnHierarchyInParallaxView(maxParallaxOffset: Double, multipler: Double?)
+    /// Tag value will be used as maximum offset for parallax effect of the subview.
+    /// Each view can be individually adjusted by the tag property.
     case BasedOnTag
+    /// No parallax animation will be added to subviews of parallax view
     case None
 }

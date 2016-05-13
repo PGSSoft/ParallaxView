@@ -174,7 +174,7 @@ public class ParallaxCollectionViewCell: UICollectionViewCell, ParallaxableView 
     }
 
     public func setupFocusedState() {
-        transform = CGAffineTransformScale(transform, 1.15, 1.15)
+        transform = CGAffineTransformMakeScale(1.15, 1.15)
 
         layer.shadowOffset = CGSize(width: 0, height: bounds.height*0.12)
         layer.shadowRadius = 15
