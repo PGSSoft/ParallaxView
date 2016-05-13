@@ -39,15 +39,16 @@ public class ParallaxCollectionViewCell: UICollectionViewCell, ParallaxableView 
     /// Maximum deviation of the shadow relative to the center
     public var shadowPanDeviation = 15.0
 
-    /**
-     Property allow to customize parallax effect (pan, angles, etc.)
 
-     - seealso:
-     [ParallaxEffect.swift](ParallaxEffect.swift)
-
-     */
+    /// Property allow to customize parallax effect (pan, angles, etc.)
+    ///
+    /// - seealso:
+    ///  [ParallaxEffect](ParallaxEffect)
     public var parallaxEffect = ParallaxMotionEffect()
 
+    /// Disable animations for `pressesBegan`, `pressesCancelled`, `pressesEnded`, `pressesChanged`.
+    /// If you want to customize those animations override listed methods.
+    public var disablePressAnimations: Bool = false
 
     // MARK: Initialization
 
@@ -100,12 +101,16 @@ public class ParallaxCollectionViewCell: UICollectionViewCell, ParallaxableView 
 
     // MARK: UIResponder
 
+    // Generally, all responders which do custom touch handling should override all four of these methods.
+    // If you want to customize animations for press events do not forget to call super.
     public override func pressesBegan(presses: Set<UIPress>, withEvent event: UIPressesEvent?) {
-        for press in presses {
-            if case .Select = press.type {
-                UIView.animateWithDuration(0.1, animations: {
-                    self.transform = CGAffineTransformMakeScale(0.95, 0.95)
-                })
+        if !disablePressAnimations {
+            for press in presses {
+                if case .Select = press.type {
+                    UIView.animateWithDuration(0.1, animations: {
+                        self.transform = CGAffineTransformMakeScale(0.95, 0.95)
+                    })
+                }
             }
         }
 
@@ -113,15 +118,17 @@ public class ParallaxCollectionViewCell: UICollectionViewCell, ParallaxableView 
     }
 
     public override func pressesCancelled(presses: Set<UIPress>, withEvent event: UIPressesEvent?) {
-        for press in presses {
-            if case .Select = press.type {
-                UIView.animateWithDuration(0.1, animations: {
-                    if self.focused {
-                        self.setupFocusedState()
-                    } else {
-                        self.setupUnfocusedState()
-                    }
-                })
+        if !disablePressAnimations {
+            for press in presses {
+                if case .Select = press.type {
+                    UIView.animateWithDuration(0.1, animations: {
+                        if self.focused {
+                            self.setupFocusedState()
+                        } else {
+                            self.setupUnfocusedState()
+                        }
+                    })
+                }
             }
         }
 
@@ -129,17 +136,19 @@ public class ParallaxCollectionViewCell: UICollectionViewCell, ParallaxableView 
     }
 
     public override func pressesEnded(presses: Set<UIPress>, withEvent event: UIPressesEvent?) {
-        for press in presses {
-            if case .Select = press.type {
-                UIView.animateWithDuration(0.2, animations: {
-                    if self.focused {
-                        self.transform = CGAffineTransformIdentity
-                        self.setupFocusedState()
-                    } else {
-                        self.transform = CGAffineTransformIdentity
-                        self.setupUnfocusedState()
-                    }
-                })
+        if !disablePressAnimations {
+            for press in presses {
+                if case .Select = press.type {
+                    UIView.animateWithDuration(0.2, animations: {
+                        if self.focused {
+                            self.transform = CGAffineTransformIdentity
+                            self.setupFocusedState()
+                        } else {
+                            self.transform = CGAffineTransformIdentity
+                            self.setupUnfocusedState()
+                        }
+                    })
+                }
             }
         }
 

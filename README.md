@@ -41,8 +41,9 @@ The component is documented in code, also look into example for more details.
 * `glowEffectAlpha` - configure alpha of the glow effect
 * `glowEffectContainerView` - view that will be used as the container for glow effect. You don't have to configure this becouse for `ParallaxView` will be automatically created subview for this purpose, while for `ParallaxCollectionViewCell` will be used `contentView` of the cell. But if you want to, you can define custom view - look into example project for more details.
 * cornerRadius - use this value insted of `self.view.layer.cornerRadius`. This will automatically correct radius for glow effect view if it is necessary
+* `disablePressAnimations` - disable press animation which are enabled by default. See also [subclassing](#subclassing) section .
 
-### Subclassing
+### <a name="subclassing"></a>Subclassing
 
 You can also customize `ParallaxView` and `ParallaxCollectionViewCell` creating a subclass and overriding especially the following methods:
 
@@ -50,6 +51,7 @@ You can also customize `ParallaxView` and `ParallaxCollectionViewCell` creating 
 * `setupFocusedState()` - as well as `setupUnfocusedState` but in transition to focused state.
 * `beforeBecomeFocusedAnimation()` - override this method if you want to make some adjustments before animation to the focused state start.
 * `beforeResignFocusAnimation()` - as well as `beforeBecomeFocusedAnimation` but before unfocus state.
+* `pressesBegan`, `pressesCancelled`, `pressesEnded`, `pressesChanged` - override those methods if you want to customize press animation. Do no forget to call super in them as tvOS documentation suggest.
 
 ## Requirements
 

@@ -23,6 +23,8 @@ public protocol ParallaxableView: class {
 
     var glowEffect: UIImageView { get }
 
+    var disablePressAnimations: Bool { get set }
+
     func setupUnfocusedState()
 
     func setupFocusedState()

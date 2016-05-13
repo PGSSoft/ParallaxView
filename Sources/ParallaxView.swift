@@ -37,14 +37,15 @@ public class ParallaxView: UIView, ParallaxableView {
     /// Maximum deviation of the shadow relative to the center
     public var shadowPanDeviation = 15.0
 
-    /**
-     Property allow to customize parallax effect (pan, angles, etc.)
-
-     - seealso:
-     [ParallaxEffect.swift](ParallaxEffect.swift)
-
-     */
+    /// Property allow to customize parallax effect (pan, angles, etc.)
+    ///
+    /// - seealso:
+    ///  [ParallaxEffect](ParallaxEffect)
     public var parallaxEffect = ParallaxMotionEffect()
+
+    /// Disable animations for `pressesBegan`, `pressesCancelled`, `pressesEnded`, `pressesChanged`.
+    /// If you want to customize those animations override listed methods.
+    public var disablePressAnimations: Bool = false
 
     // MARK: Initialization
 
@@ -97,6 +98,8 @@ public class ParallaxView: UIView, ParallaxableView {
 
     // MARK: UIResponder
 
+    // Generally, all responders which do custom touch handling should override all four of these methods.
+    // If you want to customize animations for press events do not forget to call super.
     public override func pressesBegan(presses: Set<UIPress>, withEvent event: UIPressesEvent?) {
         for press in presses {
             if case .Select = press.type {
