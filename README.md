@@ -1,14 +1,16 @@
+# ParallaxView
 <p align="center">
-    <a href="https://swift.org"><img src="https://img.shields.io/badge/Swift-2.2-orange.svg?style=flat" alt="Swift" /></a>
+    <a href="https://swift.org"><img src="https://img.shields.io/badge/Version-1.0.6-orange.svg?style=flat" alt="Swift" /></a>
+    <a href="https://swift.org"><img src="https://img.shields.io/badge/Swift-2.2-brightgreen.svg?style=flat" alt="Swift" /></a>
     <a href="https://swift.org"><img src="https://img.shields.io/badge/Platforms-tvOS-lightgray.svg?style=flat" alt="Platform" /></a>
     <a href="https://tldrlegal.com/license/mit-license"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=flat" alt="License" /></a>
+    <a href="https://tldrlegal.com/license/mit-license"><img src="https://img.shields.io/badge/Cocoapods-compatible-green.svg?style=flat" alt="CocoaPods" /></a>
+    <a href="https://tldrlegal.com/license/mit-license"><img src="https://img.shields.io/badge/Carthage-compatible-green.svg?style=flat" alt="CocoaPods" /></a>
 </p>
 
-# ParallaxView
-
-UIView and UICollectionViewCell with parallax effect. Rotate view using Apple TV remote.
-Works confusingly similar to tiles in home screen of Apple TV.
-Written in Swift 😍
+*UIView and UICollectionViewCell with parallax effect. Rotate view using Apple TV remote.
+Works confusingly similar to tiles in the home screen of the Apple TV.
+Written in Swift*
 
 ![](Assets/parallax_view.gif)
 ![](Assets/parallax_collection_view_cell.gif)
@@ -95,9 +97,10 @@ You can download the latest files from our [Releases page](https://github.com/pg
 
 ## Author
 
-Łukasz Śliwiński
+Łukasz Śliwiński and [PGS Software](https://www.pgs-soft.com)
 
 Twitter: [sliwinskilukas](https://twitter.com/sliwinskilukas)
+GitHub: [nonameplum](https://github.com/nonameplum)
 
 ## License
 
