@@ -107,7 +107,7 @@ public class ParallaxCollectionViewCell: UICollectionViewCell, ParallaxableView 
         if !disablePressAnimations {
             for press in presses {
                 if case .Select = press.type {
-                    UIView.animateWithDuration(0.1, animations: {
+                    UIView.animateWithDuration(0.12, animations: {
                         self.transform = CGAffineTransformMakeScale(0.95, 0.95)
                     })
                 }
@@ -121,7 +121,7 @@ public class ParallaxCollectionViewCell: UICollectionViewCell, ParallaxableView 
         if !disablePressAnimations {
             for press in presses {
                 if case .Select = press.type {
-                    UIView.animateWithDuration(0.1, animations: {
+                    UIView.animateWithDuration(0.12, animations: {
                         if self.focused {
                             self.setupFocusedState()
                         } else {
@@ -139,12 +139,10 @@ public class ParallaxCollectionViewCell: UICollectionViewCell, ParallaxableView 
         if !disablePressAnimations {
             for press in presses {
                 if case .Select = press.type {
-                    UIView.animateWithDuration(0.2, animations: {
+                    UIView.animateWithDuration(0.12, animations: {
                         if self.focused {
-                            self.transform = CGAffineTransformIdentity
                             self.setupFocusedState()
                         } else {
-                            self.transform = CGAffineTransformIdentity
                             self.setupUnfocusedState()
                         }
                     })
