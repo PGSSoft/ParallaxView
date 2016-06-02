@@ -1,3 +1,7 @@
+<p align="center">
+	<img src="Assets/pgssoftware-logo-200px.png" alt="PGS Software"/>
+</p>
+
 # ParallaxView
 <p align="center">
     <a href="https://swift.org"><img src="https://img.shields.io/badge/Version-1.0.6-orange.svg?style=flat" alt="Swift" /></a>
@@ -105,4 +109,7 @@ GitHub: [nonameplum](https://github.com/nonameplum)
 ## License
 
 **ParallaxView** is under MIT license. See [LICENSE](LICENSE) for details.
+
+## About
+The project maintained by [PGS Software](https://www.pgs-soft.com). Hire us to design, develop, and grow your product.
 
