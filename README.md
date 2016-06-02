@@ -51,13 +51,13 @@ The component is documented in code, also look into example for more details.
 
 ### <a name="subclassing"></a>Subclassing
 
-You can also customize `ParallaxView` and `ParallaxCollectionViewCell` creating a subclass and overriding especially the following methods:
+You can customize `ParallaxView` and `ParallaxCollectionViewCell` creating a subclass and overriding especially the following methods:
 
-* `setupUnfocusedState()` - method will be called inside `CoordinatedAnimations` block of transition to unfocused state. Use this to figure animatable properties e.g. transform.
+* `setupUnfocusedState()` - method will be called inside `CoordinatedAnimations` block of transition to unfocused state. Use this to configure animatable properties e.g. transform.
 * `setupFocusedState()` - as well as `setupUnfocusedState` but in transition to focused state.
 * `beforeBecomeFocusedAnimation()` - override this method if you want to make some adjustments before animation to the focused state start.
 * `beforeResignFocusAnimation()` - as well as `beforeBecomeFocusedAnimation` but before unfocus state.
-* `pressesBegan`, `pressesCancelled`, `pressesEnded`, `pressesChanged` - override those methods if you want to customize press animation. Do no forget to call super in them as tvOS documentation suggest.
+* `pressesBegan`, `pressesCancelled`, `pressesEnded`, `pressesChanged` - override those methods if you want to customize press animation. Do no forget to call super in them as tvOS documentation suggest. You can also disable default animations using property `disablePressAnimations`.
 
 ## Requirements
 
@@ -97,7 +97,7 @@ Finally, add the framework to the Xcode project of your App. Link the framework 
 
 #### Manual
 
-You can download the latest files from our [Releases page](https://github.com/pgs-software/ParallaxView/releases). After doing so, drag `ParallaxView.xcodeproj` into your project in Xcode, and for your project target on ***General*** tab in ***Embedded Binaries*** section add `ParallaxView.framework`. Example project is configured the same way, so you have a crib sheet.
+You can download the latest files from our [Releases page](https://github.com/pgs-software/ParallaxView/releases). After doing so, drag `ParallaxView.xcodeproj` into your project in Xcode, and for your project target on ***General*** tab in ***Embedded Binaries*** section add `ParallaxView.framework`. Example project is configured the same way, so you have the crib sheet.
 
 ## Author
 
