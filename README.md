@@ -1,23 +1,32 @@
-<p align="center">
-	<img src="Assets/pgssoftware-logo-200px.png" alt="PGS Software"/>
-</p>
+![PGS Software](Assets/pgssoftware-logo-200px.png) 
 
 # ParallaxView
-<p align="center">
-    <a href="https://swift.org"><img src="https://img.shields.io/badge/Version-1.0.6-orange.svg?style=flat" alt="Swift" /></a>
-    <a href="https://swift.org"><img src="https://img.shields.io/badge/Swift-2.2-brightgreen.svg?style=flat" alt="Swift" /></a>
-    <a href="https://swift.org"><img src="https://img.shields.io/badge/Platforms-tvOS-lightgray.svg?style=flat" alt="Platform" /></a>
-    <a href="https://tldrlegal.com/license/mit-license"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=flat" alt="License" /></a>
-    <a href="https://tldrlegal.com/license/mit-license"><img src="https://img.shields.io/badge/Cocoapods-compatible-green.svg?style=flat" alt="CocoaPods" /></a>
-    <a href="https://tldrlegal.com/license/mit-license"><img src="https://img.shields.io/badge/Carthage-compatible-green.svg?style=flat" alt="CocoaPods" /></a>
-</p>
+
+![Version](https://img.shields.io/badge/Version-1.0.7-orange.svg?style=flat)
+[![Swift](https://img.shields.io/badge/Swift-2.2-brightgreen.svg?style=flat)](https://swift.org)
+![Platform](https://img.shields.io/badge/Platforms-tvOS-lightgray.svg?style=flat)
+![License](https://img.shields.io/badge/License-MIT-blue.svg?style=flat)
+![CocoaPods](https://img.shields.io/badge/Cocoapods-compatible-green.svg?style=flat)
+![Carthage](https://img.shields.io/badge/Carthage-compatible-green.svg?style=flat)
+
+## Summary
 
 *UIView and UICollectionViewCell with parallax effect. Rotate view using Apple TV remote.
 Works confusingly similar to tiles in the home screen of the Apple TV.
-Written in Swift*
+Written in Swift.*
 
 ![](Assets/parallax_view.gif)
 ![](Assets/parallax_collection_view_cell.gif)
+
+## Table of Contents
+
+* [Usage](#usage)
+* [Customization](#customization)
+* [Requirements](#requirements)
+* [Installation](#installation)
+* [Author](#author)
+* [License](#license)
+* [About](#about)
 
 ## Usage
 
