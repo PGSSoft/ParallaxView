@@ -92,11 +92,11 @@ public class ParallaxCollectionViewCell: UICollectionViewCell, ParallaxableView 
             glowEffectContainerView.frame = glowSuperView.bounds
         }
 
-        let maxSize = max(glowEffectContainerView.frame.width, glowEffectContainerView.frame.height)
+        let maxSize = max(glowEffectContainerView.frame.width, glowEffectContainerView.frame.height)*1.7
         // Make glow a litte bit bigger than the superview
-        glowEffect.frame = CGRect(x: 0, y: 0, width: maxSize*1.7, height: maxSize*1.7)
+        glowEffect.frame = CGRect(x: 0, y: 0, width: maxSize, height: maxSize)
         // Position in the middle and under the top edge of the superview
-        glowEffect.center = CGPoint(x: glowEffectContainerView.frame.width/2, y: -glowEffect.frame.height*0.95)
+        glowEffect.center = CGPoint(x: glowEffectContainerView.frame.width/2, y: -glowEffectContainerView.frame.height*0.9)
     }
 
     // MARK: UIResponder

@@ -97,7 +97,6 @@ public extension ParallaxableView where Self: UIView {
                     }
 
                     let verticalSubviewEffect = UIInterpolatingMotionEffect(keyPath: "center.y", type: .TiltAlongVerticalAxis)
-
                     verticalSubviewEffect.minimumRelativeValue = -relativePanValue
                     verticalSubviewEffect.maximumRelativeValue = relativePanValue
 
@@ -111,10 +110,11 @@ public extension ParallaxableView where Self: UIView {
             }
         }
 
+        if let glowEffectContainerView = glowEffectContainerView {
         // Glow effect
         let verticalGlowEffect = UIInterpolatingMotionEffect(keyPath: "center.y", type: .TiltAlongVerticalAxis)
-        verticalGlowEffect.minimumRelativeValue = -glowEffect.frame.height
-        verticalGlowEffect.maximumRelativeValue = bounds.height+glowEffect.frame.height*1.1
+        verticalGlowEffect.minimumRelativeValue = -glowEffectContainerView.frame.height*2.5
+        verticalGlowEffect.maximumRelativeValue = glowEffectContainerView.frame.height*2.5
 
         let horizontalGlowEffect = UIInterpolatingMotionEffect(keyPath: "center.x", type: .TiltAlongHorizontalAxis)
         horizontalGlowEffect.minimumRelativeValue = -bounds.width+glowEffect.frame.width/4
@@ -124,6 +124,7 @@ public extension ParallaxableView where Self: UIView {
         glowMotionGroup.motionEffects = [horizontalGlowEffect, verticalGlowEffect]
 
         glowEffect.addMotionEffect(glowMotionGroup)
+        }
     }
 
     func removeParallaxMotionEffects() {
@@ -148,6 +149,9 @@ public extension ParallaxableView where Self: UIView {
 
     static func loadGlowImage() -> UIImageView {
         if case let bundle = NSBundle(forClass: ParallaxView.self), let glowImage = UIImage(named: "gloweffect", inBundle: bundle, compatibleWithTraitCollection: nil) {
+            let imageView = UIImageView(image: glowImage)
+            imageView.contentMode = .ScaleAspectFit
+
             return UIImageView(image: glowImage)
         } else {
             fatalError("Can't initialize gloweffect image")
