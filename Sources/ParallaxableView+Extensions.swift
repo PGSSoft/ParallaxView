@@ -38,24 +38,6 @@ public extension ParallaxableView where Self: UIView {
 
     // MARK: Convenience
 
-    func becomeFocusedUsingAnimationCoordinator(coordinator: UIFocusAnimationCoordinator) {
-        beforeBecomeFocusedAnimation()
-
-        coordinator.addCoordinatedAnimations({
-            self.addParallaxMotionEffects()
-            self.setupFocusedState()
-            }, completion: nil)
-    }
-
-    func resignFocusUsingAnimationCoordinator(coordinator: UIFocusAnimationCoordinator) {
-        beforeResignFocusAnimation()
-
-        coordinator.addCoordinatedAnimations({
-            self.removeParallaxMotionEffects()
-            self.setupUnfocusedState()
-            }, completion: nil)
-    }
-
     func addParallaxMotionEffects() {
         let motionGroup = UIMotionEffectGroup()
         motionGroup.motionEffects = []
@@ -113,8 +95,8 @@ public extension ParallaxableView where Self: UIView {
         if let glowEffectContainerView = glowEffectContainerView {
         // Glow effect
         let verticalGlowEffect = UIInterpolatingMotionEffect(keyPath: "center.y", type: .TiltAlongVerticalAxis)
-        verticalGlowEffect.minimumRelativeValue = -glowEffectContainerView.frame.height*2.5
-        verticalGlowEffect.maximumRelativeValue = glowEffectContainerView.frame.height*2.5
+        verticalGlowEffect.minimumRelativeValue = -glowEffect.frame.height*0.15
+        verticalGlowEffect.maximumRelativeValue = glowEffect.frame.height*1.6
 
         let horizontalGlowEffect = UIInterpolatingMotionEffect(keyPath: "center.x", type: .TiltAlongHorizontalAxis)
         horizontalGlowEffect.minimumRelativeValue = -bounds.width+glowEffect.frame.width/4
@@ -136,6 +118,8 @@ public extension ParallaxableView where Self: UIView {
         }
         glowEffect.motionEffects.removeAll()
     }
+    
+    // MARK: ParallaxableView
 
     func setupUnfocusedState() {}
 
@@ -144,6 +128,24 @@ public extension ParallaxableView where Self: UIView {
     func beforeBecomeFocusedAnimation() {}
 
     func beforeResignFocusAnimation() {}
+    
+    func becomeFocusedInContext(context: UIFocusUpdateContext, withAnimationCoordinator: UIFocusAnimationCoordinator) {
+        beforeBecomeFocusedAnimation()
+        
+        withAnimationCoordinator.addCoordinatedAnimations({
+            self.addParallaxMotionEffects()
+            self.setupFocusedState()
+            }, completion: nil)
+    }
+    
+    func resignFocusedInContext(context: UIFocusUpdateContext, withAnimationCoordinator: UIFocusAnimationCoordinator) {
+        beforeResignFocusAnimation()
+        
+        withAnimationCoordinator.addCoordinatedAnimations({
+            self.removeParallaxMotionEffects()
+            self.setupUnfocusedState()
+            }, completion: nil)
+    }
 
     // MARK: Static methods
 

@@ -157,11 +157,31 @@ public class ParallaxView: UIView, ParallaxableView {
 
         if self == context.nextFocusedView {
             // Add parallax effect to focused cell
-            becomeFocusedUsingAnimationCoordinator(coordinator)
+            becomeFocusedInContext(context, withAnimationCoordinator: coordinator)
         } else if self == context.previouslyFocusedView {
             // Remove parallax effect
-            resignFocusUsingAnimationCoordinator(coordinator)
+            resignFocusedInContext(context, withAnimationCoordinator: coordinator)
         }
+    }
+    
+    // MARK: ParallaxableView
+    
+    public func becomeFocusedInContext(context: UIFocusUpdateContext, withAnimationCoordinator: UIFocusAnimationCoordinator) {
+        beforeBecomeFocusedAnimation()
+        
+        withAnimationCoordinator.addCoordinatedAnimations({
+            self.addParallaxMotionEffects()
+            self.setupFocusedState()
+            }, completion: nil)
+    }
+    
+    public func resignFocusedInContext(context: UIFocusUpdateContext, withAnimationCoordinator: UIFocusAnimationCoordinator) {
+        beforeResignFocusAnimation()
+        
+        withAnimationCoordinator.addCoordinatedAnimations({
+            self.removeParallaxMotionEffects()
+            self.setupUnfocusedState()
+            }, completion: nil)
     }
 
 }

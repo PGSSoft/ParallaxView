@@ -96,7 +96,7 @@ public class ParallaxCollectionViewCell: UICollectionViewCell, ParallaxableView 
         // Make glow a litte bit bigger than the superview
         glowEffect.frame = CGRect(x: 0, y: 0, width: maxSize, height: maxSize)
         // Position in the middle and under the top edge of the superview
-        glowEffect.center = CGPoint(x: glowEffectContainerView.frame.width/2, y: -glowEffectContainerView.frame.height*0.9)
+        glowEffect.center = CGPoint(x: glowEffectContainerView.frame.width/2, y: -glowEffect.frame.height)
     }
 
     // MARK: UIResponder
@@ -164,11 +164,31 @@ public class ParallaxCollectionViewCell: UICollectionViewCell, ParallaxableView 
 
         if self == context.nextFocusedView {
             // Add parallax effect to focused cell
-            becomeFocusedUsingAnimationCoordinator(coordinator)
+            becomeFocusedInContext(context, withAnimationCoordinator: coordinator)
         } else if self == context.previouslyFocusedView {
             // Remove parallax effect
-            resignFocusUsingAnimationCoordinator(coordinator)
+            resignFocusedInContext(context, withAnimationCoordinator: coordinator)
         }
+    }
+    
+    // MARK: ParallaxableView
+    
+    public func becomeFocusedInContext(context: UIFocusUpdateContext, withAnimationCoordinator: UIFocusAnimationCoordinator) {
+        beforeBecomeFocusedAnimation()
+        
+        withAnimationCoordinator.addCoordinatedAnimations({
+            self.addParallaxMotionEffects()
+            self.setupFocusedState()
+            }, completion: nil)
+    }
+    
+    public func resignFocusedInContext(context: UIFocusUpdateContext, withAnimationCoordinator: UIFocusAnimationCoordinator) {
+        beforeResignFocusAnimation()
+        
+        withAnimationCoordinator.addCoordinatedAnimations({
+            self.removeParallaxMotionEffects()
+            self.setupUnfocusedState()
+            }, completion: nil)
     }
 
     // MARK: Public

@@ -33,8 +33,8 @@ public protocol ParallaxableView: class {
 
     func beforeResignFocusAnimation()
 
-    func becomeFocusedUsingAnimationCoordinator(coordinator: UIFocusAnimationCoordinator)
+    func becomeFocusedInContext(context: UIFocusUpdateContext, withAnimationCoordinator: UIFocusAnimationCoordinator)
 
-    func resignFocusUsingAnimationCoordinator(coordinator: UIFocusAnimationCoordinator)
+    func resignFocusedInContext(context: UIFocusUpdateContext, withAnimationCoordinator: UIFocusAnimationCoordinator)
 
 }
