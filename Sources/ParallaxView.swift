@@ -37,6 +37,12 @@ public class ParallaxView: UIView, ParallaxableView {
     /// Maximum deviation of the shadow relative to the center
     public var shadowPanDeviation = 15.0
 
+    /// Minimum vertical value at the most top position can be adjusted by this multipler
+    public var minVerticalGlowEffectMultipler = 0.2
+
+    /// Maximum vertical value at the most bottom position can be adjusted by this multipler
+    public var maxVerticalGlowEffectMultipler = 1.55
+
     /// Property allow to customize parallax effect (pan, angles, etc.)
     ///
     /// - seealso:
@@ -93,7 +99,7 @@ public class ParallaxView: UIView, ParallaxableView {
         // Make glow a litte bit bigger than the superview
         glowEffect.frame = CGRect(x: 0, y: 0, width: maxSize, height: maxSize)
         // Position in the middle and under the top edge of the superview
-        glowEffect.center = CGPoint(x: glowEffectContainerView.frame.width/2, y: -glowEffectContainerView.frame.height*0.9)
+        glowEffect.center = CGPoint(x: glowEffectContainerView.frame.width/2, y: -glowEffect.frame.height)
     }
 
     // MARK: UIResponder
@@ -163,21 +169,21 @@ public class ParallaxView: UIView, ParallaxableView {
             resignFocusedInContext(context, withAnimationCoordinator: coordinator)
         }
     }
-    
+
     // MARK: ParallaxableView
-    
+
     public func becomeFocusedInContext(context: UIFocusUpdateContext, withAnimationCoordinator: UIFocusAnimationCoordinator) {
         beforeBecomeFocusedAnimation()
-        
+
         withAnimationCoordinator.addCoordinatedAnimations({
             self.addParallaxMotionEffects()
             self.setupFocusedState()
             }, completion: nil)
     }
-    
+
     public func resignFocusedInContext(context: UIFocusUpdateContext, withAnimationCoordinator: UIFocusAnimationCoordinator) {
         beforeResignFocusAnimation()
-        
+
         withAnimationCoordinator.addCoordinatedAnimations({
             self.removeParallaxMotionEffects()
             self.setupUnfocusedState()

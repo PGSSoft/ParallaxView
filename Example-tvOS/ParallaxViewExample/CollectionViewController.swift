@@ -9,21 +9,21 @@
 import UIKit
 
 class CollectionViewController: UIViewController {
-    
+
     // MARK: Properties
-    
+
     var numberOfRows = 3
-    var numberOfItemsPerRow = 4
-    
+    var numberOfItemsPerRow = 3
+
     // MARK: Outlets
 
     @IBOutlet weak var collectionView: UICollectionView!
 
     // MARK: UIViewController
 
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+
         configureFlowLayoutSpacing()
     }
 
@@ -43,25 +43,25 @@ class CollectionViewController: UIViewController {
 }
 
 extension CollectionViewController: UICollectionViewDelegateFlowLayout {
-    
+
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         if let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout {
             let totalSpaceWidth = flowLayout.sectionInset.left
                 + flowLayout.sectionInset.right
                 + (flowLayout.minimumInteritemSpacing * CGFloat(numberOfItemsPerRow - 1))
             let width = Int((collectionView.bounds.width - totalSpaceWidth) / CGFloat(numberOfItemsPerRow))
-            
+
             let totalSpaceHeight = flowLayout.sectionInset.top
                 + flowLayout.sectionInset.bottom
                 + (flowLayout.minimumLineSpacing * CGFloat(numberOfRows - 1))
             let height = Int((collectionView.bounds.height - totalSpaceHeight) / CGFloat(numberOfRows))
-            
+
             return CGSize(width: width, height: height)
         }
-        
+
         fatalError("collectionViewLayout is not UICollectionViewFlowLayout")
     }
-    
+
 }
 
 extension CollectionViewController: UICollectionViewDataSource {

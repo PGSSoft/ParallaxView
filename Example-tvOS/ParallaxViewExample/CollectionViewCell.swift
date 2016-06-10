@@ -10,7 +10,7 @@ import UIKit
 import ParallaxView
 
 class CollectionViewCell: ParallaxCollectionViewCell {
-    
+
     private var widthToHeightRatio = CGFloat(0)
 
     required init?(coder aDecoder: NSCoder) {
@@ -18,19 +18,19 @@ class CollectionViewCell: ParallaxCollectionViewCell {
 
         // Here u can configure custom properties for parallax effect
         cornerRadius = 8
-        glowEffectAlpha = 1.0
-        
+        glowEffectAlpha = 0.4
+
         shadowPanDeviation = 10
         parallaxEffect.viewingAngleX = CGFloat(M_PI_4/30)
         parallaxEffect.viewingAngleY = CGFloat(M_PI_4/30)
         parallaxEffect.panValue = 5
-        
+
         shadowPanDeviation = 0
     }
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
-        
+
         widthToHeightRatio = round(((bounds.width * 0.08 + bounds.height)/bounds.height)*100)/100
     }
 

@@ -29,7 +29,6 @@ public class ParallaxMotionEffect: UIMotionEffect {
     // MARK: UIMotionEffect
 
     override public func keyPathsAndRelativeValuesForViewerOffset(viewerOffset: UIOffset) -> [String : AnyObject]? {
-        print(viewerOffset)
         var transform = CATransform3DIdentity
         transform.m34 = m34
 

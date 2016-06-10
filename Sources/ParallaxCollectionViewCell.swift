@@ -39,6 +39,11 @@ public class ParallaxCollectionViewCell: UICollectionViewCell, ParallaxableView 
     /// Maximum deviation of the shadow relative to the center
     public var shadowPanDeviation = 15.0
 
+    /// Minimum vertical value at the most top position can be adjusted by this multipler
+    public var minVerticalGlowEffectMultipler = 0.2
+
+    /// Maximum vertical value at the most bottom position can be adjusted by this multipler
+    public var maxVerticalGlowEffectMultipler = 1.55
 
     /// Property allow to customize parallax effect (pan, angles, etc.)
     ///
@@ -170,21 +175,21 @@ public class ParallaxCollectionViewCell: UICollectionViewCell, ParallaxableView 
             resignFocusedInContext(context, withAnimationCoordinator: coordinator)
         }
     }
-    
+
     // MARK: ParallaxableView
-    
+
     public func becomeFocusedInContext(context: UIFocusUpdateContext, withAnimationCoordinator: UIFocusAnimationCoordinator) {
         beforeBecomeFocusedAnimation()
-        
+
         withAnimationCoordinator.addCoordinatedAnimations({
             self.addParallaxMotionEffects()
             self.setupFocusedState()
             }, completion: nil)
     }
-    
+
     public func resignFocusedInContext(context: UIFocusUpdateContext, withAnimationCoordinator: UIFocusAnimationCoordinator) {
         beforeResignFocusAnimation()
-        
+
         withAnimationCoordinator.addCoordinatedAnimations({
             self.removeParallaxMotionEffects()
             self.setupUnfocusedState()

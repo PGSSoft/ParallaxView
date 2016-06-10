@@ -15,6 +15,10 @@ public protocol ParallaxableView: class {
 
     var shadowPanDeviation: Double { get set }
 
+    var minVerticalGlowEffectMultipler: Double { get set }
+
+    var maxVerticalGlowEffectMultipler: Double { get set }
+
     var glowEffectAlpha: CGFloat { get set }
 
     var cornerRadius: CGFloat { get set }

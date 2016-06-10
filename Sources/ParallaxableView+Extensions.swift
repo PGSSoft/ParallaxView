@@ -92,11 +92,10 @@ public extension ParallaxableView where Self: UIView {
             }
         }
 
-        if let glowEffectContainerView = glowEffectContainerView {
         // Glow effect
         let verticalGlowEffect = UIInterpolatingMotionEffect(keyPath: "center.y", type: .TiltAlongVerticalAxis)
-        verticalGlowEffect.minimumRelativeValue = -glowEffect.frame.height*0.15
-        verticalGlowEffect.maximumRelativeValue = glowEffect.frame.height*1.6
+        verticalGlowEffect.minimumRelativeValue = -glowEffect.frame.height * CGFloat(minVerticalGlowEffectMultipler)
+        verticalGlowEffect.maximumRelativeValue = glowEffect.frame.height * CGFloat(maxVerticalGlowEffectMultipler)
 
         let horizontalGlowEffect = UIInterpolatingMotionEffect(keyPath: "center.x", type: .TiltAlongHorizontalAxis)
         horizontalGlowEffect.minimumRelativeValue = -bounds.width+glowEffect.frame.width/4
@@ -106,7 +105,6 @@ public extension ParallaxableView where Self: UIView {
         glowMotionGroup.motionEffects = [horizontalGlowEffect, verticalGlowEffect]
 
         glowEffect.addMotionEffect(glowMotionGroup)
-        }
     }
 
     func removeParallaxMotionEffects() {
@@ -118,7 +116,7 @@ public extension ParallaxableView where Self: UIView {
         }
         glowEffect.motionEffects.removeAll()
     }
-    
+
     // MARK: ParallaxableView
 
     func setupUnfocusedState() {}
@@ -128,19 +126,19 @@ public extension ParallaxableView where Self: UIView {
     func beforeBecomeFocusedAnimation() {}
 
     func beforeResignFocusAnimation() {}
-    
+
     func becomeFocusedInContext(context: UIFocusUpdateContext, withAnimationCoordinator: UIFocusAnimationCoordinator) {
         beforeBecomeFocusedAnimation()
-        
+
         withAnimationCoordinator.addCoordinatedAnimations({
             self.addParallaxMotionEffects()
             self.setupFocusedState()
             }, completion: nil)
     }
-    
+
     func resignFocusedInContext(context: UIFocusUpdateContext, withAnimationCoordinator: UIFocusAnimationCoordinator) {
         beforeResignFocusAnimation()
-        
+
         withAnimationCoordinator.addCoordinatedAnimations({
             self.removeParallaxMotionEffects()
             self.setupUnfocusedState()
