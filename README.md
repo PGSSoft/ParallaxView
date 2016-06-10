@@ -2,7 +2,7 @@
 
 # ParallaxView
 
-![Version](https://img.shields.io/badge/Version-1.0.7-orange.svg?style=flat)
+![Version](https://img.shields.io/badge/Version-1.0.9-orange.svg?style=flat)
 [![Swift](https://img.shields.io/badge/Swift-2.2-brightgreen.svg?style=flat)](https://swift.org)
 ![Platform](https://img.shields.io/badge/Platforms-tvOS-lightgray.svg?style=flat)
 ![License](https://img.shields.io/badge/License-MIT-blue.svg?style=flat)
