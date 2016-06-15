@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		C851AC781CE068E900EA3A71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C851AC771CE068E900EA3A71 /* Assets.xcassets */; };
 		C8AFF06D1CE1FA0E00A78342 /* ParallaxableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AFF0671CE1FA0E00A78342 /* ParallaxableView.swift */; };
-		C8AFF06E1CE1FA0E00A78342 /* ParallaxableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AFF0681CE1FA0E00A78342 /* ParallaxableView+Extensions.swift */; };
 		C8AFF06F1CE1FA0E00A78342 /* ParallaxCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AFF0691CE1FA0E00A78342 /* ParallaxCollectionViewCell.swift */; };
 		C8AFF0701CE1FA0E00A78342 /* ParallaxMotionEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AFF06A1CE1FA0E00A78342 /* ParallaxMotionEffect.swift */; };
 		C8AFF0711CE1FA0E00A78342 /* ParallaxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AFF06B1CE1FA0E00A78342 /* ParallaxView.swift */; };
@@ -22,7 +21,6 @@
 /* Begin PBXFileReference section */
 		C851AC771CE068E900EA3A71 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C8AFF0671CE1FA0E00A78342 /* ParallaxableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParallaxableView.swift; path = ../ParallaxableView.swift; sourceTree = "<group>"; };
-		C8AFF0681CE1FA0E00A78342 /* ParallaxableView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ParallaxableView+Extensions.swift"; path = "../ParallaxableView+Extensions.swift"; sourceTree = "<group>"; };
 		C8AFF0691CE1FA0E00A78342 /* ParallaxCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParallaxCollectionViewCell.swift; path = ../ParallaxCollectionViewCell.swift; sourceTree = "<group>"; };
 		C8AFF06A1CE1FA0E00A78342 /* ParallaxMotionEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParallaxMotionEffect.swift; path = ../ParallaxMotionEffect.swift; sourceTree = "<group>"; };
 		C8AFF06B1CE1FA0E00A78342 /* ParallaxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParallaxView.swift; path = ../ParallaxView.swift; sourceTree = "<group>"; };
@@ -85,7 +83,6 @@
 		C8F2C6D11D11709D003C0E1A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				C8AFF0681CE1FA0E00A78342 /* ParallaxableView+Extensions.swift */,
 				C8F2C6CF1D11704F003C0E1A /* UIView+ParallaxEffect.swift */,
 			);
 			path = Extensions;
@@ -195,7 +192,6 @@
 				C8AFF0711CE1FA0E00A78342 /* ParallaxView.swift in Sources */,
 				C8F2C6D01D11704F003C0E1A /* UIView+ParallaxEffect.swift in Sources */,
 				C8AFF0701CE1FA0E00A78342 /* ParallaxMotionEffect.swift in Sources */,
-				C8AFF06E1CE1FA0E00A78342 /* ParallaxableView+Extensions.swift in Sources */,
 				C8AFF06F1CE1FA0E00A78342 /* ParallaxCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
