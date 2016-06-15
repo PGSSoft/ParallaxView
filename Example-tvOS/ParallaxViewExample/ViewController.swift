@@ -26,8 +26,8 @@ class ViewController: UIViewController {
             // Configure glow of the parallax view
             let glowEffectView = UIView(frame: parallaxView.bounds)
             parallaxView.insertSubview(glowEffectView, belowSubview: logoView)
-            parallaxView.glowEffectAlpha = 0.25
-            parallaxView.glowEffectContainerView = glowEffectView
+            parallaxView.parallaxEffectOptions.glowAlpha = 0.25
+            parallaxView.parallaxEffectOptions.glowContainerView = glowEffectView
         }
     }
 
@@ -37,6 +37,9 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var theBiggestLabel: UILabel!
 
+    @IBOutlet weak var customView: UIFocusableView!
+
+
     // MARK: UIViewController
 
     override func viewDidLoad() {
@@ -45,10 +48,30 @@ class ViewController: UIViewController {
         //parallaxView.subviewsParallaxType = .BasedOnHierarchyInParallaxView(maxParallaxOffset: 20)
 
         // Uncomment lines below to test out subviews parallax effect based on tag
-        parallaxView.subviewsParallaxType = .BasedOnTag
+        parallaxView.parallaxEffectOptions.subviewsParallaxType = .BasedOnTag
         logoView.tag = 10
         biggerLabel.tag = 20
         theBiggestLabel.tag = 30
+    }
+
+    override func didUpdateFocusInContext(context: UIFocusUpdateContext, withAnimationCoordinator coordinator: UIFocusAnimationCoordinator) {
+        super.didUpdateFocusInContext(context, withAnimationCoordinator: coordinator)
+
+        if context.nextFocusedView === customView {
+            customView.addParallaxMotionEffects()
+        }
+
+        if context.previouslyFocusedView === customView {
+            customView.removeParallaxMotionEffects()
+        }
+    }
+
+}
+
+class UIFocusableView: UIView {
+
+    override func canBecomeFocused() -> Bool {
+        return true
     }
 
 }

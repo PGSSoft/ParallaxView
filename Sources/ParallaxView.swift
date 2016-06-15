@@ -11,43 +11,7 @@ public class ParallaxView: UIView, ParallaxableView {
 
     // MARK: Properties
 
-    lazy public var glowEffect: UIImageView = {
-        return ParallaxView.loadGlowImage()
-    }()
-
-    /// A View that will be a container for the glow effect. Default it will be automatically added as subview in the parallaxContainerView.
-    public weak var glowEffectContainerView: UIView? {
-        willSet(newValue) {
-            glowEffectContainerView?.removeFromSuperview()
-        }
-        didSet {
-            glowEffectContainerView?.layer.cornerRadius = cornerRadius
-            glowEffectContainerView?.clipsToBounds = true
-            glowEffectContainerView?.opaque = true
-            glowEffectContainerView?.layer.shouldRasterize = true
-            glowEffectContainerView?.addSubview(glowEffect)
-            setNeedsLayout()
-            layoutIfNeeded()
-        }
-    }
-
-    /// Specify parallax effect of subiviews of the `parallaxEffectView`
-    public var subviewsParallaxType: SubviewsParallaxType = .None
-
-    /// Maximum deviation of the shadow relative to the center
-    public var shadowPanDeviation = 15.0
-
-    /// Minimum vertical value at the most top position can be adjusted by this multipler
-    public var minVerticalGlowEffectMultipler = 0.2
-
-    /// Maximum vertical value at the most bottom position can be adjusted by this multipler
-    public var maxVerticalGlowEffectMultipler = 1.55
-
-    /// Property allow to customize parallax effect (pan, angles, etc.)
-    ///
-    /// - seealso:
-    ///  [ParallaxEffect](ParallaxEffect)
-    public var parallaxEffect = ParallaxMotionEffect()
+    public var parallaxEffectOptions = ParallaxEffectOptions()
 
     /// Disable animations for `pressesBegan`, `pressesCancelled`, `pressesEnded`, `pressesChanged`.
     /// If you want to customize those animations override listed methods.
@@ -70,12 +34,10 @@ public class ParallaxView: UIView, ParallaxableView {
     }
 
     internal func commonInit() {
-        glowEffect.alpha = 1.0
-
-        if glowEffectContainerView == nil {
+        if parallaxEffectOptions.glowContainerView == nil {
             let view = UIView(frame: bounds)
             addSubview(view)
-            glowEffectContainerView = view
+            parallaxEffectOptions.glowContainerView = view
         }
     }
 
@@ -88,18 +50,20 @@ public class ParallaxView: UIView, ParallaxableView {
     public override func layoutSubviews() {
         super.layoutSubviews()
 
-        guard let glowEffectContainerView = glowEffectContainerView else { return }
-
-
-        if glowEffectContainerView != self, let glowSuperView = glowEffectContainerView.superview {
-            glowEffectContainerView.frame = glowSuperView.bounds
-        }
-
-        let maxSize = max(glowEffectContainerView.frame.width, glowEffectContainerView.frame.height)*1.7
-        // Make glow a litte bit bigger than the superview
-        glowEffect.frame = CGRect(x: 0, y: 0, width: maxSize, height: maxSize)
-        // Position in the middle and under the top edge of the superview
-        glowEffect.center = CGPoint(x: glowEffectContainerView.frame.width/2, y: -glowEffect.frame.height)
+//        guard let glowEffectContainerView = parallaxEffectOptions.glowContainerView else { return }
+//
+//        if glowEffectContainerView != self, let glowSuperView = glowEffectContainerView.superview {
+//            glowEffectContainerView.frame = glowSuperView.bounds
+//        }
+//
+//        let maxSize = max(glowEffectContainerView.frame.width, glowEffectContainerView.frame.height)*1.7
+//        // Make glow a litte bit bigger than the superview
+//
+//        guard let glowImageView = getGlowImageView() else { return }
+//
+//        glowImageView.frame = CGRect(x: 0, y: 0, width: maxSize, height: maxSize)
+//        // Position in the middle and under the top edge of the superview
+//        glowImageView.center = CGPoint(x: glowEffectContainerView.frame.width/2, y: -glowImageView.frame.height)
     }
 
     // MARK: UIResponder
@@ -107,11 +71,13 @@ public class ParallaxView: UIView, ParallaxableView {
     // Generally, all responders which do custom touch handling should override all four of these methods.
     // If you want to customize animations for press events do not forget to call super.
     public override func pressesBegan(presses: Set<UIPress>, withEvent event: UIPressesEvent?) {
-        for press in presses {
-            if case .Select = press.type {
-                UIView.animateWithDuration(0.1, animations: {
-                    self.transform = CGAffineTransformMakeScale(0.95, 0.95)
-                })
+        if !disablePressAnimations {
+            for press in presses {
+                if case .Select = press.type {
+                    UIView.animateWithDuration(0.1, animations: {
+                        self.transform = CGAffineTransformMakeScale(0.95, 0.95)
+                    })
+                }
             }
         }
 
@@ -119,15 +85,17 @@ public class ParallaxView: UIView, ParallaxableView {
     }
 
     public override func pressesCancelled(presses: Set<UIPress>, withEvent event: UIPressesEvent?) {
-        for press in presses {
-            if case .Select = press.type {
-                UIView.animateWithDuration(0.1, animations: {
-                    if self.focused {
-                        self.setupFocusedState()
-                    } else {
-                        self.setupUnfocusedState()
-                    }
-                })
+        if !disablePressAnimations {
+            for press in presses {
+                if case .Select = press.type {
+                    UIView.animateWithDuration(0.12, animations: {
+                        if self.focused {
+                            self.setupFocusedState()
+                        } else {
+                            self.setupUnfocusedState()
+                        }
+                    })
+                }
             }
         }
 
@@ -135,17 +103,19 @@ public class ParallaxView: UIView, ParallaxableView {
     }
 
     public override func pressesEnded(presses: Set<UIPress>, withEvent event: UIPressesEvent?) {
-        for press in presses {
-            if case .Select = press.type {
-                UIView.animateWithDuration(0.2, animations: {
-                    if self.focused {
-                        self.transform = CGAffineTransformIdentity
-                        self.setupFocusedState()
-                    } else {
-                        self.transform = CGAffineTransformIdentity
-                        self.setupUnfocusedState()
-                    }
-                })
+        if !disablePressAnimations {
+            for press in presses {
+                if case .Select = press.type {
+                    UIView.animateWithDuration(0.2, animations: {
+                        if self.focused {
+                            self.transform = CGAffineTransformIdentity
+                            self.setupFocusedState()
+                        } else {
+                            self.transform = CGAffineTransformIdentity
+                            self.setupUnfocusedState()
+                        }
+                    })
+                }
             }
         }
 
@@ -166,7 +136,7 @@ public class ParallaxView: UIView, ParallaxableView {
             becomeFocusedInContext(context, withAnimationCoordinator: coordinator)
         } else if self == context.previouslyFocusedView {
             // Remove parallax effect
-            resignFocusedInContext(context, withAnimationCoordinator: coordinator)
+            resignFocusInContext(context, withAnimationCoordinator: coordinator)
         }
     }
 
@@ -176,16 +146,16 @@ public class ParallaxView: UIView, ParallaxableView {
         beforeBecomeFocusedAnimation()
 
         withAnimationCoordinator.addCoordinatedAnimations({
-            self.addParallaxMotionEffects()
+            self.addParallaxMotionEffects(withOptions: self.parallaxEffectOptions)
             self.setupFocusedState()
             }, completion: nil)
     }
 
-    public func resignFocusedInContext(context: UIFocusUpdateContext, withAnimationCoordinator: UIFocusAnimationCoordinator) {
+    public func resignFocusInContext(context: UIFocusUpdateContext, withAnimationCoordinator: UIFocusAnimationCoordinator) {
         beforeResignFocusAnimation()
 
         withAnimationCoordinator.addCoordinatedAnimations({
-            self.removeParallaxMotionEffects()
+            self.removeParallaxMotionEffects(glowContainerView: self.parallaxEffectOptions.glowContainerView)
             self.setupUnfocusedState()
             }, completion: nil)
     }

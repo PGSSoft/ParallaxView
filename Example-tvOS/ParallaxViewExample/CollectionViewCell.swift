@@ -18,14 +18,12 @@ class CollectionViewCell: ParallaxCollectionViewCell {
 
         // Here u can configure custom properties for parallax effect
         cornerRadius = 8
-        glowEffectAlpha = 0.4
 
-        shadowPanDeviation = 10
-        parallaxEffect.viewingAngleX = CGFloat(M_PI_4/30)
-        parallaxEffect.viewingAngleY = CGFloat(M_PI_4/30)
-        parallaxEffect.panValue = 5
-
-        shadowPanDeviation = 0
+        parallaxEffectOptions.glowAlpha = 0.4
+        parallaxEffectOptions.shadowPanDeviation = 10
+        parallaxEffectOptions.parallaxMotionEffect.viewingAngleX = CGFloat(M_PI_4/30)
+        parallaxEffectOptions.parallaxMotionEffect.viewingAngleY = CGFloat(M_PI_4/30)
+        parallaxEffectOptions.parallaxMotionEffect.panValue = CGFloat(5)
     }
 
     override func layoutSubviews() {

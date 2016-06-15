@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum SubviewsParallaxType {
+public enum SubviewsParallaxMode {
     /// maxParallaxOffset will be divided by the index of the subview inside `ParallaxView`.
     /// So view that is the last subview of the `ParallaxView` will be have the biggest offset equal to `maxParallaxOffset`
 
@@ -19,8 +19,8 @@ public enum SubviewsParallaxType {
      */
     case BasedOnHierarchyInParallaxView(maxParallaxOffset: Double, multipler: Double?)
     /// Tag value will be used as maximum offset for parallax effect of the subview.
-    /// Each view can be individually adjusted by the tag property.
+    /// Each view can be individually adjusted by the tag property
     case BasedOnTag
-    /// No parallax animation will be added to subviews of parallax view
+    /// No parallax animation will be added to subviews of the parallax view
     case None
 }

@@ -9,23 +9,9 @@ import UIKit
 
 public protocol ParallaxableView: class {
 
-    var parallaxEffect: ParallaxMotionEffect { get set }
-
-    var subviewsParallaxType: SubviewsParallaxType { get set }
-
-    var shadowPanDeviation: Double { get set }
-
-    var minVerticalGlowEffectMultipler: Double { get set }
-
-    var maxVerticalGlowEffectMultipler: Double { get set }
-
-    var glowEffectAlpha: CGFloat { get set }
+    var parallaxEffectOptions: ParallaxEffectOptions { get set }
 
     var cornerRadius: CGFloat { get set }
-
-    weak var glowEffectContainerView: UIView? { get }
-
-    var glowEffect: UIImageView { get }
 
     var disablePressAnimations: Bool { get set }
 
@@ -39,6 +25,6 @@ public protocol ParallaxableView: class {
 
     func becomeFocusedInContext(context: UIFocusUpdateContext, withAnimationCoordinator: UIFocusAnimationCoordinator)
 
-    func resignFocusedInContext(context: UIFocusUpdateContext, withAnimationCoordinator: UIFocusAnimationCoordinator)
+    func resignFocusInContext(context: UIFocusUpdateContext, withAnimationCoordinator: UIFocusAnimationCoordinator)
 
 }
