@@ -16,6 +16,7 @@ class ViewAnyViewController: UIViewController {
     @IBOutlet weak var anyView: UIFocusableView!
     @IBOutlet weak var anyLabel: UIFocusableLabel! {
         didSet {
+            // Without setting userInteractionEnabled, label can't be focusable
             anyLabel.userInteractionEnabled = true
             anyLabel.layer.shadowColor = UIColor.blackColor().CGColor
             anyLabel.layer.shadowOpacity = 0.5
