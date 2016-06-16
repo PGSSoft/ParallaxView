@@ -13,7 +13,7 @@ public class ParallaxEffectOptions {
     /// Property allow to customize parallax effect (pan, angles, etc.)
     ///
     /// - seealso:
-    ///  [ParallaxEffect](ParallaxEffect)
+    ///  [ParallaxMotionEffect](ParallaxMotionEffect)
     public var parallaxMotionEffect = ParallaxMotionEffect()
     /// Maximum deviation of the shadow relative to the center
     public var shadowPanDeviation: Double = 0.0
