@@ -2,21 +2,13 @@
 
 # ParallaxView
 
-![Version](https://img.shields.io/badge/Version-1.0.9-orange.svg?style=flat)
-[![Swift](https://img.shields.io/badge/Swift-2.2-brightgreen.svg?style=flat)](https://swift.org)
-![Platform](https://img.shields.io/badge/Platforms-tvOS-lightgray.svg?style=flat)
-![License](https://img.shields.io/badge/License-MIT-blue.svg?style=flat)
-![CocoaPods](https://img.shields.io/badge/Cocoapods-compatible-green.svg?style=flat)
-![Carthage](https://img.shields.io/badge/Carthage-compatible-green.svg?style=flat)
+![Version](https://img.shields.io/badge/Version-1.0.9-orange.svg?style=flat)[![Swift](https://img.shields.io/badge/Swift-2.2-brightgreen.svg?style=flat)](https://swift.org)![Platform](https://img.shields.io/badge/Platforms-tvOS-lightgray.svg?style=flat)![License](https://img.shields.io/badge/License-MIT-blue.svg?style=flat)![CocoaPods](https://img.shields.io/badge/Cocoapods-compatible-green.svg?style=flat)![Carthage](https://img.shields.io/badge/Carthage-compatible-green.svg?style=flat)
 
 ## Summary
 
-*UIView and UICollectionViewCell with parallax effect. Rotate view using Apple TV remote.
-Works confusingly similar to tiles in the home screen of the Apple TV.
-Written in Swift.*
+**Easy to use `UIView`, `UICollectionViewCell` with parallax effect and extensions to add this effect to any `UIView`. Rotate view using Apple TV remote. Works confusingly similar to tiles in the home screen of the Apple TV. Written in Swift.**
 
-![](Assets/parallax_view.gif)
-![](Assets/parallax_collection_view_cell.gif)
+![](Assets/parallax_view.gif)![](Assets/parallax_collection_view_cell.gif)
 
 ## Table of Contents
 
@@ -42,6 +34,26 @@ In *Interface builder* change collection view cell class to `ParallaxCollectionV
 
 You can also create subclass of `ParallaxCollectionViewCell` insted of `UICollectionViewCell` and usit is as normal collection view cell.
 
+### Extension
+
+If `ParallaxView` and `ParallaxCollectionViewCell` don't feet to your needs you can use extension that can be used with any `UIView`. In many cases it can look like in this example:
+```swift
+override func didUpdateFocusInContext(context: UIFocusUpdateContext, withAnimationCoordinator coordinator: UIFocusAnimationCoordinator) {
+	coordinator.addCoordinatedAnimations({
+		if context.nextFocusedView === yourCustomView {
+			yourCustomView.addParallaxMotionEffects()
+		}
+		if context.previouslyFocusedView === yourCustomView {
+			yourCustomView.removeParallaxMotionEffects()
+		}
+	}, completion: nil)
+}
+```
+
+It is important to add and remove parallax effect inside the animation block to avoid the glitches.
+`ParallaxView` and `ParallaxCollectionViewCell` internally use the same methods.
+For more details look into example.
+
 ## Customization
 
 The component is documented in code, also look into example for more details.
@@ -50,13 +62,18 @@ The component is documented in code, also look into example for more details.
 
 `ParallaxView` and `ParallaxCollectionViewCell` have the same properties for customization.
 
-* `parallaxEffect` - configure parallax effect (pan, angles, etc.)
-* `subviewsParallaxType` - enum that allow you to configure parallax effect for subviews of the `ParallaxView`
-* `shadowPanDeviation` - maximal value of points that shadow of the `ParallaxView` will be moved during parallax effect
-* `glowEffectAlpha` - configure alpha of the glow effect
-* `glowEffectContainerView` - view that will be used as the container for glow effect. You don't have to configure this becouse for `ParallaxView` will be automatically created subview for this purpose, while for `ParallaxCollectionViewCell` will be used `contentView` of the cell. But if you want to, you can define custom view - look into example project for more details.
+*`parallaxEffectOptions` - using this property you can customize parallax effect. Look into `ParallaxEffectOptions` class for more details.
 * cornerRadius - use this value insted of `self.view.layer.cornerRadius`. This will automatically correct radius for glow effect view if it is necessary
-* `disablePressAnimations` - disable press animation which are enabled by default. See also [subclassing](#subclassing) section .
+* `disablePressAnimations` - disable press animation which are enabled by default. See also [subclassing](#subclassing) section.
+
+#### `ParallaxEffectOptions`
+This class allows you to customize parallax effect with the following properties:
+
+* `parallaxMotionEffect` - configure parallax effect (pan, angles, etc.)
+* `subviewsParallaxMode` - enum that allow you to configure parallax effect for subviews of the `ParallaxView`
+* `shadowPanDeviation` - maximal value of points that shadow of the `ParallaxView` will be moved during parallax effect
+* `glowAlpha` - configure alpha of the glow effect (if is equal to 0.0 then the glow effect will be not added)
+* `glowContainerView` - view that will be used as the container for the glow effect. You don't have to configure this because for `ParallaxView` it will be automatically created a subview for this purpose, while for `ParallaxCollectionViewCell` it will be used `contentView` of the cell. Also by default it is nil when you use extension (`self` will be used as the glow container but only if `glowAlpha` is bigger than 0.0). But if you want to, you can define custom view - look into example project for more details.
 
 ### <a name="subclassing"></a>Subclassing
 
@@ -66,7 +83,7 @@ You can customize `ParallaxView` and `ParallaxCollectionViewCell` creating a sub
 * `setupFocusedState()` - as well as `setupUnfocusedState` but in transition to focused state.
 * `beforeBecomeFocusedAnimation()` - override this method if you want to make some adjustments before animation to the focused state start.
 * `beforeResignFocusAnimation()` - as well as `beforeBecomeFocusedAnimation` but before unfocus state.
-* `pressesBegan`, `pressesCancelled`, `pressesEnded`, `pressesChanged` - override those methods if you want to customize press animation. Do no forget to call super in them as tvOS documentation suggest. You can also disable default animations using property `disablePressAnimations`.
+* `pressesBegan`, `pressesCancelled`, `pressesEnded`, `pressesChanged` - override those methods if you want to customize press animation. Do no forget to call super in them as tvOS documentation suggest. It would be desirable for the subclassing to disable provided default animations using property `disablePressAnimations`.
 
 ## Requirements
 
@@ -121,4 +138,3 @@ GitHub: [nonameplum](https://github.com/nonameplum)
 
 ## About
 The project maintained by [PGS Software](https://www.pgs-soft.com). Hire us to design, develop, and grow your product.
-

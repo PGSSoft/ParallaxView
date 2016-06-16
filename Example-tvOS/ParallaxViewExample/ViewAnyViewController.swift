@@ -68,7 +68,6 @@ class ViewAnyViewController: UIViewController {
             }
 
             }, completion: nil)
-
     }
 
 }

@@ -15,7 +15,6 @@ public class ParallaxEffectOptions {
     /// - seealso:
     ///  [ParallaxEffect](ParallaxEffect)
     public var parallaxMotionEffect = ParallaxMotionEffect()
-
     /// Maximum deviation of the shadow relative to the center
     public var shadowPanDeviation: Double = 0.0
     /// Specify parallax effect of subiviews of the `parallaxEffectView`
