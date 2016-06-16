@@ -37,41 +37,18 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var theBiggestLabel: UILabel!
 
-    @IBOutlet weak var customView: UIFocusableView!
-
-
     // MARK: UIViewController
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //parallaxView.subviewsParallaxType = .BasedOnHierarchyInParallaxView(maxParallaxOffset: 20)
+        parallaxView.parallaxEffectOptions.subviewsParallaxMode = .BasedOnHierarchyInParallaxView(maxParallaxOffset: 20, multipler: nil)
 
         // Uncomment lines below to test out subviews parallax effect based on tag
-        parallaxView.parallaxEffectOptions.subviewsParallaxType = .BasedOnTag
-        logoView.tag = 10
-        biggerLabel.tag = 20
-        theBiggestLabel.tag = 30
-    }
-
-    override func didUpdateFocusInContext(context: UIFocusUpdateContext, withAnimationCoordinator coordinator: UIFocusAnimationCoordinator) {
-        super.didUpdateFocusInContext(context, withAnimationCoordinator: coordinator)
-
-        if context.nextFocusedView === customView {
-            customView.addParallaxMotionEffects()
-        }
-
-        if context.previouslyFocusedView === customView {
-            customView.removeParallaxMotionEffects()
-        }
-    }
-
-}
-
-class UIFocusableView: UIView {
-
-    override func canBecomeFocused() -> Bool {
-        return true
+//        parallaxView.parallaxEffectOptions.subviewsParallaxMode = .BasedOnTag
+//        logoView.tag = 10
+//        biggerLabel.tag = 20
+//        theBiggestLabel.tag = 30
     }
 
 }

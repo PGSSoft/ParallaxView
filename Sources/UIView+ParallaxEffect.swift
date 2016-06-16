@@ -25,27 +25,42 @@ public extension UIView {
     }
 
     public func addParallaxMotionEffects(withOptions options: ParallaxEffectOptions = ParallaxEffectOptions()) {
-        if options.glowContainerView == nil {
+        // If glow have to be visible and glowContainerView is not given then set it to self
+        if options.glowContainerView == nil && options.glowAlpha > 0.0 {
             options.glowContainerView = self
         }
 
-        guard let glowContainerView = options.glowContainerView else { return }
+        if let glowContainerView = options.glowContainerView {
+            // Need to clip to bounds because of the glow effect
+            glowContainerView.clipsToBounds = true
 
-        // Need to clip to bounds because of the glow effect
-        glowContainerView.clipsToBounds = true
+            // Configure glow image
+            let glowImageView = UIView.createGlowImageView()
+            glowImageView.alpha = CGFloat(options.glowAlpha)
+            glowContainerView.addSubview(glowImageView)
 
-        // Configure glow image
-        let glowImageView = UIView.createGlowImageView()
-        glowImageView.alpha = CGFloat(options.glowAlpha)
-        glowContainerView.addSubview(glowImageView)
+            // Configure frame of the glow effect without animation
+            UIView.performWithoutAnimation {
+                let maxSize = max(glowContainerView.frame.width, glowContainerView.frame.height)*1.7
+                // Make glow a litte bit bigger than the superview
+                glowImageView.frame = CGRect(x: 0, y: 0, width: maxSize, height: maxSize)
+                // Position in the middle and under the top edge of the superview
+                glowImageView.center = CGPoint(x: glowContainerView.frame.width/2, y: -glowImageView.frame.height)
+            }
 
-        // Configure frame of the glow effect without animation
-        UIView.performWithoutAnimation {
-            let maxSize = max(glowContainerView.frame.width, glowContainerView.frame.height)*1.7
-            // Make glow a litte bit bigger than the superview
-            glowImageView.frame = CGRect(x: 0, y: 0, width: maxSize, height: maxSize)
-            // Position in the middle and under the top edge of the superview
-            glowImageView.center = CGPoint(x: glowContainerView.frame.width/2, y: -glowImageView.frame.height)
+            // Configure pan motion effect for the glow
+            let verticalGlowEffect = UIInterpolatingMotionEffect(keyPath: "center.y", type: .TiltAlongVerticalAxis)
+            verticalGlowEffect.minimumRelativeValue = -glowImageView.frame.height * CGFloat(options.minVerticalPanGlowMultipler)
+            verticalGlowEffect.maximumRelativeValue = glowImageView.frame.height * CGFloat(options.maxVerticalPanGlowMultipler)
+
+            let horizontalGlowEffect = UIInterpolatingMotionEffect(keyPath: "center.x", type: .TiltAlongHorizontalAxis)
+            horizontalGlowEffect.minimumRelativeValue = -bounds.width+glowImageView.frame.width/4
+            horizontalGlowEffect.maximumRelativeValue = bounds.width-glowImageView.frame.width/4
+
+            let glowMotionGroup = UIMotionEffectGroup()
+            glowMotionGroup.motionEffects = [horizontalGlowEffect, verticalGlowEffect]
+
+            glowImageView.addMotionEffect(glowMotionGroup)
         }
 
         let motionGroup = UIMotionEffectGroup()
@@ -70,15 +85,15 @@ public extension UIView {
         addMotionEffect(motionGroup)
 
         // Configure pan motion effect for the subviews
-        if case .None = options.subviewsParallaxType {
+        if case .None = options.subviewsParallaxMode {
         } else {
             subviews
-                .filter { $0 !== glowContainerView }
+                .filter { $0 !== options.glowContainerView }
                 .enumerate()
                 .forEach { (index: Int, subview: UIView) in
                     let relativePanValue: Double
 
-                    switch options.subviewsParallaxType {
+                    switch options.subviewsParallaxMode {
                     case .BasedOnHierarchyInParallaxView(let maxOffset, let multipler):
                         relativePanValue = maxOffset / (Double(index+1)) * (multipler ?? 1.0)
                     case .BasedOnTag:
@@ -100,20 +115,6 @@ public extension UIView {
                     subview.addMotionEffect(group)
             }
         }
-
-        // Configure pan motion effect for the glow
-        let verticalGlowEffect = UIInterpolatingMotionEffect(keyPath: "center.y", type: .TiltAlongVerticalAxis)
-        verticalGlowEffect.minimumRelativeValue = -glowImageView.frame.height * CGFloat(options.minVerticalPanGlowMultipler)
-        verticalGlowEffect.maximumRelativeValue = glowImageView.frame.height * CGFloat(options.maxVerticalPanGlowMultipler)
-
-        let horizontalGlowEffect = UIInterpolatingMotionEffect(keyPath: "center.x", type: .TiltAlongHorizontalAxis)
-        horizontalGlowEffect.minimumRelativeValue = -bounds.width+glowImageView.frame.width/4
-        horizontalGlowEffect.maximumRelativeValue = bounds.width-glowImageView.frame.width/4
-
-        let glowMotionGroup = UIMotionEffectGroup()
-        glowMotionGroup.motionEffects = [horizontalGlowEffect, verticalGlowEffect]
-
-        glowImageView.addMotionEffect(glowMotionGroup)
     }
 
     public func removeParallaxMotionEffects(glowContainerView glowContainerView: UIView? = nil) {

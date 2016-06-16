@@ -82,25 +82,16 @@
                                     <constraint firstItem="pYN-9b-hEg" firstAttribute="centerX" secondItem="XgF-kg-j3t" secondAttribute="centerX" id="s9k-VA-E5o"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CH8-h4-qGD" customClass="UIFocusableView" customModule="ParallaxViewExample" customModuleProvider="target">
-                                <rect key="frame" x="1401" y="400" width="452" height="280"/>
-                                <color key="backgroundColor" red="1" green="0.46274509800000002" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="CH8-h4-qGD" firstAttribute="centerY" secondItem="XgF-kg-j3t" secondAttribute="centerY" id="0hc-j7-jEI"/>
                             <constraint firstItem="XgF-kg-j3t" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4Ok-R9-aRs"/>
-                            <constraint firstItem="CH8-h4-qGD" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="400" id="AF5-IT-0T7"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="CH8-h4-qGD" secondAttribute="trailing" constant="47" id="RZd-kX-RnU"/>
                             <constraint firstItem="XgF-kg-j3t" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="grN-1K-fvN"/>
-                            <constraint firstItem="CH8-h4-qGD" firstAttribute="leading" secondItem="XgF-kg-j3t" secondAttribute="trailing" constant="66" id="ryV-ew-tee"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Parallax View" id="8YS-J7-7nw"/>
                     <connections>
                         <outlet property="biggerLabel" destination="pYN-9b-hEg" id="dF5-gq-DE5"/>
-                        <outlet property="customView" destination="CH8-h4-qGD" id="wSE-4g-xSU"/>
                         <outlet property="logoView" destination="bKz-Ac-PnS" id="qOk-nE-UJ8"/>
                         <outlet property="parallaxView" destination="XgF-kg-j3t" id="9al-NE-2qz"/>
                         <outlet property="theBiggestLabel" destination="6Wf-dX-b3R" id="D7O-ZL-oNV"/>
@@ -177,6 +168,58 @@
             </objects>
             <point key="canvasLocation" x="1629" y="1976"/>
         </scene>
+        <!--Any View-->
+        <scene sceneID="z0F-nX-gnG">
+            <objects>
+                <viewController id="miG-b9-tKD" customClass="ViewAnyViewController" customModule="ParallaxViewExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="K8P-eX-XZh"/>
+                        <viewControllerLayoutGuide type="bottom" id="t0X-iX-Nx0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="beb-Ja-5GT">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YCp-KV-1cl" customClass="UIFocusableView" customModule="ParallaxViewExample" customModuleProvider="target">
+                                <rect key="frame" x="698" y="198" width="525" height="290"/>
+                                <color key="backgroundColor" red="1" green="0.46274509800000002" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="525" id="3fs-VI-6yS"/>
+                                    <constraint firstAttribute="height" constant="290" id="NL5-Cq-2Nk"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PGS Software" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="llt-dP-7sM" customClass="UIFocusableLabel" customModule="ParallaxViewExample" customModuleProvider="target">
+                                <rect key="frame" x="780" y="640" width="361" height="70"/>
+                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="60"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WxH-6A-0Ms">
+                                <rect key="frame" x="863" y="833" width="195" height="86"/>
+                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="llt-dP-7sM" firstAttribute="top" secondItem="YCp-KV-1cl" secondAttribute="bottom" constant="152" id="6CH-zW-Mw7"/>
+                            <constraint firstItem="WxH-6A-0Ms" firstAttribute="top" secondItem="llt-dP-7sM" secondAttribute="bottom" constant="123" id="IvC-BD-G1C"/>
+                            <constraint firstItem="YCp-KV-1cl" firstAttribute="centerX" secondItem="beb-Ja-5GT" secondAttribute="centerX" id="JJy-0p-gVa"/>
+                            <constraint firstItem="YCp-KV-1cl" firstAttribute="top" secondItem="K8P-eX-XZh" secondAttribute="bottom" constant="198" id="dq6-q6-CSp"/>
+                            <constraint firstItem="WxH-6A-0Ms" firstAttribute="centerX" secondItem="beb-Ja-5GT" secondAttribute="centerX" id="gTj-jD-oMn"/>
+                            <constraint firstItem="llt-dP-7sM" firstAttribute="centerX" secondItem="beb-Ja-5GT" secondAttribute="centerX" id="tbm-5Q-gR1"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Any View" id="si1-Sh-T2p"/>
+                    <connections>
+                        <outlet property="anyButton" destination="WxH-6A-0Ms" id="bC0-8T-ceL"/>
+                        <outlet property="anyLabel" destination="llt-dP-7sM" id="4Mm-0R-NAu"/>
+                        <outlet property="anyView" destination="YCp-KV-1cl" id="M7S-tV-uLp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5hU-1d-xw0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1629" y="3216"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="gO9-Zf-rbK">
             <objects>
@@ -189,6 +232,7 @@
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="3TM-2F-l57"/>
                         <segue destination="JfG-Wc-HPI" kind="relationship" relationship="viewControllers" id="YbR-eg-e5n"/>
+                        <segue destination="miG-b9-tKD" kind="relationship" relationship="viewControllers" id="bKl-5B-joP"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="elR-gR-TPe" userLabel="First Responder" sceneMemberID="firstResponder"/>

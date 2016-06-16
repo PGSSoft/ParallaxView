@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C8365B801D12918E0061BDDC /* ViewAnyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8365B7F1D12918E0061BDDC /* ViewAnyViewController.swift */; };
 		C89E12C81CE2045C00D2570F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89E12C71CE2045C00D2570F /* AppDelegate.swift */; };
 		C89E12CA1CE2045C00D2570F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89E12C91CE2045C00D2570F /* ViewController.swift */; };
 		C89E12CD1CE2045C00D2570F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C89E12CB1CE2045C00D2570F /* Main.storyboard */; };
@@ -49,6 +50,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C8365B7F1D12918E0061BDDC /* ViewAnyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewAnyViewController.swift; sourceTree = "<group>"; };
 		C89E12C41CE2045C00D2570F /* ParallaxViewExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParallaxViewExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C89E12C71CE2045C00D2570F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C89E12C91CE2045C00D2570F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -92,13 +94,14 @@
 		C89E12C61CE2045C00D2570F /* ParallaxViewExample */ = {
 			isa = PBXGroup;
 			children = (
+				C89E12D01CE2045C00D2570F /* Info.plist */,
 				C89E12C71CE2045C00D2570F /* AppDelegate.swift */,
 				C89E12F41CE20C1F00D2570F /* CollectionViewCell.swift */,
 				C89E12F61CE20C2A00D2570F /* CollectionViewController.swift */,
+				C8365B7F1D12918E0061BDDC /* ViewAnyViewController.swift */,
 				C89E12C91CE2045C00D2570F /* ViewController.swift */,
-				C89E12CB1CE2045C00D2570F /* Main.storyboard */,
 				C89E12CE1CE2045C00D2570F /* Assets.xcassets */,
-				C89E12D01CE2045C00D2570F /* Info.plist */,
+				C89E12CB1CE2045C00D2570F /* Main.storyboard */,
 			);
 			path = ParallaxViewExample;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C89E12F71CE20C2A00D2570F /* CollectionViewController.swift in Sources */,
+				C8365B801D12918E0061BDDC /* ViewAnyViewController.swift in Sources */,
 				C89E12CA1CE2045C00D2570F /* ViewController.swift in Sources */,
 				C89E12C81CE2045C00D2570F /* AppDelegate.swift in Sources */,
 				C89E12F51CE20C1F00D2570F /* CollectionViewCell.swift in Sources */,
