@@ -21,22 +21,34 @@ class ViewAnyViewController: UIViewController {
             anyLabel.layer.shadowColor = UIColor.blackColor().CGColor
             anyLabel.layer.shadowOpacity = 0.5
             anyLabel.layer.shadowOffset = CGSize(width: 0, height: 5)
-            // Avoid cliping to show fully shadow
+            // Avoid cliping to fully show the shadow
             anyLabel.clipsToBounds = false
         }
     }
 
+    var myContext = 0
+
     var customGlowContainer: UIView!
     @IBOutlet weak var anyButton: UIButton! {
         didSet {
-            customGlowContainer = UIView(frame: self.anyButton.bounds)
+            // Define custom glow for the parallax effect
+            customGlowContainer = UIView(frame: anyButton.bounds)
             customGlowContainer.clipsToBounds = true
             customGlowContainer.backgroundColor = UIColor.clearColor()
-            anyButton.addSubview(customGlowContainer)
+            anyButton.subviews.first?.subviews.last?.addSubview(customGlowContainer)
+
+            // Add gray background color to make glow effect be more visible
+            anyButton.setBackgroundImage(getImageWithColor(UIColor.lightGrayColor(), size: anyButton.bounds.size), forState: .Normal)
         }
     }
 
     // MARK: UIViewController
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        customGlowContainer.frame = anyButton.bounds
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,20 +60,25 @@ class ViewAnyViewController: UIViewController {
             if let nextFocusedView = context.nextFocusedView where nextFocusedView.isDescendantOfView(self.view) {
                 switch context.nextFocusedView {
                 case is UIButton:
+                    // Custom parallax effect for the button
                     let buttonParallaxEffectOptions = ParallaxEffectOptions(glowContainerView: self.customGlowContainer)
                     self.anyButton.addParallaxMotionEffects(withOptions: buttonParallaxEffectOptions)
                 case is UIFocusableLabel:
+                    // Custom parallax effect for the label
                     let labelParallaxEffectOptions = ParallaxEffectOptions()
                     labelParallaxEffectOptions.glowAlpha = 0.0
                     labelParallaxEffectOptions.shadowPanDeviation = 10
                     self.anyLabel.addParallaxMotionEffects(withOptions: labelParallaxEffectOptions)
                 default:
+                    // For the anyView use default options
                     context.nextFocusedView?.addParallaxMotionEffects()
                 }
             }
 
+            // Remove parallax effect for the view that lost focus
             switch context.previouslyFocusedView {
             case is UIButton:
+                // Because anyButton uses custom glow container we have to pass it to remove parallax effect correctly
                 self.anyButton.removeParallaxMotionEffects(glowContainerView: self.customGlowContainer)
             default:
                 context.previouslyFocusedView?.removeParallaxMotionEffects()
@@ -70,9 +87,21 @@ class ViewAnyViewController: UIViewController {
             }, completion: nil)
     }
 
+    // MARK: Convenience
+
+    func getImageWithColor(color: UIColor, size: CGSize) -> UIImage {
+        let rect = CGRectMake(0, 0, size.width, size.height)
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        color.setFill()
+        UIRectFill(rect)
+        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
+    }
+
 }
 
-
+// UIView is not focusable by default, we need to change it
 class UIFocusableView: UIView {
 
     override func canBecomeFocused() -> Bool {
@@ -81,6 +110,7 @@ class UIFocusableView: UIView {
 
 }
 
+// UILabel is not focusable by default, we need to change it
 class UIFocusableLabel: UILabel {
 
     override func canBecomeFocused() -> Bool {

@@ -191,12 +191,16 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PGS Software" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="llt-dP-7sM" customClass="UIFocusableLabel" customModule="ParallaxViewExample" customModuleProvider="target">
                                 <rect key="frame" x="780" y="640" width="361" height="70"/>
                                 <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="60"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WxH-6A-0Ms">
-                                <rect key="frame" x="863" y="833" width="195" height="86"/>
-                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                <rect key="frame" x="851" y="833" width="218" height="84"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="218" id="VUf-EX-qvG"/>
+                                    <constraint firstAttribute="height" constant="84" id="foH-kf-80H"/>
+                                </constraints>
+                                <inset key="titleEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
                                 <state key="normal" title="Button"/>
                             </button>
                         </subviews>
