@@ -16,10 +16,6 @@ public class ParallaxView: UIView, ParallaxableView {
 
     // MARK: Initialization
 
-    deinit {
-        print("deinit \(self.dynamicType)")
-    }
-
     public override init(frame: CGRect) {
         super.init(frame: frame)
 

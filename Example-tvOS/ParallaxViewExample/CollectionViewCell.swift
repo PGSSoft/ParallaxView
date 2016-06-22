@@ -25,12 +25,15 @@ class CollectionViewCell: ParallaxCollectionViewCell {
         parallaxEffectOptions.parallaxMotionEffect.viewingAngleY = CGFloat(M_PI_4/30)
         parallaxEffectOptions.parallaxMotionEffect.panValue = CGFloat(5)
 
+        // You can customise parallax view standard behaviours using parallaxViewActions property.
+        // Do not forget to use weak self if needed to void retain cycle
         parallaxViewActions.setupUnfocusedState = { (view) -> Void in
             view.transform = CGAffineTransformIdentity
 
             view.layer.shadowOffset = CGSize(width: 0, height: 10)
             view.layer.shadowOpacity = 0.3
             view.layer.shadowRadius = 5
+            view.layer.shadowColor = UIColor.blackColor().CGColor
         }
 
         parallaxViewActions.setupFocusedState = { [weak self] (view) -> Void in
@@ -40,6 +43,7 @@ class CollectionViewCell: ParallaxCollectionViewCell {
             view.layer.shadowOffset = CGSize(width: 0, height: 20)
             view.layer.shadowOpacity = 0.4
             view.layer.shadowRadius = 15
+            view.layer.shadowColor = view.backgroundColor?.CGColor
         }
     }
 
@@ -48,21 +52,5 @@ class CollectionViewCell: ParallaxCollectionViewCell {
 
         widthToHeightRatio = round(((bounds.width * 0.08 + bounds.height)/bounds.height)*100)/100
     }
-
-    // You can customzie view depending on control state e.g:
-//
-//    func beforeBecomeFocusedAnimation() {
-//        // Here you can make same adjustmens before animation to focus state will be started
-////        super.beforeBecomeFocusedAnimation()
-//
-//        // It is useful to set bigger zPosition than unfocused cell. Especially when they overlap during the transition.
-//        // Calling super.beforeBecomeFocusedAnimation will do that for you
-//        layer.zPosition = 100
-//    }
-//
-//    func beforeResignFocusAnimation() {
-////        super.beforeResignFocusAnimation()
-//        layer.zPosition = 0
-//    }
 
 }

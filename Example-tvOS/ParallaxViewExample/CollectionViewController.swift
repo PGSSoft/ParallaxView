@@ -25,6 +25,7 @@ class CollectionViewController: UIViewController {
         super.viewWillAppear(animated)
 
         configureFlowLayoutSpacing()
+        collectionView.reloadData()
     }
 
     // MARK: Convenience
