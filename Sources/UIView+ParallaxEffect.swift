@@ -8,13 +8,13 @@
 
 import UIKit
 
-public extension UIView {
+internal let glowImageAccessibilityIdentifier = "com.pgs-soft.parallaxview.gloweffect"
 
-    private static let glowImageAccessibilityIdentifier = "com.pgs-soft.parallaxview.gloweffect"
+public extension UIView {
 
     public static func createGlowImageView() -> UIImageView {
         if case let bundle = NSBundle(forClass: ParallaxView.self), let glowImage = UIImage(named: "gloweffect", inBundle: bundle, compatibleWithTraitCollection: nil) {
-            glowImage.accessibilityIdentifier = UIView.glowImageAccessibilityIdentifier
+            glowImage.accessibilityIdentifier = glowImageAccessibilityIdentifier
             let imageView = UIImageView(image: glowImage)
             imageView.contentMode = .ScaleAspectFit
 
@@ -24,7 +24,12 @@ public extension UIView {
         }
     }
 
-    public func addParallaxMotionEffects(withOptions options: ParallaxEffectOptions = ParallaxEffectOptions()) {
+    public func addParallaxMotionEffects() {
+        var options = ParallaxEffectOptions()
+        addParallaxMotionEffects(with: &options)
+    }
+
+    public func addParallaxMotionEffects(inout with options: ParallaxEffectOptions) {
         // If glow have to be visible and glowContainerView is not given then set it to self
         if options.glowContainerView == nil && options.glowAlpha > 0.0 {
             options.glowContainerView = self
@@ -117,7 +122,7 @@ public extension UIView {
         }
     }
 
-    public func removeParallaxMotionEffects(glowContainerView glowContainerView: UIView? = nil) {
+    public func removeParallaxMotionEffects(glowContainer glowContainerView: UIView? = nil) {
         motionEffects.removeAll()
         subviews
             .filter { $0 !== glowContainerView }
@@ -129,7 +134,7 @@ public extension UIView {
 
         if let glowImageView = glowContainerView.subviews.filter({
             if let glowImageView = $0 as? UIImageView,
-                glowImage = glowImageView.image where glowImage.accessibilityIdentifier == UIView.glowImageAccessibilityIdentifier {
+                glowImage = glowImageView.image where glowImage.accessibilityIdentifier == glowImageAccessibilityIdentifier {
                 return true
             }
             return false
@@ -137,65 +142,6 @@ public extension UIView {
             glowImageView.motionEffects.removeAll()
             glowImageView.removeFromSuperview()
         }
-    }
-
-}
-
-public extension ParallaxableView where Self: UIView {
-
-    // MARK: Properties
-
-    /// Configure radius for parallaxView and glow effect if needed
-    public var cornerRadius: CGFloat {
-        get {
-            return self.layer.cornerRadius
-        }
-        set {
-            self.layer.cornerRadius = newValue
-
-            // Change the glowEffectContainerView corner radius only if it is a direct subview of the parallax view
-            if let glowEffectContainerView = parallaxEffectOptions.glowContainerView where self.subviews.contains(glowEffectContainerView) {
-                glowEffectContainerView.layer.cornerRadius = newValue
-            }
-        }
-    }
-
-    // MARK: ParallaxableView
-
-    func getGlowImageView() -> UIImageView? {
-        return parallaxEffectOptions.glowContainerView?.subviews.filter({ (view) -> Bool in
-            if let glowImageView = view as? UIImageView,
-                glowImage = glowImageView.image where glowImage.accessibilityIdentifier == UIView.glowImageAccessibilityIdentifier {
-                return true
-            }
-            return false
-        }).first as? UIImageView
-    }
-
-    func setupUnfocusedState() {}
-
-    func setupFocusedState() {}
-
-    func beforeBecomeFocusedAnimation() {}
-
-    func beforeResignFocusAnimation() {}
-
-    func becomeFocusedInContext(context: UIFocusUpdateContext, withAnimationCoordinator: UIFocusAnimationCoordinator) {
-        beforeBecomeFocusedAnimation()
-
-        withAnimationCoordinator.addCoordinatedAnimations({
-            self.addParallaxMotionEffects(withOptions: self.parallaxEffectOptions)
-            self.setupFocusedState()
-            }, completion: nil)
-    }
-
-    func resignFocusInContext(context: UIFocusUpdateContext, withAnimationCoordinator: UIFocusAnimationCoordinator) {
-        beforeResignFocusAnimation()
-
-        withAnimationCoordinator.addCoordinatedAnimations({
-            self.removeParallaxMotionEffects(glowContainerView: self.parallaxEffectOptions.glowContainerView)
-            self.setupUnfocusedState()
-            }, completion: nil)
     }
 
 }

@@ -9,11 +9,15 @@
 import UIKit
 import ParallaxView
 
+class CustomParallaxView: ParallaxView {
+
+}
+
 class ViewController: UIViewController {
 
     // MARK: Outlets
 
-    @IBOutlet weak var parallaxView: ParallaxView! {
+    @IBOutlet weak var parallaxView: CustomParallaxView! {
         didSet {
             // Configure shadow
             parallaxView.layer.shadowRadius = 20
@@ -37,6 +41,8 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var theBiggestLabel: UILabel!
 
+    var testView: ParallaxView?
+
     // MARK: UIViewController
 
     override func viewDidLoad() {
@@ -49,6 +55,22 @@ class ViewController: UIViewController {
 //        logoView.tag = 10
 //        biggerLabel.tag = 20
 //        theBiggestLabel.tag = 30
+    }
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        testView = ParallaxView(frame: CGRect(x: view.frame.width/2, y: 100, width: 200, height: 200))
+        testView?.backgroundColor = UIColor.greenColor()
+        testView!.parallaxViewActions.setupFocusedState = { (view) in
+            view.backgroundColor = UIColor.redColor()
+        }
+        view.addSubview(testView!)
+    }
+
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        testView?.removeFromSuperview()
+        testView = nil
     }
 
 }

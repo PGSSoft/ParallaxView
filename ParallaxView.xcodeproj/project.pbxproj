@@ -13,6 +13,7 @@
 		C8AFF0701CE1FA0E00A78342 /* ParallaxMotionEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AFF06A1CE1FA0E00A78342 /* ParallaxMotionEffect.swift */; };
 		C8AFF0711CE1FA0E00A78342 /* ParallaxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AFF06B1CE1FA0E00A78342 /* ParallaxView.swift */; };
 		C8AFF0721CE1FA0E00A78342 /* SubviewsParallaxMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AFF06C1CE1FA0E00A78342 /* SubviewsParallaxMode.swift */; };
+		C8B589611D18146000F5DBD2 /* ParallaxableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B589601D18146000F5DBD2 /* ParallaxableView+Extensions.swift */; };
 		C8F1DB3B1CDCC4400043B419 /* ParallaxView tvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = C8F1DB3A1CDCC4400043B419 /* ParallaxView tvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8F2C6CE1D117021003C0E1A /* ParallaxEffectOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F2C6CD1D117021003C0E1A /* ParallaxEffectOptions.swift */; };
 		C8F2C6D01D11704F003C0E1A /* UIView+ParallaxEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F2C6CF1D11704F003C0E1A /* UIView+ParallaxEffect.swift */; };
@@ -25,6 +26,7 @@
 		C8AFF06A1CE1FA0E00A78342 /* ParallaxMotionEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParallaxMotionEffect.swift; path = ../ParallaxMotionEffect.swift; sourceTree = "<group>"; };
 		C8AFF06B1CE1FA0E00A78342 /* ParallaxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParallaxView.swift; path = ../ParallaxView.swift; sourceTree = "<group>"; };
 		C8AFF06C1CE1FA0E00A78342 /* SubviewsParallaxMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubviewsParallaxMode.swift; path = ../SubviewsParallaxMode.swift; sourceTree = "<group>"; };
+		C8B589601D18146000F5DBD2 /* ParallaxableView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ParallaxableView+Extensions.swift"; sourceTree = "<group>"; };
 		C8F1DB371CDCC4400043B419 /* ParallaxView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ParallaxView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8F1DB3A1CDCC4400043B419 /* ParallaxView tvOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ParallaxView tvOS.h"; sourceTree = "<group>"; };
 		C8F1DB3C1CDCC4400043B419 /* Info-tvOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-tvOS.plist"; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 		C8F2C6D11D11709D003C0E1A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				C8B589601D18146000F5DBD2 /* ParallaxableView+Extensions.swift */,
 				C8F2C6CF1D11704F003C0E1A /* UIView+ParallaxEffect.swift */,
 			);
 			path = Extensions;
@@ -191,6 +194,7 @@
 				C8AFF06D1CE1FA0E00A78342 /* ParallaxableView.swift in Sources */,
 				C8AFF0711CE1FA0E00A78342 /* ParallaxView.swift in Sources */,
 				C8F2C6D01D11704F003C0E1A /* UIView+ParallaxEffect.swift in Sources */,
+				C8B589611D18146000F5DBD2 /* ParallaxableView+Extensions.swift in Sources */,
 				C8AFF0701CE1FA0E00A78342 /* ParallaxMotionEffect.swift in Sources */,
 				C8AFF06F1CE1FA0E00A78342 /* ParallaxCollectionViewCell.swift in Sources */,
 			);

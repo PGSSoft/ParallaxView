@@ -24,6 +24,23 @@ class CollectionViewCell: ParallaxCollectionViewCell {
         parallaxEffectOptions.parallaxMotionEffect.viewingAngleX = CGFloat(M_PI_4/30)
         parallaxEffectOptions.parallaxMotionEffect.viewingAngleY = CGFloat(M_PI_4/30)
         parallaxEffectOptions.parallaxMotionEffect.panValue = CGFloat(5)
+
+        parallaxViewActions.setupUnfocusedState = { (view) -> Void in
+            view.transform = CGAffineTransformIdentity
+
+            view.layer.shadowOffset = CGSize(width: 0, height: 10)
+            view.layer.shadowOpacity = 0.3
+            view.layer.shadowRadius = 5
+        }
+
+        parallaxViewActions.setupFocusedState = { [weak self] (view) -> Void in
+            guard let _self = self else { return }
+            view.transform = CGAffineTransformMakeScale(1.08, _self.widthToHeightRatio)
+
+            view.layer.shadowOffset = CGSize(width: 0, height: 20)
+            view.layer.shadowOpacity = 0.4
+            view.layer.shadowRadius = 15
+        }
     }
 
     override func layoutSubviews() {
@@ -33,36 +50,19 @@ class CollectionViewCell: ParallaxCollectionViewCell {
     }
 
     // You can customzie view depending on control state e.g:
-
-    override func setupUnfocusedState() {
-        transform = CGAffineTransformIdentity
-
-        layer.shadowOffset = CGSize(width: 0, height: 10)
-        layer.shadowOpacity = 0.3
-        layer.shadowRadius = 5
-    }
-
-    override func setupFocusedState() {
-        transform = CGAffineTransformMakeScale(1.08, widthToHeightRatio)
-
-        layer.shadowOffset = CGSize(width: 0, height: 20)
-        layer.shadowOpacity = 0.4
-        layer.shadowRadius = 15
-    }
-
-    override func beforeBecomeFocusedAnimation() {
-        // Here you can make same adjustmens before animation to focus state will be started
-        super.beforeBecomeFocusedAnimation()
-
-        // It is useful to set bigger zPosition than unfocused cell. Especially when they overlap during the transition.
-        // Calling super.beforeBecomeFocusedAnimation will do that for you
+//
+//    func beforeBecomeFocusedAnimation() {
+//        // Here you can make same adjustmens before animation to focus state will be started
+////        super.beforeBecomeFocusedAnimation()
+//
+//        // It is useful to set bigger zPosition than unfocused cell. Especially when they overlap during the transition.
+//        // Calling super.beforeBecomeFocusedAnimation will do that for you
 //        layer.zPosition = 100
-    }
-
-    override func beforeResignFocusAnimation() {
-        super.beforeResignFocusAnimation()
+//    }
+//
+//    func beforeResignFocusAnimation() {
+////        super.beforeResignFocusAnimation()
 //        layer.zPosition = 0
-    }
-
+//    }
 
 }

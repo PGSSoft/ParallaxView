@@ -61,14 +61,14 @@ class ViewAnyViewController: UIViewController {
                 switch context.nextFocusedView {
                 case is UIButton:
                     // Custom parallax effect for the button
-                    let buttonParallaxEffectOptions = ParallaxEffectOptions(glowContainerView: self.customGlowContainer)
-                    self.anyButton.addParallaxMotionEffects(withOptions: buttonParallaxEffectOptions)
+                    var buttonParallaxEffectOptions = ParallaxEffectOptions(glowContainerView: self.customGlowContainer)
+                    self.anyButton.addParallaxMotionEffects(with: &buttonParallaxEffectOptions)
                 case is UIFocusableLabel:
                     // Custom parallax effect for the label
-                    let labelParallaxEffectOptions = ParallaxEffectOptions()
+                    var labelParallaxEffectOptions = ParallaxEffectOptions()
                     labelParallaxEffectOptions.glowAlpha = 0.0
                     labelParallaxEffectOptions.shadowPanDeviation = 10
-                    self.anyLabel.addParallaxMotionEffects(withOptions: labelParallaxEffectOptions)
+                    self.anyLabel.addParallaxMotionEffects(with: &labelParallaxEffectOptions)
                 default:
                     // For the anyView use default options
                     context.nextFocusedView?.addParallaxMotionEffects()
@@ -79,7 +79,7 @@ class ViewAnyViewController: UIViewController {
             switch context.previouslyFocusedView {
             case is UIButton:
                 // Because anyButton uses custom glow container we have to pass it to remove parallax effect correctly
-                self.anyButton.removeParallaxMotionEffects(glowContainerView: self.customGlowContainer)
+                self.anyButton.removeParallaxMotionEffects(glowContainer: self.customGlowContainer)
             default:
                 context.previouslyFocusedView?.removeParallaxMotionEffects()
             }

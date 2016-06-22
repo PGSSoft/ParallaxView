@@ -12,10 +12,7 @@ public class ParallaxCollectionViewCell: UICollectionViewCell, ParallaxableView 
     // MARK: Properties
 
     public var parallaxEffectOptions = ParallaxEffectOptions()
-
-    /// Disable animations for `pressesBegan`, `pressesCancelled`, `pressesEnded`, `pressesChanged`.
-    /// If you want to customize those animations override listed methods.
-    public var disablePressAnimations: Bool = false
+    public var parallaxViewActions = ParallaxViewActions<ParallaxCollectionViewCell>()
 
     // MARK: Initialization
 
@@ -23,14 +20,14 @@ public class ParallaxCollectionViewCell: UICollectionViewCell, ParallaxableView 
         super.init(frame: frame)
 
         commonInit()
-        setupUnfocusedState()
+        parallaxViewActions.setupUnfocusedState?(self)
     }
 
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
         commonInit()
-        setupUnfocusedState()
+        parallaxViewActions.setupUnfocusedState?(self)
     }
 
     internal func commonInit() {
@@ -42,6 +39,25 @@ public class ParallaxCollectionViewCell: UICollectionViewCell, ParallaxableView 
         if parallaxEffectOptions.glowContainerView == nil {
             parallaxEffectOptions.glowContainerView = contentView
         }
+
+        parallaxViewActions.setupUnfocusedState = { [weak self] (view) in
+            guard let _self = self else { return }
+            view.transform = CGAffineTransformIdentity
+
+            view.layer.shadowOffset = CGSize(width: 0, height: _self.bounds.height*0.015)
+            view.layer.shadowRadius = 5
+        }
+
+        parallaxViewActions.setupFocusedState = { [weak self] (view) in
+            guard let _self = self else { return }
+            view.transform = CGAffineTransformMakeScale(1.15, 1.15)
+
+            view.layer.shadowOffset = CGSize(width: 0, height: _self.bounds.height*0.12)
+            view.layer.shadowRadius = 15
+        }
+
+        parallaxViewActions.beforeResignFocusAnimation = { $0.layer.zPosition = 0 }
+        parallaxViewActions.beforeBecomeFocusedAnimation = { $0.layer.zPosition = 100 }
     }
 
     // MARK: UIView
@@ -74,51 +90,20 @@ public class ParallaxCollectionViewCell: UICollectionViewCell, ParallaxableView 
     // Generally, all responders which do custom touch handling should override all four of these methods.
     // If you want to customize animations for press events do not forget to call super.
     public override func pressesBegan(presses: Set<UIPress>, withEvent event: UIPressesEvent?) {
-        if !disablePressAnimations {
-            for press in presses {
-                if case .Select = press.type {
-                    UIView.animateWithDuration(0.12, animations: {
-                        self.transform = CGAffineTransformMakeScale(0.95, 0.95)
-                    })
-                }
-            }
-        }
+        parallaxViewActions.setupFocusedState?(self)
+        parallaxViewActions.animatePressIn?(self, presses: presses, event: event)
 
         super.pressesBegan(presses, withEvent: event)
     }
 
     public override func pressesCancelled(presses: Set<UIPress>, withEvent event: UIPressesEvent?) {
-        if !disablePressAnimations {
-            for press in presses {
-                if case .Select = press.type {
-                    UIView.animateWithDuration(0.12, animations: {
-                        if self.focused {
-                            self.setupFocusedState()
-                        } else {
-                            self.setupUnfocusedState()
-                        }
-                    })
-                }
-            }
-        }
+        parallaxViewActions.animatePressOut?(self, presses: presses, event: event)
 
         super.pressesCancelled(presses, withEvent: event)
     }
 
     public override func pressesEnded(presses: Set<UIPress>, withEvent event: UIPressesEvent?) {
-        if !disablePressAnimations {
-            for press in presses {
-                if case .Select = press.type {
-                    UIView.animateWithDuration(0.12, animations: {
-                        if self.focused {
-                            self.setupFocusedState()
-                        } else {
-                            self.setupUnfocusedState()
-                        }
-                    })
-                }
-            }
-        }
+        parallaxViewActions.animatePressOut?(self, presses: presses, event: event)
 
         super.pressesEnded(presses, withEvent: event)
     }
@@ -134,55 +119,11 @@ public class ParallaxCollectionViewCell: UICollectionViewCell, ParallaxableView 
 
         if self == context.nextFocusedView {
             // Add parallax effect to focused cell
-            becomeFocusedInContext(context, withAnimationCoordinator: coordinator)
+            parallaxViewActions.becomeFocused?(self, context: context, animationCoordinator: coordinator)
         } else if self == context.previouslyFocusedView {
             // Remove parallax effect
-            resignFocusInContext(context, withAnimationCoordinator: coordinator)
+            parallaxViewActions.resignFocus?(self, context: context, animationCoordinator: coordinator)
         }
-    }
-
-    // MARK: ParallaxableView
-
-    public func becomeFocusedInContext(context: UIFocusUpdateContext, withAnimationCoordinator: UIFocusAnimationCoordinator) {
-        beforeBecomeFocusedAnimation()
-
-        withAnimationCoordinator.addCoordinatedAnimations({
-            self.addParallaxMotionEffects(withOptions: self.parallaxEffectOptions)
-            self.setupFocusedState()
-            }, completion: nil)
-    }
-
-    public func resignFocusInContext(context: UIFocusUpdateContext, withAnimationCoordinator: UIFocusAnimationCoordinator) {
-        beforeResignFocusAnimation()
-
-        withAnimationCoordinator.addCoordinatedAnimations({
-            self.removeParallaxMotionEffects(glowContainerView: self.parallaxEffectOptions.glowContainerView)
-            self.setupUnfocusedState()
-            }, completion: nil)
-    }
-
-    // MARK: Public
-
-    public func setupUnfocusedState() {
-        transform = CGAffineTransformIdentity
-
-        layer.shadowOffset = CGSize(width: 0, height: bounds.height*0.015)
-        layer.shadowRadius = 5
-    }
-
-    public func setupFocusedState() {
-        transform = CGAffineTransformMakeScale(1.15, 1.15)
-
-        layer.shadowOffset = CGSize(width: 0, height: bounds.height*0.12)
-        layer.shadowRadius = 15
-    }
-
-    public func beforeBecomeFocusedAnimation() {
-        layer.zPosition = 100
-    }
-
-    public func beforeResignFocusAnimation() {
-        layer.zPosition = 0
     }
 
 }

@@ -13,18 +13,4 @@ public protocol ParallaxableView: class {
 
     var cornerRadius: CGFloat { get set }
 
-    var disablePressAnimations: Bool { get set }
-
-    func setupUnfocusedState()
-
-    func setupFocusedState()
-
-    func beforeBecomeFocusedAnimation()
-
-    func beforeResignFocusAnimation()
-
-    func becomeFocusedInContext(context: UIFocusUpdateContext, withAnimationCoordinator: UIFocusAnimationCoordinator)
-
-    func resignFocusInContext(context: UIFocusUpdateContext, withAnimationCoordinator: UIFocusAnimationCoordinator)
-
 }

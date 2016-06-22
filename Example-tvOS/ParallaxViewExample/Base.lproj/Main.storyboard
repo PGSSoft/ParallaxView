@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XgF-kg-j3t" customClass="ParallaxView" customModule="ParallaxView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XgF-kg-j3t" customClass="CustomParallaxView" customModule="ParallaxViewExample" customModuleProvider="target">
                                 <rect key="frame" x="585" y="340" width="750" height="400"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PGS SOFTWARE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Wf-dX-b3R">
@@ -93,7 +93,7 @@
                     <connections>
                         <outlet property="biggerLabel" destination="pYN-9b-hEg" id="dF5-gq-DE5"/>
                         <outlet property="logoView" destination="bKz-Ac-PnS" id="qOk-nE-UJ8"/>
-                        <outlet property="parallaxView" destination="XgF-kg-j3t" id="9al-NE-2qz"/>
+                        <outlet property="parallaxView" destination="XgF-kg-j3t" id="zuf-e3-VXH"/>
                         <outlet property="theBiggestLabel" destination="6Wf-dX-b3R" id="D7O-ZL-oNV"/>
                     </connections>
                 </viewController>

@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class ParallaxEffectOptions {
+public struct ParallaxEffectOptions {
 
     /// Property allow to customize parallax effect (pan, angles, etc.)
     ///
@@ -30,5 +30,9 @@ public class ParallaxEffectOptions {
     public init(glowContainerView: UIView? = nil) {
         self.glowContainerView = glowContainerView
     }
+
+//    deinit {
+//        print("deinit \(self.dynamicType)")
+//    }
 
 }
