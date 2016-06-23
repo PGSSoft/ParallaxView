@@ -10,16 +10,21 @@ import UIKit
 
 public class ParallaxViewActions<T: UIView where T:ParallaxableView> {
 
+    /// Closure will be called in animation block by ParallaxableView when view should change its appearance to the focused state
     public var setupUnfocusedState: ((T) -> Void)?
+    /// Closure will be called in animation block by ParallaxableView when view should change its appearance to the unfocused state
     public var setupFocusedState: ((T) -> Void)?
-
+    /// Closure will be called by ParallaxableView before the animation to the focused change start
     public var beforeBecomeFocusedAnimation: ((T) -> Void)?
+    /// Closure will be called by ParallaxableView before the animation to the unfocused change start
     public var beforeResignFocusAnimation: ((T) -> Void)?
-
+    /// Closure will be called when didFocusChange happened. In most cases default implementation should work.
     public var becomeFocused: ((T, context: UIFocusUpdateContext, animationCoordinator: UIFocusAnimationCoordinator) -> Void)?
+    /// Closure will be called when didFocusChange happened. In most cases default implementation should work.
     public var resignFocus: ((T, context: UIFocusUpdateContext, animationCoordinator: UIFocusAnimationCoordinator) -> Void)?
-
+    /// Default implementation of the press begin animation for the ParallaxableView
     public var animatePressIn: ((T, presses: Set<UIPress>, event: UIPressesEvent?) -> Void)?
+    /// Default implementation of the press ended animation for the ParallaxableView
     public var animatePressOut: ((T, presses: Set<UIPress>, event: UIPressesEvent?) -> Void)?
 
     init() {
@@ -91,6 +96,11 @@ public extension ParallaxableView where Self: UIView {
 
     // MARK: ParallaxableView
 
+    /**
+     Get glow image view that can be used to create glow effect
+
+     - returns: Image with radial gradient/shadow to imitate glow
+     */
     public func getGlowImageView() -> UIImageView? {
         return parallaxEffectOptions.glowContainerView?.subviews.filter({ (view) -> Bool in
             if let glowImageView = view as? UIImageView,

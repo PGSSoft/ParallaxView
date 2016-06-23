@@ -10,7 +10,13 @@ import UIKit
 
 internal let glowImageAccessibilityIdentifier = "com.pgs-soft.parallaxview.gloweffect"
 
-public extension UIView {
+public protocol AnyParallaxableView {
+    func addParallaxMotionEffects()
+    func addParallaxMotionEffects(inout with options: ParallaxEffectOptions)
+    func removeParallaxMotionEffects(glowContainer glowContainerView: UIView?)
+}
+
+extension UIView: AnyParallaxableView {
 
     public static func createGlowImageView() -> UIImageView {
         if case let bundle = NSBundle(forClass: ParallaxView.self), let glowImage = UIImage(named: "gloweffect", inBundle: bundle, compatibleWithTraitCollection: nil) {
