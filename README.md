@@ -62,28 +62,22 @@ The component is documented in code, also look into example for more details.
 
 `ParallaxView` and `ParallaxCollectionViewCell` have the same properties for customization.
 
-*`parallaxEffectOptions` - using this property you can customize parallax effect. Look into `ParallaxEffectOptions` class for more details.
-* cornerRadius - use this value insted of `self.view.layer.cornerRadius`. This will automatically correct radius for glow effect view if it is necessary
-* `disablePressAnimations` - disable press animation which are enabled by default. See also [subclassing](#subclassing) section.
-
-#### `ParallaxEffectOptions`
-This class allows you to customize parallax effect with the following properties:
-
-* `parallaxMotionEffect` - configure parallax effect (pan, angles, etc.)
-* `subviewsParallaxMode` - enum that allow you to configure parallax effect for subviews of the `ParallaxView`
-* `shadowPanDeviation` - maximal value of points that shadow of the `ParallaxView` will be moved during parallax effect
-* `glowAlpha` - configure alpha of the glow effect (if is equal to 0.0 then the glow effect will be not added)
-* `glowContainerView` - view that will be used as the container for the glow effect. You don't have to configure this because for `ParallaxView` it will be automatically created a subview for this purpose, while for `ParallaxCollectionViewCell` it will be used `contentView` of the cell. Also by default it is nil when you use extension (`self` will be used as the glow container but only if `glowAlpha` is bigger than 0.0). But if you want to, you can define custom view - look into example project for more details.
-
-### <a name="subclassing"></a>Subclassing
-
-You can customize `ParallaxView` and `ParallaxCollectionViewCell` creating a subclass and overriding especially the following methods:
-
-* `setupUnfocusedState()` - method will be called inside `CoordinatedAnimations` block of transition to unfocused state. Use this to configure animatable properties e.g. transform.
-* `setupFocusedState()` - as well as `setupUnfocusedState` but in transition to focused state.
-* `beforeBecomeFocusedAnimation()` - override this method if you want to make some adjustments before animation to the focused state start.
-* `beforeResignFocusAnimation()` - as well as `beforeBecomeFocusedAnimation` but before unfocus state.
-* `pressesBegan`, `pressesCancelled`, `pressesEnded`, `pressesChanged` - override those methods if you want to customize press animation. Do no forget to call super in them as tvOS documentation suggest. It would be desirable for the subclassing to disable provided default animations using property `disablePressAnimations`.
+* `parallaxEffectOptions` - using this property you can customize parallax effect.
+	* `parallaxMotionEffect` - configure parallax effect (pan, angles, etc.)
+	* `subviewsParallaxMode` - enum that allow you to configure parallax effect for subviews of the `ParallaxView`
+	* `shadowPanDeviation` - maximal value of points that shadow of the `ParallaxView` will be moved during parallax effect
+	* `glowAlpha` - configure alpha of the glow effect (if is equal to 0.0 then the glow effect will be not added)
+	* `glowContainerView` - view that will be used as the container for the glow effect. You don't have to configure this because for `ParallaxView` it will be automatically created a subview for this purpose, while for `ParallaxCollectionViewCell` it will be used `contentView` of the cell. Also by default it is nil when you use extension (`self` will be used as the glow container but only if `glowAlpha` is bigger than 0.0). But if you want to, you can define custom view - look into example project for more details.
+* `parallaxViewActions` - use properties of this property to change default behaviours of the parallax view. Internally both `ParallaxView` and `ParallaxCollectionViewCell` calls callbacks.
+	* `setupUnfocusedState ` - closure will be called in animation block when view should change its appearance to the focused state
+	* `setupFocusedState` - closure will be called in animation block when view should change its appearance to the unfocused state
+	* `beforeBecomeFocusedAnimation` - closure will be called before the animation to the focused change start
+	* `beforeResignFocusAnimation` - closure will be called before the animation to the unfocused change start
+	* `becomeFocused ` - closure will be called when didFocusChange happened. In most cases default implementation should work
+   * `resignFocus ` - closure will be called when didFocusChange happened. In most cases default implementation should work.
+	* `animatePressIn` - default implementation of the press begin animation
+	* `animatePressOut` - default implementation of the press ended animation
+* `cornerRadius` - use this value insted of `self.view.layer.cornerRadius`. This will automatically correct radius for glow effect view if it is necessary
 
 ## Requirements
 

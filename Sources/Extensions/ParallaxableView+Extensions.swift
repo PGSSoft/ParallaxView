@@ -18,9 +18,9 @@ public class ParallaxViewActions<T: UIView where T:ParallaxableView> {
     public var beforeBecomeFocusedAnimation: ((T) -> Void)?
     /// Closure will be called by ParallaxableView before the animation to the unfocused change start
     public var beforeResignFocusAnimation: ((T) -> Void)?
-    /// Closure will be called when didFocusChange happened. In most cases default implementation should work.
+    /// Closure will be called when didFocusChange happened. In most cases default implementation should work
     public var becomeFocused: ((T, context: UIFocusUpdateContext, animationCoordinator: UIFocusAnimationCoordinator) -> Void)?
-    /// Closure will be called when didFocusChange happened. In most cases default implementation should work.
+    /// Closure will be called when didFocusChange happened. In most cases default implementation should work
     public var resignFocus: ((T, context: UIFocusUpdateContext, animationCoordinator: UIFocusAnimationCoordinator) -> Void)?
     /// Default implementation of the press begin animation for the ParallaxableView
     public var animatePressIn: ((T, presses: Set<UIPress>, event: UIPressesEvent?) -> Void)?
