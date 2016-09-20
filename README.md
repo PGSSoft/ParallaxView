@@ -1,42 +1,36 @@
-![PGS Software](Assets/pgssoftware-logo-200px.png) 
+![PGS Software](Assets/pgssoft-logo.png) 
 
 # ParallaxView
 
-![Version](https://img.shields.io/badge/Version-1.0.9-orange.svg?style=flat)[![Swift](https://img.shields.io/badge/Swift-2.2-brightgreen.svg?style=flat)](https://swift.org)![Platform](https://img.shields.io/badge/Platforms-tvOS-lightgray.svg?style=flat)![License](https://img.shields.io/badge/License-MIT-blue.svg?style=flat)![CocoaPods](https://img.shields.io/badge/Cocoapods-compatible-green.svg?style=flat)![Carthage](https://img.shields.io/badge/Carthage-compatible-green.svg?style=flat)
+[![Swift 2.2](https://img.shields.io/badge/Swift-2.2-orange.svg?style=flat)](https://swift.org/)
+[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/ParallaxView.svg)](https://cocoapods.org/pods/ParallaxView)
+[![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Platform](https://img.shields.io/cocoapods/p/ParallaxView.svg)](http://cocoadocs.org/docsets/ParallaxView)
+[![License](https://img.shields.io/cocoapods/l/ParallaxView.svg)](https://github.com/PGSSoft/ParallaxView)
 
 ## Summary
 
-**Easy to use `UIView`, `UICollectionViewCell` with parallax effect and extensions to add this effect to any `UIView`. Rotate view using Apple TV remote. Works confusingly similar to tiles in the home screen of the Apple TV. Written in Swift.**
+**Easy to use `UIView`, `UICollectionViewCell` with parallax effect and extensions to add this effect to any `UIView`. Rotate view using Apple TV remote. Works confusingly similar to tiles in the home screen of the Apple TV.**
 
-![](Assets/parallax_view.gif)![](Assets/parallax_collection_view_cell.gif)
-
-## Table of Contents
-
-* [Usage](#usage)
-* [Customization](#customization)
-* [Requirements](#requirements)
-* [Installation](#installation)
-* [Author](#author)
-* [License](#license)
-* [About](#about)
-
-## Usage
-
-To start using the component add it to your project using CocoaPods, Carthage or manually as per the Installation section.
+![ParallaxView](Assets/parallax_view.gif)
+![ParallaxView](Assets/parallax_collection_view_cell.gif)
 
 ### ParallaxView
 
-To create parallax view intance put `UIView` using *Interface builder* and change its class to `ParallaxView` in *Identity inspector* or do it from code.
+Open your storyboard or xib and drag and drop `UIView` control.
+Change custom class to `ParallaxView` in *Identity inspector*.
+You can also create control from code.
 
 ### ParallaxCollectionViewCell
 
 In *Interface builder* change collection view cell class to `ParallaxCollectionViewCell` or do it from code.
 
-You can also create subclass of `ParallaxCollectionViewCell` insted of `UICollectionViewCell` and usit is as normal collection view cell.
+You can also create subclass of `ParallaxCollectionViewCell` insted of `UICollectionViewCell` and use it as normal collection view cell.
 
 ### Extension
 
 If `ParallaxView` and `ParallaxCollectionViewCell` don't feet to your needs you can use extension that can be used with any `UIView`. In many cases it can look like in this example:
+
 ```swift
 override func didUpdateFocusInContext(context: UIFocusUpdateContext, withAnimationCoordinator coordinator: UIFocusAnimationCoordinator) {
 	coordinator.addCoordinatedAnimations({
@@ -54,13 +48,13 @@ It is important to add and remove parallax effect inside the animation block to 
 `ParallaxView` and `ParallaxCollectionViewCell` internally use the same methods.
 For more details look into example.
 
-## Customization
+## Customisation
 
 The component is documented in code, also look into example for more details.
 
 ### Properties
 
-`ParallaxView` and `ParallaxCollectionViewCell` have the same properties for customization.
+`ParallaxView` and `ParallaxCollectionViewCell` have the same properties for customisation.
 
 * `parallaxEffectOptions` - using this property you can customize parallax effect.
 	* `parallaxMotionEffect` - configure parallax effect (pan, angles, etc.)
@@ -85,50 +79,43 @@ Swift 2.2, tvOS 9.0
 
 ## Installation
 
-#### CocoaPods
+The most convenient way to install it is by using [Cocoapods](https://cocoapods.org/) with Podfile:
 
-The control is available through [CocoaPods](https://cocoapods.org/). CocoaPods can be installed using [Ruby gems](https://rubygems.org/):
-```shell
-$ gem install cocoapods
-```
-
-Then simply add `ParallaxView` to your Podfile:
-
-```
-pod 'ParallaxView', '~> 1.0'
+```ruby
+pod 'ParallaxView'
 ```
 
-Lastly, let CocoaPods fetch the latest version of the component by running:
-```shell
-$ cocoapods update
+or using [Carthage](https://github.com/Carthage/Carthage) and add a line to `Cartfile`:
+
+```
+github "PGSSoft/ParallaxView"
 ```
 
-#### Carthage
-The component supports [Carthage](https://github.com/Carthage/Carthage). Start by making sure you have the latest version of Carthage installed. Using [Homebrew](http://brew.sh/) run this:
-```shell
-$ brew update
-$ brew install carthage
+## Usage
+
+```swift
+import ParallaxView
 ```
-Then add `ParallaxView` to your `Cartfile`:
-```
-github "pgs-software/ParallaxView"
-```
-Finally, add the framework to the Xcode project of your App. Link the framework to your App and copy it to the App’s Frameworks directory via the “Build Phases” section.
 
 #### Manual
 
-You can download the latest files from our [Releases page](https://github.com/pgs-software/ParallaxView/releases). After doing so, drag `ParallaxView.xcodeproj` into your project in Xcode, and for your project target on ***General*** tab in ***Embedded Binaries*** section add `ParallaxView.framework`. Example project is configured the same way, so you have the crib sheet.
+You can download the latest files from our [Releases page](https://github.com/PGSSoft/ParallaxView/releases). After doing so, drag `ParallaxView.xcodeproj` into your project in Xcode, and for your project target on ***General*** tab in ***Embedded Binaries*** section add `ParallaxView.framework`. Example project is configured the same way, so you have the crib sheet.
 
-## Author
 
-Łukasz Śliwiński and [PGS Software](https://www.pgs-soft.com)
+## Contributing
 
-Twitter: [sliwinskilukas](https://twitter.com/sliwinskilukas)
-GitHub: [nonameplum](https://github.com/nonameplum)
+Bug reports and pull requests are welcome on GitHub at [https://github.com/PGSSoft/ParallaxView](https://github.com/PGSSoft/ParallaxView).
 
 ## License
 
-**ParallaxView** is under MIT license. See [LICENSE](LICENSE) for details.
+The project is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
 
 ## About
-The project maintained by [PGS Software](https://www.pgs-soft.com). Hire us to design, develop, and grow your product.
+
+The project maintained by [software development agency](https://www.pgs-soft.com/) [PGS Software](https://www.pgs-soft.com/).
+See our other [open-source projects](https://github.com/PGSSoft) or [contact us](https://www.pgs-soft.com/contact-us/) to develop your product.
+
+## Follow us
+
+[![Twitter URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=https://github.com/PGSSoft/InAppPurchaseButton)  
+[![Twitter Follow](https://img.shields.io/twitter/follow/pgssoftware.svg?style=social&label=Follow)](https://twitter.com/pgssoftware)

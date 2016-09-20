@@ -31,8 +31,4 @@ public struct ParallaxEffectOptions {
         self.glowContainerView = glowContainerView
     }
 
-//    deinit {
-//        print("deinit \(self.dynamicType)")
-//    }
-
 }

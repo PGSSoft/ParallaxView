@@ -14,9 +14,9 @@ public class ParallaxViewActions<T: UIView where T:ParallaxableView> {
     public var setupUnfocusedState: ((T) -> Void)?
     /// Closure will be called in animation block by ParallaxableView when view should change its appearance to the unfocused state
     public var setupFocusedState: ((T) -> Void)?
-    /// Closure will be called by ParallaxableView before the animation to the focused change start
+    /// Closure will be called by ParallaxableView before the animation to the focused state start
     public var beforeBecomeFocusedAnimation: ((T) -> Void)?
-    /// Closure will be called by ParallaxableView before the animation to the unfocused change start
+    /// Closure will be called by ParallaxableView before the animation to the unfocused state start
     public var beforeResignFocusAnimation: ((T) -> Void)?
     /// Closure will be called when didFocusChange happened. In most cases default implementation should work
     public var becomeFocused: ((T, context: UIFocusUpdateContext, animationCoordinator: UIFocusAnimationCoordinator) -> Void)?
@@ -97,7 +97,7 @@ public extension ParallaxableView where Self: UIView {
     // MARK: ParallaxableView
 
     /**
-     Get glow image view that can be used to create glow effect
+     Get the glow image view that can be used to create the glow effect
 
      - returns: Image with radial gradient/shadow to imitate glow
      */
