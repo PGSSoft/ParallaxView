@@ -26,8 +26,6 @@ class ViewAnyViewController: UIViewController {
         }
     }
 
-    var myContext = 0
-
     var customGlowContainer: UIView!
     @IBOutlet weak var anyButton: UIButton! {
         didSet {

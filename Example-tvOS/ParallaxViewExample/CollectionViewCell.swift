@@ -16,7 +16,7 @@ class CollectionViewCell: ParallaxCollectionViewCell {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
-        // Here u can configure custom properties for parallax effect
+        // Here you can configure custom properties for parallax effect
         cornerRadius = 8
 
         parallaxEffectOptions.glowAlpha = 0.4

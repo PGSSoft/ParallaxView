@@ -56,21 +56,4 @@ class ViewController: UIViewController {
 //        biggerLabel.tag = 20
 //        theBiggestLabel.tag = 30
     }
-
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        testView = ParallaxView(frame: CGRect(x: view.frame.width/2, y: 100, width: 200, height: 200))
-        testView?.backgroundColor = UIColor.greenColor()
-        testView!.parallaxViewActions.setupFocusedState = { (view) in
-            view.backgroundColor = UIColor.redColor()
-        }
-        view.addSubview(testView!)
-    }
-
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        testView?.removeFromSuperview()
-        testView = nil
-    }
-
 }
