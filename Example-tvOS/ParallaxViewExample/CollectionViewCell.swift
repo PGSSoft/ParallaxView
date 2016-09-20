@@ -11,7 +11,7 @@ import ParallaxView
 
 class CollectionViewCell: ParallaxCollectionViewCell {
 
-    private var widthToHeightRatio = CGFloat(0)
+    fileprivate var widthToHeightRatio = CGFloat(0)
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -28,22 +28,22 @@ class CollectionViewCell: ParallaxCollectionViewCell {
         // You can customise parallax view standard behaviours using parallaxViewActions property.
         // Do not forget to use weak self if needed to void retain cycle
         parallaxViewActions.setupUnfocusedState = { (view) -> Void in
-            view.transform = CGAffineTransformIdentity
+            view.transform = CGAffineTransform.identity
 
             view.layer.shadowOffset = CGSize(width: 0, height: 10)
             view.layer.shadowOpacity = 0.3
             view.layer.shadowRadius = 5
-            view.layer.shadowColor = UIColor.blackColor().CGColor
+            view.layer.shadowColor = UIColor.black.cgColor
         }
 
         parallaxViewActions.setupFocusedState = { [weak self] (view) -> Void in
             guard let _self = self else { return }
-            view.transform = CGAffineTransformMakeScale(1.08, _self.widthToHeightRatio)
+            view.transform = CGAffineTransform(scaleX: 1.08, y: _self.widthToHeightRatio)
 
             view.layer.shadowOffset = CGSize(width: 0, height: 20)
             view.layer.shadowOpacity = 0.4
             view.layer.shadowRadius = 15
-            view.layer.shadowColor = view.backgroundColor?.CGColor
+            view.layer.shadowColor = view.backgroundColor?.cgColor
         }
     }
 

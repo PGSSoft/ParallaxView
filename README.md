@@ -2,8 +2,8 @@
 
 # ParallaxView
 
-[![Swift 2.2](https://img.shields.io/badge/Swift-2.2-orange.svg?style=flat)](https://swift.org/)
-[![CocoaPods Compatible](https://img.shields.io/badge/pod-v1.1.0-4BC51D.svg?style=flat)](https://cocoapods.org/pods/ParallaxView)
+[![Swift 3.0](https://img.shields.io/badge/Swift-3.0-orange.svg?style=flat)](https://swift.org/)
+[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/ParallaxView.svg)](https://cocoapods.org/pods/ParallaxView)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Platform](https://img.shields.io/cocoapods/p/ParallaxView.svg)](http://cocoadocs.org/docsets/ParallaxView)
 [![License](https://img.shields.io/cocoapods/l/ParallaxView.svg)](https://github.com/PGSSoft/ParallaxView/LICENSE.md)
@@ -32,7 +32,7 @@ You can also create subclass of `ParallaxCollectionViewCell` insted of `UICollec
 If `ParallaxView` and `ParallaxCollectionViewCell` don't feet to your needs you can use extension that can be used with any `UIView`. In many cases it can look like in this example:
 
 ```swift
-override func didUpdateFocusInContext(context: UIFocusUpdateContext, withAnimationCoordinator coordinator: UIFocusAnimationCoordinator) {
+override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
 	coordinator.addCoordinatedAnimations({
 		if context.nextFocusedView === yourCustomView {
 			yourCustomView.addParallaxMotionEffects()
@@ -75,7 +75,7 @@ The component is documented in code, also look into example for more details.
 
 ## Requirements
 
-Swift 2.2, tvOS 9.0
+Swift 3.0, tvOS 10.0
 
 ## Installation
 

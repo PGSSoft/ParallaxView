@@ -7,28 +7,28 @@
 
 import UIKit
 
-public class ParallaxMotionEffect: UIMotionEffect {
+open class ParallaxMotionEffect: UIMotionEffect {
 
     // MARK: Properties
 
     /// How far camera is from the object
-    public var cameraPositionZ = CGFloat(0)
+    open var cameraPositionZ = CGFloat(0)
 
     /// The maximum angle horizontally
-    public var viewingAngleX = CGFloat(M_PI_4/8)
+    open var viewingAngleX = CGFloat(M_PI_4/8)
 
     /// The maximum angle vertically
-    public var viewingAngleY = CGFloat(M_PI_4/8)
+    open var viewingAngleY = CGFloat(M_PI_4/8)
 
     /// Maximum deviation relative to the center
-    public var panValue = CGFloat(8)
+    open var panValue = CGFloat(8)
 
     /// Perspective value. The closer is to 0 the deepest is the perspective
-    public var m34 = CGFloat(-1.0/700)
+    open var m34 = CGFloat(-1.0/700)
 
     // MARK: UIMotionEffect
 
-    override public func keyPathsAndRelativeValuesForViewerOffset(viewerOffset: UIOffset) -> [String : AnyObject]? {
+    override open func keyPathsAndRelativeValues(forViewerOffset viewerOffset: UIOffset) -> [String : Any]? {
         var transform = CATransform3DIdentity
         transform.m34 = m34
 
@@ -41,7 +41,7 @@ public class ParallaxMotionEffect: UIMotionEffect {
         transform = CATransform3DRotate(transform, viewingAngleX * newViewerOffset.vertical, 1, 0, 0)
         transform = CATransform3DRotate(transform, viewingAngleY * -newViewerOffset.horizontal, 0, 1, 0)
 
-        return ["layer.transform": NSValue(CATransform3D: transform)]
+        return ["layer.transform": NSValue(caTransform3D: transform)]
     }
 
 }

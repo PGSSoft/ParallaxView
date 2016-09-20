@@ -7,12 +7,12 @@
 
 import UIKit
 
-public class ParallaxCollectionViewCell: UICollectionViewCell, ParallaxableView {
+open class ParallaxCollectionViewCell: UICollectionViewCell, ParallaxableView {
 
     // MARK: Properties
 
-    public var parallaxEffectOptions = ParallaxEffectOptions()
-    public var parallaxViewActions = ParallaxViewActions<ParallaxCollectionViewCell>()
+    open var parallaxEffectOptions = ParallaxEffectOptions()
+    open var parallaxViewActions = ParallaxViewActions<ParallaxCollectionViewCell>()
 
     // MARK: Initialization
 
@@ -32,7 +32,7 @@ public class ParallaxCollectionViewCell: UICollectionViewCell, ParallaxableView 
 
     internal func commonInit() {
         layer.shadowOpacity = 0.0
-        layer.shadowColor = UIColor.blackColor().CGColor
+        layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.35
         layer.shouldRasterize = true
 
@@ -42,7 +42,7 @@ public class ParallaxCollectionViewCell: UICollectionViewCell, ParallaxableView 
 
         parallaxViewActions.setupUnfocusedState = { [weak self] (view) in
             guard let _self = self else { return }
-            view.transform = CGAffineTransformIdentity
+            view.transform = CGAffineTransform.identity
 
             view.layer.shadowOffset = CGSize(width: 0, height: _self.bounds.height*0.015)
             view.layer.shadowRadius = 5
@@ -50,7 +50,7 @@ public class ParallaxCollectionViewCell: UICollectionViewCell, ParallaxableView 
 
         parallaxViewActions.setupFocusedState = { [weak self] (view) in
             guard let _self = self else { return }
-            view.transform = CGAffineTransformMakeScale(1.15, 1.15)
+            view.transform = CGAffineTransform(scaleX: 1.15, y: 1.15)
 
             view.layer.shadowOffset = CGSize(width: 0, height: _self.bounds.height*0.12)
             view.layer.shadowRadius = 15
@@ -62,11 +62,11 @@ public class ParallaxCollectionViewCell: UICollectionViewCell, ParallaxableView 
 
     // MARK: UIView
 
-    public override func canBecomeFocused() -> Bool {
+    open override var canBecomeFocused : Bool {
         return true
     }
 
-    public override func layoutSubviews() {
+    open override func layoutSubviews() {
         super.layoutSubviews()
 
         guard let glowEffectContainerView = parallaxEffectOptions.glowContainerView else { return }
@@ -89,40 +89,40 @@ public class ParallaxCollectionViewCell: UICollectionViewCell, ParallaxableView 
 
     // Generally, all responders which do custom touch handling should override all four of these methods.
     // If you want to customize animations for press events do not forget to call super.
-    public override func pressesBegan(presses: Set<UIPress>, withEvent event: UIPressesEvent?) {
+    open override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
         parallaxViewActions.setupFocusedState?(self)
-        parallaxViewActions.animatePressIn?(self, presses: presses, event: event)
+        parallaxViewActions.animatePressIn?(self, presses, event)
 
-        super.pressesBegan(presses, withEvent: event)
+        super.pressesBegan(presses, with: event)
     }
 
-    public override func pressesCancelled(presses: Set<UIPress>, withEvent event: UIPressesEvent?) {
-        parallaxViewActions.animatePressOut?(self, presses: presses, event: event)
+    open override func pressesCancelled(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
+        parallaxViewActions.animatePressOut?(self, presses, event)
 
-        super.pressesCancelled(presses, withEvent: event)
+        super.pressesCancelled(presses, with: event)
     }
 
-    public override func pressesEnded(presses: Set<UIPress>, withEvent event: UIPressesEvent?) {
-        parallaxViewActions.animatePressOut?(self, presses: presses, event: event)
+    open override func pressesEnded(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
+        parallaxViewActions.animatePressOut?(self, presses, event)
 
-        super.pressesEnded(presses, withEvent: event)
+        super.pressesEnded(presses, with: event)
     }
 
-    public override func pressesChanged(presses: Set<UIPress>, withEvent event: UIPressesEvent?) {
-        super.pressesChanged(presses, withEvent: event)
+    open override func pressesChanged(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
+        super.pressesChanged(presses, with: event)
     }
 
     // MARK: UIFocusEnvironment
 
-    public override func didUpdateFocusInContext(context: UIFocusUpdateContext, withAnimationCoordinator coordinator: UIFocusAnimationCoordinator) {
-        super.didUpdateFocusInContext(context, withAnimationCoordinator: coordinator)
+    open override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
+        super.didUpdateFocus(in: context, with: coordinator)
 
         if self == context.nextFocusedView {
             // Add parallax effect to focused cell
-            parallaxViewActions.becomeFocused?(self, context: context, animationCoordinator: coordinator)
+            parallaxViewActions.becomeFocused?(self, context, coordinator)
         } else if self == context.previouslyFocusedView {
             // Remove parallax effect
-            parallaxViewActions.resignFocus?(self, context: context, animationCoordinator: coordinator)
+            parallaxViewActions.resignFocus?(self, context, coordinator)
         }
     }
 

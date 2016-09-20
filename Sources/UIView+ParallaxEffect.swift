@@ -12,17 +12,17 @@ internal let glowImageAccessibilityIdentifier = "com.pgs-soft.parallaxview.glowe
 
 public protocol AnyParallaxableView {
     func addParallaxMotionEffects()
-    func addParallaxMotionEffects(inout with options: ParallaxEffectOptions)
+    func addParallaxMotionEffects(with options: inout ParallaxEffectOptions)
     func removeParallaxMotionEffects(glowContainer glowContainerView: UIView?)
 }
 
 extension UIView: AnyParallaxableView {
 
     public static func createGlowImageView() -> UIImageView {
-        if case let bundle = NSBundle(forClass: ParallaxView.self), let glowImage = UIImage(named: "gloweffect", inBundle: bundle, compatibleWithTraitCollection: nil) {
+        if case let bundle = Bundle(for: ParallaxView.self), let glowImage = UIImage(named: "gloweffect", in: bundle, compatibleWith: nil) {
             glowImage.accessibilityIdentifier = glowImageAccessibilityIdentifier
             let imageView = UIImageView(image: glowImage)
-            imageView.contentMode = .ScaleAspectFit
+            imageView.contentMode = .scaleAspectFit
 
             return UIImageView(image: glowImage)
         } else {
@@ -35,7 +35,7 @@ extension UIView: AnyParallaxableView {
         addParallaxMotionEffects(with: &options)
     }
 
-    public func addParallaxMotionEffects(inout with options: ParallaxEffectOptions) {
+    public func addParallaxMotionEffects(with options: inout ParallaxEffectOptions) {
         // If glow have to be visible and glowContainerView is not given then set it to self
         if options.glowContainerView == nil && options.glowAlpha > 0.0 {
             options.glowContainerView = self
@@ -60,11 +60,11 @@ extension UIView: AnyParallaxableView {
             }
 
             // Configure pan motion effect for the glow
-            let verticalGlowEffect = UIInterpolatingMotionEffect(keyPath: "center.y", type: .TiltAlongVerticalAxis)
+            let verticalGlowEffect = UIInterpolatingMotionEffect(keyPath: "center.y", type: .tiltAlongVerticalAxis)
             verticalGlowEffect.minimumRelativeValue = -glowImageView.frame.height * CGFloat(options.minVerticalPanGlowMultipler)
             verticalGlowEffect.maximumRelativeValue = glowImageView.frame.height * CGFloat(options.maxVerticalPanGlowMultipler)
 
-            let horizontalGlowEffect = UIInterpolatingMotionEffect(keyPath: "center.x", type: .TiltAlongHorizontalAxis)
+            let horizontalGlowEffect = UIInterpolatingMotionEffect(keyPath: "center.x", type: .tiltAlongHorizontalAxis)
             horizontalGlowEffect.minimumRelativeValue = -bounds.width+glowImageView.frame.width/4
             horizontalGlowEffect.maximumRelativeValue = bounds.width-glowImageView.frame.width/4
 
@@ -82,42 +82,42 @@ extension UIView: AnyParallaxableView {
 
         // Configure shadow pan motion effect
         if options.shadowPanDeviation != 0 {
-            let veriticalShadowEffect = UIInterpolatingMotionEffect(keyPath: "layer.shadowOffset.height", type: .TiltAlongVerticalAxis)
+            let veriticalShadowEffect = UIInterpolatingMotionEffect(keyPath: "layer.shadowOffset.height", type: .tiltAlongVerticalAxis)
             veriticalShadowEffect.minimumRelativeValue = -options.shadowPanDeviation
             veriticalShadowEffect.maximumRelativeValue = options.shadowPanDeviation/2
 
-            let horizontalShadowEffect = UIInterpolatingMotionEffect(keyPath: "layer.shadowOffset.width", type: .TiltAlongHorizontalAxis)
+            let horizontalShadowEffect = UIInterpolatingMotionEffect(keyPath: "layer.shadowOffset.width", type: .tiltAlongHorizontalAxis)
             horizontalShadowEffect.minimumRelativeValue = -options.shadowPanDeviation
             horizontalShadowEffect.maximumRelativeValue = options.shadowPanDeviation
 
-            motionGroup.motionEffects?.appendContentsOf([veriticalShadowEffect, horizontalShadowEffect])
+            motionGroup.motionEffects?.append(contentsOf: [veriticalShadowEffect, horizontalShadowEffect])
         }
 
         addMotionEffect(motionGroup)
 
         // Configure pan motion effect for the subviews
-        if case .None = options.subviewsParallaxMode {
+        if case .none = options.subviewsParallaxMode {
         } else {
             subviews
                 .filter { $0 !== options.glowContainerView }
-                .enumerate()
+                .enumerated()
                 .forEach { (index: Int, subview: UIView) in
                     let relativePanValue: Double
 
                     switch options.subviewsParallaxMode {
-                    case .BasedOnHierarchyInParallaxView(let maxOffset, let multipler):
+                    case .basedOnHierarchyInParallaxView(let maxOffset, let multipler):
                         relativePanValue = maxOffset / (Double(index+1)) * (multipler ?? 1.0)
-                    case .BasedOnTag:
+                    case .basedOnTag:
                         relativePanValue = Double(subview.tag)
                     default:
                         relativePanValue = 0.0
                     }
 
-                    let verticalSubviewEffect = UIInterpolatingMotionEffect(keyPath: "center.y", type: .TiltAlongVerticalAxis)
+                    let verticalSubviewEffect = UIInterpolatingMotionEffect(keyPath: "center.y", type: .tiltAlongVerticalAxis)
                     verticalSubviewEffect.minimumRelativeValue = -relativePanValue
                     verticalSubviewEffect.maximumRelativeValue = relativePanValue
 
-                    let horizontalSubviewEffect = UIInterpolatingMotionEffect(keyPath: "center.x", type: .TiltAlongHorizontalAxis)
+                    let horizontalSubviewEffect = UIInterpolatingMotionEffect(keyPath: "center.x", type: .tiltAlongHorizontalAxis)
                     horizontalSubviewEffect.minimumRelativeValue = -relativePanValue
                     horizontalSubviewEffect.maximumRelativeValue = relativePanValue
 
@@ -140,7 +140,7 @@ extension UIView: AnyParallaxableView {
 
         if let glowImageView = glowContainerView.subviews.filter({
             if let glowImageView = $0 as? UIImageView,
-                glowImage = glowImageView.image where glowImage.accessibilityIdentifier == glowImageAccessibilityIdentifier {
+                let glowImage = glowImageView.image , glowImage.accessibilityIdentifier == glowImageAccessibilityIdentifier {
                 return true
             }
             return false

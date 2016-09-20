@@ -17,8 +17,8 @@ class ViewAnyViewController: UIViewController {
     @IBOutlet weak var anyLabel: UIFocusableLabel! {
         didSet {
             // Without setting userInteractionEnabled, label can't be focusable
-            anyLabel.userInteractionEnabled = true
-            anyLabel.layer.shadowColor = UIColor.blackColor().CGColor
+            anyLabel.isUserInteractionEnabled = true
+            anyLabel.layer.shadowColor = UIColor.black.cgColor
             anyLabel.layer.shadowOpacity = 0.5
             anyLabel.layer.shadowOffset = CGSize(width: 0, height: 5)
             // Avoid cliping to fully show the shadow
@@ -32,11 +32,11 @@ class ViewAnyViewController: UIViewController {
             // Define custom glow for the parallax effect
             customGlowContainer = UIView(frame: anyButton.bounds)
             customGlowContainer.clipsToBounds = true
-            customGlowContainer.backgroundColor = UIColor.clearColor()
+            customGlowContainer.backgroundColor = UIColor.clear
             anyButton.subviews.first?.subviews.last?.addSubview(customGlowContainer)
 
             // Add gray background color to make glow effect be more visible
-            anyButton.setBackgroundImage(getImageWithColor(UIColor.lightGrayColor(), size: anyButton.bounds.size), forState: .Normal)
+            anyButton.setBackgroundImage(getImageWithColor(UIColor.lightGray, size: anyButton.bounds.size), for: UIControlState())
         }
     }
 
@@ -52,10 +52,10 @@ class ViewAnyViewController: UIViewController {
         super.viewDidLoad()
     }
 
-    override func didUpdateFocusInContext(context: UIFocusUpdateContext, withAnimationCoordinator coordinator: UIFocusAnimationCoordinator) {
+    override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
         coordinator.addCoordinatedAnimations({
             // Add parallax effect only to controls inside this view controller
-            if let nextFocusedView = context.nextFocusedView where nextFocusedView.isDescendantOfView(self.view) {
+            if let nextFocusedView = context.nextFocusedView , nextFocusedView.isDescendant(of: self.view) {
                 switch context.nextFocusedView {
                 case is UIButton:
                     // Custom parallax effect for the button
@@ -87,12 +87,12 @@ class ViewAnyViewController: UIViewController {
 
     // MARK: Convenience
 
-    func getImageWithColor(color: UIColor, size: CGSize) -> UIImage {
-        let rect = CGRectMake(0, 0, size.width, size.height)
+    func getImageWithColor(_ color: UIColor, size: CGSize) -> UIImage {
+        let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
         color.setFill()
         UIRectFill(rect)
-        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         return image
     }
@@ -102,7 +102,7 @@ class ViewAnyViewController: UIViewController {
 // UIView is not focusable by default, we need to change it
 class UIFocusableView: UIView {
 
-    override func canBecomeFocused() -> Bool {
+    override var canBecomeFocused : Bool {
         return true
     }
 
@@ -111,7 +111,7 @@ class UIFocusableView: UIView {
 // UILabel is not focusable by default, we need to change it
 class UIFocusableLabel: UILabel {
 
-    override func canBecomeFocused() -> Bool {
+    override var canBecomeFocused : Bool {
         return true
     }
 

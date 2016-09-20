@@ -21,7 +21,7 @@ class CollectionViewController: UIViewController {
 
     // MARK: UIViewController
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         configureFlowLayoutSpacing()
@@ -45,7 +45,7 @@ class CollectionViewController: UIViewController {
 
 extension CollectionViewController: UICollectionViewDelegateFlowLayout {
 
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout {
             let totalSpaceWidth = flowLayout.sectionInset.left
                 + flowLayout.sectionInset.right
@@ -67,12 +67,12 @@ extension CollectionViewController: UICollectionViewDelegateFlowLayout {
 
 extension CollectionViewController: UICollectionViewDataSource {
 
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return numberOfRows * numberOfItemsPerRow
     }
 
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath)
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
 
         return cell
     }

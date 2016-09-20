@@ -21,7 +21,7 @@ class ViewController: UIViewController {
         didSet {
             // Configure shadow
             parallaxView.layer.shadowRadius = 20
-            parallaxView.layer.shadowColor = UIColor.blackColor().CGColor
+            parallaxView.layer.shadowColor = UIColor.black.cgColor
             parallaxView.layer.shadowOffset = CGSize(width: 0, height: 40)
             parallaxView.layer.shadowOpacity = 0.5
 
@@ -48,10 +48,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        parallaxView.parallaxEffectOptions.subviewsParallaxMode = .BasedOnHierarchyInParallaxView(maxParallaxOffset: 20, multipler: nil)
+        parallaxView.parallaxEffectOptions.subviewsParallaxMode = .basedOnHierarchyInParallaxView(maxParallaxOffset: 20, multipler: nil)
 
         // Uncomment lines below to test out subviews parallax effect based on tag
-//        parallaxView.parallaxEffectOptions.subviewsParallaxMode = .BasedOnTag
+//        parallaxView.parallaxEffectOptions.subviewsParallaxMode = .basedOnTag
 //        logoView.tag = 10
 //        biggerLabel.tag = 20
 //        theBiggestLabel.tag = 30

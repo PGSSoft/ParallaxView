@@ -17,10 +17,10 @@ public enum SubviewsParallaxMode {
      *  @param Double Deepest view on the hierarchy will have this maximum movement offset
      *  @param Double Jump between successive values can be adjusted by multipler. Param is optional, default it will be equal to 1.0
      */
-    case BasedOnHierarchyInParallaxView(maxParallaxOffset: Double, multipler: Double?)
+    case basedOnHierarchyInParallaxView(maxParallaxOffset: Double, multipler: Double?)
     /// Tag value will be used as maximum offset for parallax effect of the subview.
     /// Each view can be individually adjusted by the tag property
-    case BasedOnTag
+    case basedOnTag
     /// No parallax animation will be added to subviews of the parallax view
-    case None
+    case none
 }

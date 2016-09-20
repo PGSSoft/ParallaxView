@@ -18,7 +18,7 @@ public struct ParallaxEffectOptions {
     /// Maximum deviation of the shadow relative to the center
     public var shadowPanDeviation: Double = 0.0
     /// Specify parallax effect of subiviews of the `parallaxEffectView`
-    public var subviewsParallaxMode = SubviewsParallaxMode.None
+    public var subviewsParallaxMode = SubviewsParallaxMode.none
     /// A View that will be a container for the glow effect
     public weak var glowContainerView: UIView?
     /// Minimum vertical value at the most top position can be adjusted by this multipler
