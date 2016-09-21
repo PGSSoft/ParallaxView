@@ -1,12 +1,12 @@
 Pod::Spec.new do |s|
 
     s.platform = :tvos
-    s.tvos.deployment_target = "10.0"
+    s.tvos.deployment_target = "9.0"
     s.name = "ParallaxView"
     s.summary = "Add parallax effect like in tvOS applications to any view."
     s.requires_arc = true
     s.license = "MIT"
-    s.version = "2.0.1"
+    s.version = "2.0.2"
     s.license = { :type => "MIT", :file => "LICENSE" }
     s.author = { "[Łukasz Śliwiński]" => "[lsliwinski@pgs-soft.com]" }
     s.homepage = "https://github.com/PGSSoft/ParallaxView"
