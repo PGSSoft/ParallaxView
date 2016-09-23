@@ -75,7 +75,7 @@ The component is documented in code, also look into example for more details.
 
 ## Requirements
 
-Swift 3.0, tvOS 10.0
+Swift 3.0, tvOS 9.0
 
 ## Installation
 
