@@ -3,7 +3,7 @@
 # ParallaxView
 
 [![Swift 2.2](https://img.shields.io/badge/Swift-2.2-orange.svg?style=flat)](https://swift.org/)
-[![CocoaPods Compatible](https://img.shields.io/badge/pod-v1.1.0-4BC51D.svg?style=flat)](https://cocoapods.org/pods/ParallaxView)
+[![CocoaPods Compatible](https://img.shields.io/badge/pod-v1.1.2-4BC51D.svg?style=flat)](https://cocoapods.org/pods/ParallaxView)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Platform](https://img.shields.io/cocoapods/p/ParallaxView.svg)](http://cocoadocs.org/docsets/ParallaxView)
 [![License](https://img.shields.io/cocoapods/l/ParallaxView.svg)](https://github.com/PGSSoft/ParallaxView/LICENSE.md)
