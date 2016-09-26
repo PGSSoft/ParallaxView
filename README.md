@@ -29,7 +29,7 @@ You can also create subclass of `ParallaxCollectionViewCell` insted of `UICollec
 
 ### Extension
 
-If `ParallaxView` and `ParallaxCollectionViewCell` don't feet to your needs you can use extension that can be used with any `UIView`. In many cases it can look like in this example:
+If `ParallaxView` and `ParallaxCollectionViewCell` don't fit to your needs you can use extension that can be used with any `UIView`. In many cases it can look like in this example:
 
 ```swift
 override func didUpdateFocusInContext(context: UIFocusUpdateContext, withAnimationCoordinator coordinator: UIFocusAnimationCoordinator) {
