@@ -27,7 +27,7 @@ open class ParallaxViewActions<T: UIView> where T:ParallaxableView {
     /// Default implementation of the press ended animation for the ParallaxableView
     open var animatePressOut: ((T, _ presses: Set<UIPress>, _ event: UIPressesEvent?) -> Void)?
 
-    init() {
+    public init() {
         becomeFocused = { [weak self] (view: T, context, coordinator) in
             self?.beforeBecomeFocusedAnimation?(view)
 
