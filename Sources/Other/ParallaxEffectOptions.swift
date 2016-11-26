@@ -9,7 +9,7 @@
 import UIKit
 
 public struct ParallaxEffectOptions {
-
+    
     /// Property allow to customize parallax effect (pan, angles, etc.)
     ///
     /// - seealso:
@@ -25,10 +25,34 @@ public struct ParallaxEffectOptions {
     public var minVerticalPanGlowMultipler: Double = 0.2
     /// Maximum vertical value at the most bottom position can be adjusted by this multipler
     public var maxVerticalPanGlowMultipler: Double = 1.55
+    /// Alpha of the glow image view
     public var glowAlpha: Double = 1.0
-
+    /// Glow effect image view
+    public var glowImageView: UIImageView = ParallaxEffectOptions.defaultGlowImageView()
+    
+    /// Constructor
+    ///
+    /// - Parameter glowContainerView: Custom container view for the glow effect, if nil then it will be automatically configured
     public init(glowContainerView: UIView? = nil) {
         self.glowContainerView = glowContainerView
     }
+    
+}
 
+internal let glowImageAccessibilityIdentifier = "com.pgs-soft.parallaxview.gloweffect"
+
+extension ParallaxEffectOptions {
+    
+    static func defaultGlowImageView() -> UIImageView {
+        if case let bundle = Bundle(for: ParallaxView.self), let glowImage = UIImage(named: "gloweffect", in: bundle, compatibleWith: nil) {
+            glowImage.accessibilityIdentifier = glowImageAccessibilityIdentifier
+            let imageView = UIImageView(image: glowImage)
+            imageView.contentMode = .scaleAspectFit
+            
+            return UIImageView(image: glowImage)
+        } else {
+            fatalError("Can't initialize gloweffect image")
+        }
+    }
+    
 }
