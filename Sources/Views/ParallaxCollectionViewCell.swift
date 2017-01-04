@@ -90,7 +90,6 @@ open class ParallaxCollectionViewCell: UICollectionViewCell, ParallaxableView {
     // Generally, all responders which do custom touch handling should override all four of these methods.
     // If you want to customize animations for press events do not forget to call super.
     open override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
-        parallaxViewActions.setupFocusedState?(self)
         parallaxViewActions.animatePressIn?(self, presses, event)
 
         super.pressesBegan(presses, with: event)
