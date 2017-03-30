@@ -20,7 +20,9 @@ extension UIView: AnyParallaxableView {
         var options = ParallaxEffectOptions()
         addParallaxMotionEffects(with: &options)
     }
-    
+    open var parallaxSubviewsContainer:UIView {
+        return self
+    }
     public func addParallaxMotionEffects(with options: inout ParallaxEffectOptions) {
         // If glow have to be visible and glowContainerView is not given then set it to self
         if options.glowContainerView == nil && options.glowAlpha > 0.0 {
@@ -84,7 +86,7 @@ extension UIView: AnyParallaxableView {
         // Configure pan motion effect for the subviews
         if case .none = options.subviewsParallaxMode {
         } else {
-            subviews
+            parallaxSubviewsContainer.subviews
                 .filter { $0 !== options.glowContainerView }
                 .enumerated()
                 .forEach { (index: Int, subview: UIView) in
@@ -116,7 +118,7 @@ extension UIView: AnyParallaxableView {
     
     public func removeParallaxMotionEffects(glowContainer glowContainerView: UIView? = nil) {
         motionEffects.removeAll()
-        subviews
+        parallaxSubviewsContainer.subviews
             .filter { $0 !== glowContainerView }
             .forEach { (subview: UIView) in
                 subview.motionEffects.removeAll()

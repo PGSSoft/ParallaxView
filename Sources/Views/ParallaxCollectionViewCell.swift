@@ -15,7 +15,9 @@ open class ParallaxCollectionViewCell: UICollectionViewCell, ParallaxableView {
     open var parallaxViewActions = ParallaxViewActions<ParallaxCollectionViewCell>()
 
     // MARK: Initialization
-
+    open override var parallaxSubviewsContainer: UIView {
+        return self.contentView
+    }
     public override init(frame: CGRect) {
         super.init(frame: frame)
 
