@@ -15,9 +15,7 @@ open class ParallaxCollectionViewCell: UICollectionViewCell, ParallaxableView {
     open var parallaxViewActions = ParallaxViewActions<ParallaxCollectionViewCell>()
 
     // MARK: Initialization
-    open override var parallaxSubviewsContainer: UIView {
-        return self.contentView
-    }
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -40,6 +38,10 @@ open class ParallaxCollectionViewCell: UICollectionViewCell, ParallaxableView {
 
         if parallaxEffectOptions.glowContainerView == nil {
             parallaxEffectOptions.glowContainerView = contentView
+        }
+
+        if parallaxEffectOptions.parallaxSubviewsContainer == nil {
+            parallaxEffectOptions.parallaxSubviewsContainer = contentView
         }
 
         parallaxViewActions.setupUnfocusedState = { [weak self] (view) in

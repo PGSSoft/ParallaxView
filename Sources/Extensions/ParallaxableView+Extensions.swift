@@ -41,7 +41,7 @@ open class ParallaxViewActions<T: UIView> where T:ParallaxableView {
             self?.beforeResignFocusAnimation?(view)
 
             coordinator.addCoordinatedAnimations({
-                view.removeParallaxMotionEffects(glowContainer: view.parallaxEffectOptions.glowContainerView)
+                view.removeParallaxMotionEffects(with: view.parallaxEffectOptions)
                 self?.setupUnfocusedState?(view)
                 }, completion: nil)
         }
