@@ -19,7 +19,7 @@ public struct ParallaxEffectOptions {
     public var shadowPanDeviation: Double = 0.0
     /// Specify parallax effect of subiviews of the `parallaxEffectView`
     public var subviewsParallaxMode = SubviewsParallaxMode.none
-    /// Custom view that will be used to apply subviews parallax mode effect
+    /// Custom container view that will be usead to apply subviews parallax effect
     public var parallaxSubviewsContainer: UIView?
     /// A view that will be a container for the glow effect
     public weak var glowContainerView: UIView?
@@ -31,10 +31,12 @@ public struct ParallaxEffectOptions {
     public var glowAlpha: Double = 1.0
     /// Glow effect image view
     public var glowImageView: UIImageView = ParallaxEffectOptions.defaultGlowImageView()
-    
+
     /// Constructor
     ///
-    /// - Parameter glowContainerView: Custom container view for the glow effect, if nil then it will be automatically configured
+    /// - Parameters:
+    ///   - parallaxSubviewsContainer: Custom container view that will be usead to apply subviews parallax effect. By default it will be parallaxable view
+    ///   - glowContainerView: Custom container view for the glow effect, if nil then it will be automatically configured
     public init(parallaxSubviewsContainer: UIView? = nil, glowContainerView: UIView? = nil) {
         self.parallaxSubviewsContainer = parallaxSubviewsContainer
         self.glowContainerView = glowContainerView
