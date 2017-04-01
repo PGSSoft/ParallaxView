@@ -44,12 +44,6 @@ class ViewAnyViewController: UIViewController {
 
     // MARK: UIViewController
 
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-
-//        customGlowContainer.frame = anyButton.bounds
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
     }
