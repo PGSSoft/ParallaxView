@@ -19,7 +19,9 @@ public struct ParallaxEffectOptions {
     public var shadowPanDeviation: Double = 0.0
     /// Specify parallax effect of subiviews of the `parallaxEffectView`
     public var subviewsParallaxMode = SubviewsParallaxMode.none
-    /// A View that will be a container for the glow effect
+    /// Custom view that will be used to apply subviews parallax mode effect
+    public var parallaxSubviewsContainer: UIView?
+    /// A view that will be a container for the glow effect
     public weak var glowContainerView: UIView?
     /// Minimum vertical value at the most top position can be adjusted by this multipler
     public var minVerticalPanGlowMultipler: Double = 0.2
@@ -33,7 +35,8 @@ public struct ParallaxEffectOptions {
     /// Constructor
     ///
     /// - Parameter glowContainerView: Custom container view for the glow effect, if nil then it will be automatically configured
-    public init(glowContainerView: UIView? = nil) {
+    public init(parallaxSubviewsContainer: UIView? = nil, glowContainerView: UIView? = nil) {
+        self.parallaxSubviewsContainer = parallaxSubviewsContainer
         self.glowContainerView = glowContainerView
     }
     

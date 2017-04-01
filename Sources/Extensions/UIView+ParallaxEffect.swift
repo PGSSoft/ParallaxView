@@ -11,7 +11,7 @@ import UIKit
 public protocol AnyParallaxableView {
     func addParallaxMotionEffects()
     func addParallaxMotionEffects(with options: inout ParallaxEffectOptions)
-    func removeParallaxMotionEffects(glowContainer glowContainerView: UIView?)
+    func removeParallaxMotionEffects(with options: ParallaxEffectOptions?)
 }
 
 extension UIView: AnyParallaxableView {
@@ -20,9 +20,7 @@ extension UIView: AnyParallaxableView {
         var options = ParallaxEffectOptions()
         addParallaxMotionEffects(with: &options)
     }
-    open var parallaxSubviewsContainer:UIView {
-        return self
-    }
+
     public func addParallaxMotionEffects(with options: inout ParallaxEffectOptions) {
         // If glow have to be visible and glowContainerView is not given then set it to self
         if options.glowContainerView == nil && options.glowAlpha > 0.0 {
@@ -86,7 +84,7 @@ extension UIView: AnyParallaxableView {
         // Configure pan motion effect for the subviews
         if case .none = options.subviewsParallaxMode {
         } else {
-            parallaxSubviewsContainer.subviews
+            (options.parallaxSubviewsContainer ?? self).subviews
                 .filter { $0 !== options.glowContainerView }
                 .enumerated()
                 .forEach { (index: Int, subview: UIView) in
@@ -116,26 +114,16 @@ extension UIView: AnyParallaxableView {
         }
     }
     
-    public func removeParallaxMotionEffects(glowContainer glowContainerView: UIView? = nil) {
+    public func removeParallaxMotionEffects(with options: ParallaxEffectOptions? = nil) {
         motionEffects.removeAll()
-        parallaxSubviewsContainer.subviews
-            .filter { $0 !== glowContainerView }
+        (options?.parallaxSubviewsContainer ?? self).subviews
+            .filter { $0 !== options?.glowContainerView }
             .forEach { (subview: UIView) in
                 subview.motionEffects.removeAll()
         }
-        
-        guard let glowContainerView = glowContainerView else { return }
-        
-        if let glowImageView = glowContainerView.subviews.filter({
-            if let glowImageView = $0 as? UIImageView,
-                let glowImage = glowImageView.image , glowImage.accessibilityIdentifier == glowImageAccessibilityIdentifier {
-                return true
-            }
-            return false
-        }).first {
-            glowImageView.motionEffects.removeAll()
-            glowImageView.removeFromSuperview()
-        }
+
+        options?.glowImageView.motionEffects.removeAll()
+        options?.glowImageView.removeFromSuperview()
     }
     
 }

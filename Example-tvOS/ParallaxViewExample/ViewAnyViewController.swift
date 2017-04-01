@@ -26,14 +26,16 @@ class ViewAnyViewController: UIViewController {
         }
     }
 
-    var customGlowContainer: UIView!
+    var buttonParallaxEffectOptions: ParallaxEffectOptions!
     @IBOutlet weak var anyButton: UIButton! {
         didSet {
             // Define custom glow for the parallax effect
-            customGlowContainer = UIView(frame: anyButton.bounds)
+            let customGlowContainer = UIView(frame: anyButton.bounds)
             customGlowContainer.clipsToBounds = true
             customGlowContainer.backgroundColor = UIColor.clear
             anyButton.subviews.first?.subviews.last?.addSubview(customGlowContainer)
+
+            buttonParallaxEffectOptions = ParallaxEffectOptions(glowContainerView: customGlowContainer)
 
             // Add gray background color to make glow effect be more visible
             anyButton.setBackgroundImage(getImageWithColor(UIColor.lightGray, size: anyButton.bounds.size), for: UIControlState())
@@ -45,7 +47,7 @@ class ViewAnyViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
-        customGlowContainer.frame = anyButton.bounds
+//        customGlowContainer.frame = anyButton.bounds
     }
 
     override func viewDidLoad() {
@@ -53,13 +55,13 @@ class ViewAnyViewController: UIViewController {
     }
 
     override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
-        coordinator.addCoordinatedAnimations({
+        coordinator.addCoordinatedAnimations({ [unowned self] in
             // Add parallax effect only to controls inside this view controller
             if let nextFocusedView = context.nextFocusedView , nextFocusedView.isDescendant(of: self.view) {
                 switch context.nextFocusedView {
                 case is UIButton:
                     // Custom parallax effect for the button
-                    var buttonParallaxEffectOptions = ParallaxEffectOptions(glowContainerView: self.customGlowContainer)
+                    var buttonParallaxEffectOptions = self.buttonParallaxEffectOptions!
                     self.anyButton.addParallaxMotionEffects(with: &buttonParallaxEffectOptions)
                 case is UIFocusableLabel:
                     // Custom parallax effect for the label
@@ -77,7 +79,7 @@ class ViewAnyViewController: UIViewController {
             switch context.previouslyFocusedView {
             case is UIButton:
                 // Because anyButton uses custom glow container we have to pass it to remove parallax effect correctly
-                self.anyButton.removeParallaxMotionEffects(glowContainer: self.customGlowContainer)
+                self.anyButton.removeParallaxMotionEffects(with: self.buttonParallaxEffectOptions!)
             default:
                 context.previouslyFocusedView?.removeParallaxMotionEffects()
             }
