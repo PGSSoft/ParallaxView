@@ -15,10 +15,10 @@ open class ParallaxMotionEffect: UIMotionEffect {
     open var cameraPositionZ = CGFloat(0)
 
     /// The maximum angle horizontally
-    open var viewingAngleX = CGFloat(M_PI_4/8)
+    open var viewingAngleX = CGFloat(Double.pi/4/8)
 
     /// The maximum angle vertically
-    open var viewingAngleY = CGFloat(M_PI_4/8)
+    open var viewingAngleY = CGFloat(Double.pi/4/8)
 
     /// Maximum deviation relative to the center
     open var panValue = CGFloat(8)
