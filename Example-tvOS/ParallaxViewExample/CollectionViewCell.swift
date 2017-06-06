@@ -21,8 +21,8 @@ class CollectionViewCell: ParallaxCollectionViewCell {
 
         parallaxEffectOptions.glowAlpha = 0.4
         parallaxEffectOptions.shadowPanDeviation = 10
-        parallaxEffectOptions.parallaxMotionEffect.viewingAngleX = CGFloat(M_PI_4/30)
-        parallaxEffectOptions.parallaxMotionEffect.viewingAngleY = CGFloat(M_PI_4/30)
+        parallaxEffectOptions.parallaxMotionEffect.viewingAngleX = CGFloat(Double.pi/4/30)
+        parallaxEffectOptions.parallaxMotionEffect.viewingAngleY = CGFloat(Double.pi/4/30)
         parallaxEffectOptions.parallaxMotionEffect.panValue = CGFloat(5)
 
         // You can customise parallax view standard behaviours using parallaxViewActions property.
