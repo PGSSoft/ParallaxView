@@ -6,11 +6,11 @@ Pod::Spec.new do |s|
     s.summary = "Add parallax effect like in tvOS applications to any view."
     s.requires_arc = true
     s.license = "MIT"
-    s.version = "2.0.8"
+    s.version = "2.0.9"
     s.license = { :type => "MIT", :file => "LICENSE" }
-    s.author = { "[Łukasz Śliwiński]" => "[lsliwinski@pgs-soft.com]" }
-    s.homepage = "https://github.com/PGSSoft/ParallaxView"
-    s.source = { :git => "https://github.com/PGSSoft/ParallaxView.git", :tag => s.version }
+    s.author = { "[Vince Liang]" => "[vince.yu.liang@gmail.com]" }
+    s.homepage = "https://github.com/zaully/ParallaxView"
+    s.source = { :git => "https://github.com/zaully/ParallaxView.git", :tag => s.version }
     s.framework = "UIKit"
     s.source_files = "Sources/**/*.{swift}"
     s.resources = "Resources/**/*.xcassets"
