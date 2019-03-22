@@ -120,12 +120,14 @@ open class ParallaxCollectionViewCell: UICollectionViewCell, ParallaxableView {
     open override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
         super.didUpdateFocus(in: context, with: coordinator)
 
-        if self == context.nextFocusedView {
-            // Add parallax effect to focused cell
+        guard context.nextFocusedView != context.previouslyFocusedView else { return }
+        switch self {
+        case context.nextFocusedView:
             parallaxViewActions.becomeFocused?(self, context, coordinator)
-        } else if self == context.previouslyFocusedView {
-            // Remove parallax effect
+        case context.previouslyFocusedView:
             parallaxViewActions.resignFocus?(self, context, coordinator)
+        default:
+            break
         }
     }
 
