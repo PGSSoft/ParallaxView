@@ -7,6 +7,7 @@ Pod::Spec.new do |s|
     s.requires_arc = true
     s.license = "MIT"
     s.version = "5.0"
+    s.swift_version = '5.0'
     s.license = { :type => "MIT", :file => "LICENSE" }
     s.author = { "[Łukasz Śliwiński]" => "[lsliwinski@pgs-soft.com]" }
     s.homepage = "https://github.com/PGSSoft/ParallaxView"
