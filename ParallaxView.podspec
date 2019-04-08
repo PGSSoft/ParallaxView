@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
     s.summary = "Add parallax effect like in tvOS applications to any view."
     s.requires_arc = true
     s.license = "MIT"
-    s.version = "5.0.0"
+    s.version = "5.0"
     s.license = { :type => "MIT", :file => "LICENSE" }
     s.author = { "[Łukasz Śliwiński]" => "[lsliwinski@pgs-soft.com]" }
     s.homepage = "https://github.com/PGSSoft/ParallaxView"
