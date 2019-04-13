@@ -1,4 +1,4 @@
-![PGS Software](Assets/pgssoft-logo.png) 
+![PGS Software](Assets/pgssoft-logo.png)
 
 # ParallaxView
 
@@ -78,7 +78,7 @@ The component is documented in code, also look into example for more details.
 
 ## Requirements
 
-Swift 3.0, tvOS 9.0
+Swift 5.0, tvOS 9.0
 
 ## Installation
 
