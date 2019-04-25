@@ -52,5 +52,9 @@ class CollectionViewCell: ParallaxCollectionViewCell {
 
         widthToHeightRatio = round(((bounds.width * 0.08 + bounds.height)/bounds.height)*100)/100
     }
+    
+    override var canBecomeFocused: Bool {
+        return true
+    }
 
 }

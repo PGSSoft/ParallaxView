@@ -66,10 +66,6 @@ open class ParallaxCollectionViewCell: UICollectionViewCell, ParallaxableView {
 
     // MARK: UIView
 
-    open override var canBecomeFocused : Bool {
-        return true
-    }
-
     open override func layoutSubviews() {
         super.layoutSubviews()
 
