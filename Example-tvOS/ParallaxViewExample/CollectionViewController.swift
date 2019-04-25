@@ -66,7 +66,7 @@ extension CollectionViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension CollectionViewController: UICollectionViewDataSource {
-
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return numberOfRows * numberOfItemsPerRow
     }

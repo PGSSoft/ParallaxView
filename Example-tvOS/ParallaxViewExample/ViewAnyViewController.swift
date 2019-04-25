@@ -38,7 +38,7 @@ class ViewAnyViewController: UIViewController {
             buttonParallaxEffectOptions = ParallaxEffectOptions(glowContainerView: customGlowContainer)
 
             // Add gray background color to make glow effect be more visible
-            anyButton.setBackgroundImage(getImageWithColor(UIColor.lightGray, size: anyButton.bounds.size), for: UIControlState())
+            anyButton.setBackgroundImage(getImageWithColor(UIColor.lightGray, size: anyButton.bounds.size), for: UIControl.State())
         }
     }
 

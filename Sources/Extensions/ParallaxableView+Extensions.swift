@@ -80,7 +80,7 @@ public extension ParallaxableView where Self: UIView {
     // MARK: Properties
 
     /// Configure radius for parallaxView and glow effect if needed
-    public var cornerRadius: CGFloat {
+    var cornerRadius: CGFloat {
         get {
             return self.layer.cornerRadius
         }
@@ -101,7 +101,7 @@ public extension ParallaxableView where Self: UIView {
 
      - returns: Image with radial gradient/shadow to imitate glow
      */
-    public func getGlowImageView() -> UIImageView? {
+    func getGlowImageView() -> UIImageView? {
         return parallaxEffectOptions.glowContainerView?.subviews.filter({ (view) -> Bool in
             if let glowImageView = view as? UIImageView,
                 let glowImage = glowImageView.image , glowImage.accessibilityIdentifier == glowImageAccessibilityIdentifier {
