@@ -2,7 +2,7 @@
 
 # ParallaxView
 
-[![Swift 3.0](https://img.shields.io/badge/Swift-3.0-orange.svg?style=flat)](https://swift.org/)
+[![Swift 5.0](https://img.shields.io/badge/Swift-5.0-orange.svg?style=flat)](https://swift.org/)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/ParallaxView.svg)](https://cocoapods.org/pods/ParallaxView)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Platform](https://img.shields.io/cocoapods/p/ParallaxView.svg)](http://cocoadocs.org/docsets/ParallaxView)
@@ -78,7 +78,7 @@ The component is documented in code, also look into example for more details.
 
 ## Requirements
 
-Swift 3.0, tvOS 9.0
+Swift 5.0, tvOS 9.0
 
 ## Installation
 
