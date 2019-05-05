@@ -33,8 +33,8 @@ open class ParallaxMotionEffect: UIMotionEffect {
         transform.m34 = m34
 
         var newViewerOffset = viewerOffset
-        newViewerOffset.horizontal = newViewerOffset.horizontal <= -1.0 ? -1.0 : newViewerOffset.horizontal
-        newViewerOffset.vertical = newViewerOffset.vertical <= -1.0 ? -1.0 : newViewerOffset.vertical
+        newViewerOffset.horizontal = max(newViewerOffset.horizontal, -1.0)
+        newViewerOffset.vertical = max(newViewerOffset.vertical, -1.0)
 
         transform = CATransform3DTranslate(transform, panValue*newViewerOffset.horizontal, panValue*newViewerOffset.vertical, cameraPositionZ)
 

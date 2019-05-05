@@ -102,13 +102,14 @@ public extension ParallaxableView where Self: UIView {
      - returns: Image with radial gradient/shadow to imitate glow
      */
     func getGlowImageView() -> UIImageView? {
-        return parallaxEffectOptions.glowContainerView?.subviews.filter({ (view) -> Bool in
+        return parallaxEffectOptions.glowContainerView?.subviews.lazy.compactMap { view in
             if let glowImageView = view as? UIImageView,
-                let glowImage = glowImageView.image , glowImage.accessibilityIdentifier == glowImageAccessibilityIdentifier {
-                return true
+                let glowImage = glowImageView.image,
+                glowImage.accessibilityIdentifier == glowImageAccessibilityIdentifier {
+                return glowImageView
             }
-            return false
-        }).first as? UIImageView
+            return nil
+        }.first
     }
 
 }

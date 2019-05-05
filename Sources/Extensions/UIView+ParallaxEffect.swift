@@ -8,6 +8,13 @@
 
 import UIKit
 
+private enum MotionEffectPropertyKeyPath: String {
+    case layerShadowOffsetWidth = "layer.shadowOffset.width"
+    case layerShadowOffsetHeight = "layer.shadowOffset.height"
+    case centerX = "center.x"
+    case centerY = "center.y"
+}
+
 public protocol AnyParallaxableView {
     func addParallaxMotionEffects()
     func addParallaxMotionEffects(with options: inout ParallaxEffectOptions)
@@ -46,16 +53,12 @@ extension UIView: AnyParallaxableView {
             }
             
             // Configure pan motion effect for the glow
-            let verticalGlowEffect = UIInterpolatingMotionEffect(keyPath: "center.y", type: .tiltAlongVerticalAxis)
-            verticalGlowEffect.minimumRelativeValue = -glowImageView.frame.height * CGFloat(options.minVerticalPanGlowMultipler)
-            verticalGlowEffect.maximumRelativeValue = glowImageView.frame.height * CGFloat(options.maxVerticalPanGlowMultipler)
-            
-            let horizontalGlowEffect = UIInterpolatingMotionEffect(keyPath: "center.x", type: .tiltAlongHorizontalAxis)
-            horizontalGlowEffect.minimumRelativeValue = -bounds.width+glowImageView.frame.width/4
-            horizontalGlowEffect.maximumRelativeValue = bounds.width-glowImageView.frame.width/4
-            
             let glowMotionGroup = UIMotionEffectGroup()
-            glowMotionGroup.motionEffects = [horizontalGlowEffect, verticalGlowEffect]
+            glowMotionGroup.motionEffects = createHorizonalAndVerticalMotionEffects(
+                horizontalRelativeValue: bounds.width-glowImageView.frame.width/4,
+                minVerticalRelativeValue: -glowImageView.frame.height * CGFloat(options.minVerticalPanGlowMultipler),
+                maxVerticalRelativeValue: glowImageView.frame.height * CGFloat(options.maxVerticalPanGlowMultipler)
+            )
             
             glowImageView.addMotionEffect(glowMotionGroup)
         }
@@ -98,23 +101,152 @@ extension UIView: AnyParallaxableView {
                     default:
                         relativePanValue = 0.0
                     }
-                    
-                    let verticalSubviewEffect = UIInterpolatingMotionEffect(keyPath: "center.y", type: .tiltAlongVerticalAxis)
-                    verticalSubviewEffect.minimumRelativeValue = -relativePanValue
-                    verticalSubviewEffect.maximumRelativeValue = relativePanValue
-                    
-                    let horizontalSubviewEffect = UIInterpolatingMotionEffect(keyPath: "center.x", type: .tiltAlongHorizontalAxis)
-                    horizontalSubviewEffect.minimumRelativeValue = -relativePanValue
-                    horizontalSubviewEffect.maximumRelativeValue = relativePanValue
-                    
+
                     let group = UIMotionEffectGroup()
-                    group.motionEffects = [verticalSubviewEffect, horizontalSubviewEffect]
+                    group.motionEffects = createHorizonalAndVerticalMotionEffects(relativeValue: CGFloat(relativePanValue))
                     subview.addMotionEffect(group)
             }
         }
     }
     
-    public func removeParallaxMotionEffects(with options: ParallaxEffectOptions? = nil) {
+    private func createMotionEffect(
+        for keyPath: String,
+        type: UIInterpolatingMotionEffect.EffectType,
+        minRelativeValue: CGFloat,
+        maxRelativeValue: CGFloat
+    ) -> UIInterpolatingMotionEffect {
+        let effect = UIInterpolatingMotionEffect(
+            keyPath: keyPath,
+            type: type
+        )
+        effect.minimumRelativeValue = minRelativeValue
+        effect.maximumRelativeValue = maxRelativeValue
+        return effect
+    }
+    
+    private func createMotionEffect(
+        for keyPath: String,
+        type: UIInterpolatingMotionEffect.EffectType,
+        relativeValue: CGFloat
+    ) -> UIInterpolatingMotionEffect {
+        return createMotionEffect(
+            for: keyPath,
+            type: type,
+            minRelativeValue: -relativeValue,
+            maxRelativeValue: relativeValue
+        )
+    }
+    
+    private func createHorizonalMotionEffect(
+        minRelativeValue: CGFloat,
+        maxRelativeValue: CGFloat
+    ) -> UIInterpolatingMotionEffect {
+        return createMotionEffect(
+            for: "center.x",
+            type: .tiltAlongHorizontalAxis,
+            minRelativeValue: minRelativeValue,
+            maxRelativeValue: maxRelativeValue
+        )
+    }
+    
+    private func createHorizonalMotionEffect(
+        relativeValue: CGFloat
+    ) -> UIInterpolatingMotionEffect {
+        return createHorizonalMotionEffect(
+            minRelativeValue: -relativeValue,
+            maxRelativeValue: relativeValue
+        )
+    }
+    
+    private func createVerticalMotionEffect(
+        minRelativeValue: CGFloat,
+        maxRelativeValue: CGFloat
+    ) -> UIInterpolatingMotionEffect {
+        return createMotionEffect(
+            for: "center.y",
+            type: .tiltAlongVerticalAxis,
+            minRelativeValue: minRelativeValue,
+            maxRelativeValue: maxRelativeValue
+        )
+    }
+    
+    private func createVerticalMotionEffect(
+        relativeValue: CGFloat
+    ) -> UIInterpolatingMotionEffect {
+        return createVerticalMotionEffect(
+            minRelativeValue: -relativeValue,
+            maxRelativeValue: relativeValue
+        )
+    }
+    
+    private func createHorizonalAndVerticalMotionEffects(
+        minHorizontalRelativeValue: CGFloat,
+        maxHorizontalRelativeValue: CGFloat,
+        minVerticalRelativeValue: CGFloat,
+        maxVerticalRelativeValue: CGFloat
+    ) -> [UIInterpolatingMotionEffect] {
+        return [
+            createHorizonalMotionEffect(
+                minRelativeValue: minHorizontalRelativeValue,
+                maxRelativeValue: maxHorizontalRelativeValue
+            ),
+            createVerticalMotionEffect(
+                minRelativeValue: minVerticalRelativeValue,
+                maxRelativeValue: maxVerticalRelativeValue
+            )
+        ]
+    }
+    
+    private func createHorizonalAndVerticalMotionEffects(
+        minHorizontalRelativeValue: CGFloat,
+        maxHorizontalRelativeValue: CGFloat,
+        verticalRelativeValue: CGFloat
+    ) -> [UIInterpolatingMotionEffect] {
+        return createHorizonalAndVerticalMotionEffects(
+            minHorizontalRelativeValue: minHorizontalRelativeValue,
+            maxHorizontalRelativeValue: maxHorizontalRelativeValue,
+            minVerticalRelativeValue: -verticalRelativeValue,
+            maxVerticalRelativeValue: verticalRelativeValue
+        )
+    }
+    
+    private func createHorizonalAndVerticalMotionEffects(
+        horizontalRelativeValue: CGFloat,
+        minVerticalRelativeValue: CGFloat,
+        maxVerticalRelativeValue: CGFloat
+    ) -> [UIInterpolatingMotionEffect] {
+        return createHorizonalAndVerticalMotionEffects(
+            minHorizontalRelativeValue: -horizontalRelativeValue,
+            maxHorizontalRelativeValue: horizontalRelativeValue,
+            minVerticalRelativeValue: minVerticalRelativeValue,
+            maxVerticalRelativeValue: maxVerticalRelativeValue
+        )
+    }
+    
+    private func createHorizonalAndVerticalMotionEffects(
+        horizontalRelativeValue: CGFloat,
+        verticalRelativeValue: CGFloat
+    ) -> [UIInterpolatingMotionEffect] {
+        return createHorizonalAndVerticalMotionEffects(
+            minHorizontalRelativeValue: -horizontalRelativeValue,
+            maxHorizontalRelativeValue: horizontalRelativeValue,
+            minVerticalRelativeValue: -verticalRelativeValue,
+            maxVerticalRelativeValue: verticalRelativeValue
+        )
+    }
+    
+    private func createHorizonalAndVerticalMotionEffects(
+        relativeValue: CGFloat
+    ) -> [UIInterpolatingMotionEffect] {
+        return createHorizonalAndVerticalMotionEffects(
+            horizontalRelativeValue: relativeValue,
+            verticalRelativeValue: relativeValue
+        )
+    }
+    
+    public func removeParallaxMotionEffects(
+        with options: ParallaxEffectOptions? = nil
+    ) {
         motionEffects.removeAll()
         (options?.parallaxSubviewsContainer ?? self).subviews
             .filter { $0 !== options?.glowContainerView }
