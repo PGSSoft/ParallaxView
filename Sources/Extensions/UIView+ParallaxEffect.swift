@@ -8,11 +8,33 @@
 
 import UIKit
 
-private enum MotionEffectPropertyKeyPath: String {
-    case layerShadowOffsetWidth = "layer.shadowOffset.width"
-    case layerShadowOffsetHeight = "layer.shadowOffset.height"
-    case centerX = "center.x"
-    case centerY = "center.y"
+private enum MotionEffectPropertiesGroup: String {
+    case layerShadowOffset = "layer.shadowOffset"
+    case center = "center"
+}
+
+private enum MotionEffectPropertiesDirection {
+    case horizontal(MotionEffectPropertiesGroup)
+    case vertical(MotionEffectPropertiesGroup)
+    
+    var rawValue: String {
+        switch self {
+        case .horizontal(let group):
+            return group.rawValue + "." + {
+                switch group {
+                case .center: return "x"
+                case .layerShadowOffset: return "width"
+                }
+            }()
+        case .vertical(let group):
+            return group.rawValue + "." + {
+                switch group {
+                case .center: return "y"
+                case .layerShadowOffset: return "height"
+                }
+            }()
+        }
+    }
 }
 
 public protocol AnyParallaxableView {
@@ -57,7 +79,8 @@ extension UIView: AnyParallaxableView {
             glowMotionGroup.motionEffects = createHorizonalAndVerticalMotionEffects(
                 horizontalRelativeValue: bounds.width-glowImageView.frame.width/4,
                 minVerticalRelativeValue: -glowImageView.frame.height * CGFloat(options.minVerticalPanGlowMultipler),
-                maxVerticalRelativeValue: glowImageView.frame.height * CGFloat(options.maxVerticalPanGlowMultipler)
+                maxVerticalRelativeValue: glowImageView.frame.height * CGFloat(options.maxVerticalPanGlowMultipler),
+                propertiesGroup: .center
             )
             
             glowImageView.addMotionEffect(glowMotionGroup)
@@ -71,15 +94,14 @@ extension UIView: AnyParallaxableView {
         
         // Configure shadow pan motion effect
         if options.shadowPanDeviation != 0 {
-            let veriticalShadowEffect = UIInterpolatingMotionEffect(keyPath: "layer.shadowOffset.height", type: .tiltAlongVerticalAxis)
-            veriticalShadowEffect.minimumRelativeValue = -options.shadowPanDeviation
-            veriticalShadowEffect.maximumRelativeValue = options.shadowPanDeviation/2
-            
-            let horizontalShadowEffect = UIInterpolatingMotionEffect(keyPath: "layer.shadowOffset.width", type: .tiltAlongHorizontalAxis)
-            horizontalShadowEffect.minimumRelativeValue = -options.shadowPanDeviation
-            horizontalShadowEffect.maximumRelativeValue = options.shadowPanDeviation
-            
-            motionGroup.motionEffects?.append(contentsOf: [veriticalShadowEffect, horizontalShadowEffect])
+            motionGroup.motionEffects?.append(
+                contentsOf: createHorizonalAndVerticalMotionEffects(
+                    horizontalRelativeValue: CGFloat(options.shadowPanDeviation),
+                    minVerticalRelativeValue: CGFloat(-options.shadowPanDeviation),
+                    maxVerticalRelativeValue: CGFloat(options.shadowPanDeviation/2),
+                    propertiesGroup: .layerShadowOffset
+                )
+            )
         }
         
         addMotionEffect(motionGroup)
@@ -103,7 +125,10 @@ extension UIView: AnyParallaxableView {
                     }
 
                     let group = UIMotionEffectGroup()
-                    group.motionEffects = createHorizonalAndVerticalMotionEffects(relativeValue: CGFloat(relativePanValue))
+                    group.motionEffects = createHorizonalAndVerticalMotionEffects(
+                        relativeValue: CGFloat(relativePanValue),
+                        propertiesGroup: .center
+                    )
                     subview.addMotionEffect(group)
             }
         }
@@ -139,10 +164,11 @@ extension UIView: AnyParallaxableView {
     
     private func createHorizonalMotionEffect(
         minRelativeValue: CGFloat,
-        maxRelativeValue: CGFloat
+        maxRelativeValue: CGFloat,
+        propertiesGroup: MotionEffectPropertiesGroup
     ) -> UIInterpolatingMotionEffect {
         return createMotionEffect(
-            for: "center.x",
+            for: MotionEffectPropertiesDirection.horizontal(propertiesGroup).rawValue,
             type: .tiltAlongHorizontalAxis,
             minRelativeValue: minRelativeValue,
             maxRelativeValue: maxRelativeValue
@@ -150,20 +176,23 @@ extension UIView: AnyParallaxableView {
     }
     
     private func createHorizonalMotionEffect(
-        relativeValue: CGFloat
+        relativeValue: CGFloat,
+        propertiesGroup: MotionEffectPropertiesGroup
     ) -> UIInterpolatingMotionEffect {
         return createHorizonalMotionEffect(
             minRelativeValue: -relativeValue,
-            maxRelativeValue: relativeValue
+            maxRelativeValue: relativeValue,
+            propertiesGroup: propertiesGroup
         )
     }
     
     private func createVerticalMotionEffect(
         minRelativeValue: CGFloat,
-        maxRelativeValue: CGFloat
+        maxRelativeValue: CGFloat,
+        propertiesGroup: MotionEffectPropertiesGroup
     ) -> UIInterpolatingMotionEffect {
         return createMotionEffect(
-            for: "center.y",
+            for: MotionEffectPropertiesDirection.vertical(propertiesGroup).rawValue,
             type: .tiltAlongVerticalAxis,
             minRelativeValue: minRelativeValue,
             maxRelativeValue: maxRelativeValue
@@ -171,11 +200,13 @@ extension UIView: AnyParallaxableView {
     }
     
     private func createVerticalMotionEffect(
-        relativeValue: CGFloat
+        relativeValue: CGFloat,
+        propertiesGroup: MotionEffectPropertiesGroup
     ) -> UIInterpolatingMotionEffect {
         return createVerticalMotionEffect(
             minRelativeValue: -relativeValue,
-            maxRelativeValue: relativeValue
+            maxRelativeValue: relativeValue,
+            propertiesGroup: propertiesGroup
         )
     }
     
@@ -183,16 +214,19 @@ extension UIView: AnyParallaxableView {
         minHorizontalRelativeValue: CGFloat,
         maxHorizontalRelativeValue: CGFloat,
         minVerticalRelativeValue: CGFloat,
-        maxVerticalRelativeValue: CGFloat
+        maxVerticalRelativeValue: CGFloat,
+        propertiesGroup: MotionEffectPropertiesGroup
     ) -> [UIInterpolatingMotionEffect] {
         return [
             createHorizonalMotionEffect(
                 minRelativeValue: minHorizontalRelativeValue,
-                maxRelativeValue: maxHorizontalRelativeValue
+                maxRelativeValue: maxHorizontalRelativeValue,
+                propertiesGroup: propertiesGroup
             ),
             createVerticalMotionEffect(
                 minRelativeValue: minVerticalRelativeValue,
-                maxRelativeValue: maxVerticalRelativeValue
+                maxRelativeValue: maxVerticalRelativeValue,
+                propertiesGroup: propertiesGroup
             )
         ]
     }
@@ -200,47 +234,55 @@ extension UIView: AnyParallaxableView {
     private func createHorizonalAndVerticalMotionEffects(
         minHorizontalRelativeValue: CGFloat,
         maxHorizontalRelativeValue: CGFloat,
-        verticalRelativeValue: CGFloat
+        verticalRelativeValue: CGFloat,
+        propertiesGroup: MotionEffectPropertiesGroup
     ) -> [UIInterpolatingMotionEffect] {
         return createHorizonalAndVerticalMotionEffects(
             minHorizontalRelativeValue: minHorizontalRelativeValue,
             maxHorizontalRelativeValue: maxHorizontalRelativeValue,
             minVerticalRelativeValue: -verticalRelativeValue,
-            maxVerticalRelativeValue: verticalRelativeValue
+            maxVerticalRelativeValue: verticalRelativeValue,
+            propertiesGroup: propertiesGroup
         )
     }
     
     private func createHorizonalAndVerticalMotionEffects(
         horizontalRelativeValue: CGFloat,
         minVerticalRelativeValue: CGFloat,
-        maxVerticalRelativeValue: CGFloat
+        maxVerticalRelativeValue: CGFloat,
+        propertiesGroup: MotionEffectPropertiesGroup
     ) -> [UIInterpolatingMotionEffect] {
         return createHorizonalAndVerticalMotionEffects(
             minHorizontalRelativeValue: -horizontalRelativeValue,
             maxHorizontalRelativeValue: horizontalRelativeValue,
             minVerticalRelativeValue: minVerticalRelativeValue,
-            maxVerticalRelativeValue: maxVerticalRelativeValue
+            maxVerticalRelativeValue: maxVerticalRelativeValue,
+            propertiesGroup: propertiesGroup
         )
     }
     
     private func createHorizonalAndVerticalMotionEffects(
         horizontalRelativeValue: CGFloat,
-        verticalRelativeValue: CGFloat
+        verticalRelativeValue: CGFloat,
+        propertiesGroup: MotionEffectPropertiesGroup
     ) -> [UIInterpolatingMotionEffect] {
         return createHorizonalAndVerticalMotionEffects(
             minHorizontalRelativeValue: -horizontalRelativeValue,
             maxHorizontalRelativeValue: horizontalRelativeValue,
             minVerticalRelativeValue: -verticalRelativeValue,
-            maxVerticalRelativeValue: verticalRelativeValue
+            maxVerticalRelativeValue: verticalRelativeValue,
+            propertiesGroup: propertiesGroup
         )
     }
     
     private func createHorizonalAndVerticalMotionEffects(
-        relativeValue: CGFloat
+        relativeValue: CGFloat,
+        propertiesGroup: MotionEffectPropertiesGroup
     ) -> [UIInterpolatingMotionEffect] {
         return createHorizonalAndVerticalMotionEffects(
             horizontalRelativeValue: relativeValue,
-            verticalRelativeValue: relativeValue
+            verticalRelativeValue: relativeValue,
+            propertiesGroup: propertiesGroup
         )
     }
     
