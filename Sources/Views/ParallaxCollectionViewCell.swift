@@ -7,6 +7,10 @@
 
 import UIKit
 
+/// It provides default implementation of the parallax effect for the `UICollectionViewCell`.
+/// Most of the time you will subclass this class as you would with `UICollectionViewCell` to provide custom content.
+/// If you will override `init` method it is important to provide default setup for the unfocused state of the view
+/// e.g. `parallaxViewActions.setupUnfocusedState?(self)`
 open class ParallaxCollectionViewCell: UICollectionViewCell, ParallaxableView {
 
     // MARK: Properties
@@ -29,6 +33,10 @@ open class ParallaxCollectionViewCell: UICollectionViewCell, ParallaxableView {
         commonInit()
         parallaxViewActions.setupUnfocusedState?(self)
     }
+
+    /// Override this method in your `ParallaxCollectionViewCell` subclass if you would like to provide custom
+    /// setup for the `parallaxEffectOptions` and/or `parallaxViewActions`
+    open func setupParallax() {}
 
     internal func commonInit() {
         layer.shadowOpacity = 0.0
@@ -62,6 +70,8 @@ open class ParallaxCollectionViewCell: UICollectionViewCell, ParallaxableView {
 
         parallaxViewActions.beforeResignFocusAnimation = { $0.layer.zPosition = 0 }
         parallaxViewActions.beforeBecomeFocusedAnimation = { $0.layer.zPosition = 100 }
+
+        setupParallax()
     }
 
     // MARK: UIView

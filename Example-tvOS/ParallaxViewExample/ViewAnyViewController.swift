@@ -38,7 +38,7 @@ class ViewAnyViewController: UIViewController {
             buttonParallaxEffectOptions = ParallaxEffectOptions(glowContainerView: customGlowContainer)
 
             // Add gray background color to make glow effect be more visible
-            anyButton.setBackgroundImage(getImageWithColor(UIColor.lightGray, size: anyButton.bounds.size), for: UIControl.State())
+            anyButton.setBackgroundImage(getImageWithColor(UIColor.lightGray, size: anyButton.bounds.size), for: .normal)
         }
     }
 
@@ -51,7 +51,7 @@ class ViewAnyViewController: UIViewController {
     override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
         coordinator.addCoordinatedAnimations({ [unowned self] in
             // Add parallax effect only to controls inside this view controller
-            if let nextFocusedView = context.nextFocusedView , nextFocusedView.isDescendant(of: self.view) {
+            if let nextFocusedView = context.nextFocusedView, nextFocusedView.isDescendant(of: self.view) {
                 switch context.nextFocusedView {
                 case is UIButton:
                     // Custom parallax effect for the button

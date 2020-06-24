@@ -31,19 +31,33 @@ open class ParallaxViewActions<T: UIView> where T:ParallaxableView {
         becomeFocused = { [weak self] (view: T, context, coordinator) in
             self?.beforeBecomeFocusedAnimation?(view)
 
-            coordinator.addCoordinatedAnimations({
-                view.addParallaxMotionEffects(with: &view.parallaxEffectOptions)
-                self?.setupFocusedState?(view)
+            if #available(tvOS 11.0, *) {
+                coordinator.addCoordinatedFocusingAnimations({ (context) in
+                    self?.setupFocusedState?(view)
+                    view.addParallaxMotionEffects(with: &view.parallaxEffectOptions)
                 }, completion: nil)
+            } else {
+                coordinator.addCoordinatedAnimations({
+                    view.addParallaxMotionEffects(with: &view.parallaxEffectOptions)
+                    self?.setupFocusedState?(view)
+                    }, completion: nil)
+            }
         }
 
         resignFocus = { [weak self] (view: T, context, coordinator) in
             self?.beforeResignFocusAnimation?(view)
 
-            coordinator.addCoordinatedAnimations({
-                view.removeParallaxMotionEffects(with: view.parallaxEffectOptions)
-                self?.setupUnfocusedState?(view)
+            if #available(tvOS 11.0, *) {
+                coordinator.addCoordinatedUnfocusingAnimations({ (context) in
+                    view.removeParallaxMotionEffects(with: view.parallaxEffectOptions)
+                    self?.setupUnfocusedState?(view)
                 }, completion: nil)
+            } else {
+                coordinator.addCoordinatedAnimations({
+                    view.removeParallaxMotionEffects(with: view.parallaxEffectOptions)
+                    self?.setupUnfocusedState?(view)
+                    }, completion: nil)
+            }
         }
 
         animatePressIn = { (view: T, presses, event) in

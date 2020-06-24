@@ -7,6 +7,9 @@
 
 import UIKit
 
+/// It provides default implementation of the parallax effect for the `UIView`.
+/// If you will override `init` method it is important to provide default setup for the unfocused state of the view
+/// e.g. `parallaxViewActions.setupUnfocusedState?(self)`
 open class ParallaxView: UIView, ParallaxableView {
 
     // MARK: Properties
@@ -30,12 +33,18 @@ open class ParallaxView: UIView, ParallaxableView {
         parallaxViewActions.setupUnfocusedState?(self)
     }
 
+    /// Override this method in your `ParallaxView` subclass if you would like to provide custom
+    /// setup for the `parallaxEffectOptions` and/or `parallaxViewActions`
+    open func setupParallax() {}
+
     internal func commonInit() {
         if parallaxEffectOptions.glowContainerView == nil {
             let view = UIView(frame: bounds)
             addSubview(view)
             parallaxEffectOptions.glowContainerView = view
         }
+
+        setupParallax()
     }
 
     // MARK: UIView

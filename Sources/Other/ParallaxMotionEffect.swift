@@ -36,7 +36,12 @@ open class ParallaxMotionEffect: UIMotionEffect {
         newViewerOffset.horizontal = newViewerOffset.horizontal <= -1.0 ? -1.0 : newViewerOffset.horizontal
         newViewerOffset.vertical = newViewerOffset.vertical <= -1.0 ? -1.0 : newViewerOffset.vertical
 
-        transform = CATransform3DTranslate(transform, panValue*newViewerOffset.horizontal, panValue*newViewerOffset.vertical, cameraPositionZ)
+        transform = CATransform3DTranslate(
+            transform,
+            panValue*newViewerOffset.horizontal,
+            panValue*newViewerOffset.vertical,
+            cameraPositionZ
+        )
 
         transform = CATransform3DRotate(transform, viewingAngleX * newViewerOffset.vertical, 1, 0, 0)
         transform = CATransform3DRotate(transform, viewingAngleY * -newViewerOffset.horizontal, 0, 1, 0)

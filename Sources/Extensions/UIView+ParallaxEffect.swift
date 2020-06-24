@@ -55,7 +55,10 @@ extension UIView: AnyParallaxableView {
             horizontalGlowEffect.maximumRelativeValue = bounds.width-glowImageView.frame.width/4
             
             let glowMotionGroup = UIMotionEffectGroup()
-            glowMotionGroup.motionEffects = [horizontalGlowEffect, verticalGlowEffect]
+            glowMotionGroup.motionEffects = [
+                horizontalGlowEffect.decorateWithSkipFirstOffset(),
+                verticalGlowEffect.decorateWithSkipFirstOffset()
+            ]
             
             glowImageView.addMotionEffect(glowMotionGroup)
         }
@@ -64,19 +67,22 @@ extension UIView: AnyParallaxableView {
         motionGroup.motionEffects = []
         
         // Add parallax effect
-        motionGroup.motionEffects?.append(options.parallaxMotionEffect)
+        motionGroup.motionEffects?.append(options.parallaxMotionEffect.decorateWithSkipFirstOffset())
         
         // Configure shadow pan motion effect
         if options.shadowPanDeviation != 0 {
             let veriticalShadowEffect = UIInterpolatingMotionEffect(keyPath: "layer.shadowOffset.height", type: .tiltAlongVerticalAxis)
             veriticalShadowEffect.minimumRelativeValue = -options.shadowPanDeviation
-            veriticalShadowEffect.maximumRelativeValue = options.shadowPanDeviation/2
+            veriticalShadowEffect.maximumRelativeValue = options.shadowPanDeviation
             
             let horizontalShadowEffect = UIInterpolatingMotionEffect(keyPath: "layer.shadowOffset.width", type: .tiltAlongHorizontalAxis)
             horizontalShadowEffect.minimumRelativeValue = -options.shadowPanDeviation
             horizontalShadowEffect.maximumRelativeValue = options.shadowPanDeviation
             
-            motionGroup.motionEffects?.append(contentsOf: [veriticalShadowEffect, horizontalShadowEffect])
+            motionGroup.motionEffects?.append(contentsOf: [
+                veriticalShadowEffect.decorateWithSkipFirstOffset(),
+                horizontalShadowEffect.decorateWithSkipFirstOffset()
+            ])
         }
         
         addMotionEffect(motionGroup)
@@ -108,7 +114,10 @@ extension UIView: AnyParallaxableView {
                     horizontalSubviewEffect.maximumRelativeValue = relativePanValue
                     
                     let group = UIMotionEffectGroup()
-                    group.motionEffects = [verticalSubviewEffect, horizontalSubviewEffect]
+                    group.motionEffects = [
+                        verticalSubviewEffect.decorateWithSkipFirstOffset(),
+                        horizontalSubviewEffect.decorateWithSkipFirstOffset()
+                    ]
                     subview.addMotionEffect(group)
             }
         }
