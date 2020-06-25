@@ -20,6 +20,7 @@ class CollectionViewCell: ParallaxCollectionViewCell {
         parallaxEffectOptions.parallaxMotionEffect.viewingAngleX = CGFloat(Double.pi/4/30)
         parallaxEffectOptions.parallaxMotionEffect.viewingAngleY = CGFloat(Double.pi/4/30)
         parallaxEffectOptions.parallaxMotionEffect.panValue = CGFloat(10)
+        parallaxEffectOptions.glowPosition = .center
 
         // You can customise parallax view standard behaviours using parallaxViewActions property.
         // Do not forget to use weak self if needed to void retain cycle

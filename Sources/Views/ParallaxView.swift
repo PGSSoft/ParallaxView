@@ -56,20 +56,11 @@ open class ParallaxView: UIView, ParallaxableView {
     open override func layoutSubviews() {
         super.layoutSubviews()
 
-        guard let glowEffectContainerView = parallaxEffectOptions.glowContainerView else { return }
+        guard let glowEffectContainerView = parallaxEffectOptions.glowContainerView,
+              let glowImageView = getGlowImageView()
+        else { return }
 
-        if glowEffectContainerView != self, let glowSuperView = glowEffectContainerView.superview {
-            glowEffectContainerView.frame = glowSuperView.bounds
-        }
-
-        let maxSize = max(glowEffectContainerView.frame.width, glowEffectContainerView.frame.height)*1.7
-        // Make glow a litte bit bigger than the superview
-
-        guard let glowImageView = getGlowImageView() else { return }
-
-        glowImageView.frame = CGRect(x: 0, y: 0, width: maxSize, height: maxSize)
-        // Position in the middle and under the top edge of the superview
-        glowImageView.center = CGPoint(x: glowEffectContainerView.frame.width/2, y: -glowImageView.frame.height)
+        parallaxEffectOptions.glowPosition.layout(glowEffectContainerView, glowImageView)
     }
 
     // MARK: UIResponder

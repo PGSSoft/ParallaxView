@@ -30,19 +30,17 @@ extension UIView: AnyParallaxableView {
         if let glowContainerView = options.glowContainerView {
             // Need to clip to bounds because of the glow effect
             glowContainerView.clipsToBounds = true
-            
             // Configure glow image
             let glowImageView = options.glowImageView
+            UIView.performWithoutAnimation {
+                glowImageView.alpha = 0
+            }
             glowImageView.alpha = CGFloat(options.glowAlpha)
             glowContainerView.addSubview(glowImageView)
             
             // Configure frame of the glow effect without animation
             UIView.performWithoutAnimation {
-                let maxSize = max(glowContainerView.frame.width, glowContainerView.frame.height)*1.7
-                // Make glow a litte bit bigger than the superview
-                glowImageView.frame = CGRect(x: 0, y: 0, width: maxSize, height: maxSize)
-                // Position in the middle and under the top edge of the superview
-                glowImageView.center = CGPoint(x: glowContainerView.frame.width/2, y: -glowImageView.frame.height)
+                options.glowPosition.layout(glowContainerView, glowImageView)
             }
             
             // Configure pan motion effect for the glow
@@ -59,8 +57,10 @@ extension UIView: AnyParallaxableView {
                 horizontalGlowEffect.decorateWithSkipFirstOffset(),
                 verticalGlowEffect.decorateWithSkipFirstOffset()
             ]
-            
-            glowImageView.addMotionEffect(glowMotionGroup)
+
+            UIView.performWithoutAnimation {
+                glowImageView.addMotionEffect(glowMotionGroup.decorateWithSkipFirstOffset())
+            }
         }
         
         let motionGroup = UIMotionEffectGroup()
@@ -132,7 +132,17 @@ extension UIView: AnyParallaxableView {
         }
 
         options?.glowImageView.motionEffects.removeAll()
-        options?.glowImageView.removeFromSuperview()
+        options?.glowImageView.alpha = 0
+
+        UIView.animate(
+            withDuration: UIView.inheritedAnimationDuration,
+            animations: {
+                options?.glowImageView.transform = .init(scaleX: 1.01, y: 1.01)
+        }, completion: { _ in
+            options?.glowImageView.transform = .identity
+            guard !self.isFocused else { return }
+            options?.glowImageView.removeFromSuperview()
+        })
     }
     
 }

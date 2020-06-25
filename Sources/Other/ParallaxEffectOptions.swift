@@ -22,15 +22,21 @@ public struct ParallaxEffectOptions {
     /// Custom container view that will be usead to apply subviews parallax effect
     public var parallaxSubviewsContainer: UIView?
     /// A view that will be a container for the glow effect
-    public weak var glowContainerView: UIView?
+    public weak var glowContainerView: UIView? {
+        didSet { oldValue?.removeFromSuperview() }
+    }
     /// Minimum vertical value at the most top position can be adjusted by this multipler
     public var minVerticalPanGlowMultipler: Double = 0.2
     /// Maximum vertical value at the most bottom position can be adjusted by this multipler
     public var maxVerticalPanGlowMultipler: Double = 1.55
     /// Alpha of the glow image view
-    public var glowAlpha: Double = 1.0
+    public var glowAlpha: Double = 1.0 {
+        didSet { self.glowImageView.alpha = CGFloat(glowAlpha) }
+    }
     /// Glow effect image view
     public var glowImageView: UIImageView = ParallaxEffectOptions.defaultGlowImageView()
+    /// Glow position
+    public var glowPosition: GlowPosition = .top
 
     /// Constructor
     ///
@@ -42,6 +48,31 @@ public struct ParallaxEffectOptions {
         self.glowContainerView = glowContainerView
     }
     
+}
+
+extension ParallaxEffectOptions {
+
+    public struct GlowPosition {
+        let layout: (UIView, UIImageView) -> Void
+
+        public static let top: GlowPosition = .init(layout: { (glowEffectContainerView, glowImageView) in
+            if let glowSuperView = glowEffectContainerView.superview {
+                glowEffectContainerView.frame = glowSuperView.bounds
+            }
+
+            // Make glow a litte bit bigger than the superview
+            let maxSize = max(glowEffectContainerView.frame.width, glowEffectContainerView.frame.height)*1.7
+            glowImageView.frame = CGRect(x: 0, y: 0, width: maxSize, height: maxSize)
+
+            // Position in the middle and under the top edge of the superview
+            glowImageView.center = CGPoint(x: glowEffectContainerView.frame.width/2, y: -glowImageView.frame.height)
+        })
+
+        public static let center: GlowPosition = .init(layout: { (glowEffectContainerView, glowImageView) in
+            GlowPosition.top.layout(glowEffectContainerView, glowImageView)
+            glowImageView.center = CGPoint(x: glowEffectContainerView.frame.width/2, y: -glowImageView.frame.height/2)
+        })
+    }
 }
 
 internal let glowImageAccessibilityIdentifier = "com.pgs-soft.parallaxview.gloweffect"
