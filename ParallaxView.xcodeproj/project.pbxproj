@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3591CF6524A37EC6001C0C27 /* SkipFirstOffsetInterpolatingMotionEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3591CF6424A37EC6001C0C27 /* SkipFirstOffsetInterpolatingMotionEffect.swift */; };
-		C851AC781CE068E900EA3A71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C851AC771CE068E900EA3A71 /* Assets.xcassets */; };
+		38B0EDD824D84F4B00B5C939 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38B0EDD724D84F4B00B5C939 /* Assets.xcassets */; };
 		C8AFF06D1CE1FA0E00A78342 /* ParallaxableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AFF0671CE1FA0E00A78342 /* ParallaxableView.swift */; };
 		C8AFF06F1CE1FA0E00A78342 /* ParallaxCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AFF0691CE1FA0E00A78342 /* ParallaxCollectionViewCell.swift */; };
 		C8AFF0701CE1FA0E00A78342 /* ParallaxMotionEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AFF06A1CE1FA0E00A78342 /* ParallaxMotionEffect.swift */; };
@@ -22,7 +22,8 @@
 
 /* Begin PBXFileReference section */
 		3591CF6424A37EC6001C0C27 /* SkipFirstOffsetInterpolatingMotionEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkipFirstOffsetInterpolatingMotionEffect.swift; sourceTree = "<group>"; };
-		C851AC771CE068E900EA3A71 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		38A9F80224D842BC001E8F9C /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = SOURCE_ROOT; };
+		38B0EDD724D84F4B00B5C939 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C8AFF0671CE1FA0E00A78342 /* ParallaxableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParallaxableView.swift; sourceTree = "<group>"; };
 		C8AFF0691CE1FA0E00A78342 /* ParallaxCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParallaxCollectionViewCell.swift; sourceTree = "<group>"; };
 		C8AFF06A1CE1FA0E00A78342 /* ParallaxMotionEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParallaxMotionEffect.swift; sourceTree = "<group>"; };
@@ -47,10 +48,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C851AC761CE068D400EA3A71 /* Resources */ = {
+		38A9F80124D84273001E8F9C /* Configs */ = {
 			isa = PBXGroup;
 			children = (
-				C851AC771CE068E900EA3A71 /* Assets.xcassets */,
+				38A9F80224D842BC001E8F9C /* Package.swift */,
+				C8F1DB3C1CDCC4400043B419 /* Info-tvOS.plist */,
+			);
+			path = Configs;
+			sourceTree = "<group>";
+		};
+		38B0EDD624D84F4B00B5C939 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				38B0EDD724D84F4B00B5C939 /* Assets.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -58,8 +68,8 @@
 		C8F1DB2B1CDCC3D60043B419 = {
 			isa = PBXGroup;
 			children = (
+				38A9F80124D84273001E8F9C /* Configs */,
 				C8F1DB401CDCC4720043B419 /* Sources */,
-				C851AC761CE068D400EA3A71 /* Resources */,
 				C8F1DB381CDCC4400043B419 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -76,10 +86,10 @@
 			isa = PBXGroup;
 			children = (
 				C8F1DB3A1CDCC4400043B419 /* ParallaxView tvOS.h */,
-				C8F1DB3C1CDCC4400043B419 /* Info-tvOS.plist */,
 				C8F2C6D11D11709D003C0E1A /* Extensions */,
 				C8F2C6D41D11714E003C0E1A /* Other */,
 				C8F2C6D31D117135003C0E1A /* Views */,
+				38B0EDD624D84F4B00B5C939 /* Resources */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -183,7 +193,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C851AC781CE068E900EA3A71 /* Assets.xcassets in Resources */,
+				38B0EDD824D84F4B00B5C939 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,7 +326,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Sources/Info-tvOS.plist";
+				INFOPLIST_FILE = "Configs/Info-tvOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -371,7 +381,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Sources/Info-tvOS.plist";
+				INFOPLIST_FILE = "Configs/Info-tvOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;

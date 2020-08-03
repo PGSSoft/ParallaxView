@@ -5,6 +5,7 @@
 [![Swift 5.0](https://img.shields.io/badge/Swift-5.0-orange.svg?style=flat)](https://swift.org/)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/ParallaxView.svg)](https://cocoapods.org/pods/ParallaxView)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![SPM Compatible](https://img.shields.io/badge/SPM-supported-DE5C43.svg?style=flat)](https://swift.org/package-manager/)
 [![Platform](https://img.shields.io/cocoapods/p/ParallaxView.svg)](http://cocoadocs.org/docsets/ParallaxView)
 [![License](https://img.shields.io/cocoapods/l/ParallaxView.svg)](https://github.com/PGSSoft/ParallaxView/LICENSE.md)
 
@@ -83,27 +84,47 @@ Swift 5.0, tvOS 9.0
 
 ## Installation
 
-The most convenient way to install it is by using [Cocoapods](https://cocoapods.org/) with Podfile:
+* #### [CocoaPods](https://cocoapods.org/)
+
+Add line to Podfile 
 
 ```ruby
-pod 'ParallaxView'
+# ...
+target 'MyApp' do
+  # your other pod
+  # ...
+  pod 'ParallaxView'
+end
+# ...
 ```
 
-or using [Carthage](https://github.com/Carthage/Carthage) and add a line to `Cartfile`:
+* #### [Carthage](https://github.com/Carthage/Carthage)
+
+Add a line to `Cartfile`:
 
 ```
 github "PGSSoft/ParallaxView"
 ```
+
+* #### [Swift Package Manager (SPM)](https://swift.org/package-manager/)
+
+**Xcode 12 (Swift 5.3) required!**
+
+In Xcode: 
+
+***Select File > Swift Packages > Add Package Dependency. Enter https://github.com/PGSSoft/ParallaxView***
+
+If you would like to check more details please visit the Apple's [documentation](https://developer.apple.com/documentation/xcode/adding_package_dependencies_to_your_app)
+
+* #### Manual
+
+You can download the latest files from our [Releases page](https://github.com/PGSSoft/ParallaxView/releases). After doing so, drag `ParallaxView.xcodeproj` into your project in Xcode, and for your project target on ***General*** tab in ***Embedded Binaries*** section add `ParallaxView.framework`. Example project is configured the same way, so you have the crib sheet.
 
 ## Usage
 
 ```swift
 import ParallaxView
 ```
-
-#### Manual
-
-You can download the latest files from our [Releases page](https://github.com/PGSSoft/ParallaxView/releases). After doing so, drag `ParallaxView.xcodeproj` into your project in Xcode, and for your project target on ***General*** tab in ***Embedded Binaries*** section add `ParallaxView.framework`. Example project is configured the same way, so you have the crib sheet.
 
 
 ## Contributing

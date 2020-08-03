@@ -32,5 +32,8 @@ xcuserdata
 ## Carthage
 Carthage/Build
 
+## SPM
+.swiftpm
+
 ## Custom
 *.mov

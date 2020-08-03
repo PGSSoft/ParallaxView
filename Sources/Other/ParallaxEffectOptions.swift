@@ -81,7 +81,13 @@ internal let glowImageAccessibilityIdentifier = "com.pgs-soft.parallaxview.glowe
 extension ParallaxEffectOptions {
     
     static func defaultGlowImageView() -> UIImageView {
-        if case let bundle = Bundle(for: ParallaxView.self), let glowImage = UIImage(named: "gloweffect", in: bundle, compatibleWith: nil) {
+        #if SWIFT_PACKAGE
+        let bundle = Bundle.module
+        #else
+        let bundle = Bundle(for: ParallaxView.self)
+        #endif
+
+        if let glowImage = UIImage(named: "gloweffect", in: bundle, compatibleWith: nil) {
             glowImage.accessibilityIdentifier = glowImageAccessibilityIdentifier
             let imageView = UIImageView(image: glowImage)
             imageView.contentMode = .scaleAspectFit
