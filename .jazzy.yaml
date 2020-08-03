@@ -3,4 +3,4 @@
 copyright: Copyright 2020 PGS Software
 xcodebuild_arguments: [-target, ParallaxView tvOS]
 clean: true
-output: .
+output: ./docs

@@ -7,6 +7,9 @@
 
 import UIKit
 
+
+/// A UIMotionEffect subclass that makes parallax motion effect by applying custom transformation.
+/// Allows to customize the motion effect.
 open class ParallaxMotionEffect: UIMotionEffect {
 
     // MARK: Properties

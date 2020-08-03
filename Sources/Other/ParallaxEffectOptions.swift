@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// A type that allows to customize parallax effet
 public struct ParallaxEffectOptions {
     
     /// Property allow to customize parallax effect (pan, angles, etc.)
