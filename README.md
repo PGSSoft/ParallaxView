@@ -1,4 +1,4 @@
-![PGS Software](Assets/pgssoft-logo.png) 
+![PGS Software](https://github.com/PGSSoft/ParallaxView/raw/master/Assets/pgssoft-logo.png) 
 
 # ParallaxView
 
@@ -13,8 +13,8 @@
 
 **Easy to use `UIView`, `UICollectionViewCell` with parallax effect and extensions to add this effect to any `UIView`. Rotate view using Apple TV remote. Works confusingly similar to tiles in the home screen of the Apple TV.**
 
-![ParallaxView](Assets/parallax_view.gif)
-![ParallaxView](Assets/parallax_collection_view_cell.gif)
+![ParallaxView](https://github.com/PGSSoft/ParallaxView/raw/master/Assets/parallax_view.gif)
+![ParallaxView](https://github.com/PGSSoft/ParallaxView/raw/master/Assets/parallax_collection_view_cell.gif)
 
 ### ParallaxView
 
@@ -52,6 +52,8 @@ For more details look into example.
 ## Customisation
 
 The component is documented in code, also look into example for more details.
+
+[Documentation](https://pgssoft.github.io/ParallaxView/)
 
 ### Properties
 
