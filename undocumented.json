@@ -1,0 +1,187 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/runner/work/ParallaxView/ParallaxView/Sources/Extensions/UIView+ParallaxEffect.swift",
+      "line": 13,
+      "symbol": "AnyParallaxableView.addParallaxMotionEffects()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/ParallaxView/ParallaxView/Sources/Extensions/UIView+ParallaxEffect.swift",
+      "line": 14,
+      "symbol": "AnyParallaxableView.addParallaxMotionEffects(with:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/ParallaxView/ParallaxView/Sources/Extensions/UIView+ParallaxEffect.swift",
+      "line": 15,
+      "symbol": "AnyParallaxableView.removeParallaxMotionEffects(with:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/ParallaxView/ParallaxView/Sources/Other/ParallaxEffectOptions.swift",
+      "line": 56,
+      "symbol": "ParallaxEffectOptions.GlowPosition",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/ParallaxView/ParallaxView/Sources/Other/ParallaxEffectOptions.swift",
+      "line": 59,
+      "symbol": "ParallaxEffectOptions.GlowPosition.top",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/ParallaxView/ParallaxView/Sources/Other/ParallaxEffectOptions.swift",
+      "line": 72,
+      "symbol": "ParallaxEffectOptions.GlowPosition.center",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/ParallaxView/ParallaxView/Sources/Other/ParallaxMotionEffect.swift",
+      "line": 34,
+      "symbol": "ParallaxMotionEffect.keyPathsAndRelativeValues(forViewerOffset:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/ParallaxView/ParallaxView/Sources/Views/ParallaxCollectionViewCell.swift",
+      "line": 19,
+      "symbol": "ParallaxCollectionViewCell.parallaxViewActions",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/ParallaxView/ParallaxView/Sources/Views/ParallaxCollectionViewCell.swift",
+      "line": 23,
+      "symbol": "ParallaxCollectionViewCell.init(frame:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/ParallaxView/ParallaxView/Sources/Views/ParallaxCollectionViewCell.swift",
+      "line": 30,
+      "symbol": "ParallaxCollectionViewCell.init(coder:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/ParallaxView/ParallaxView/Sources/Views/ParallaxCollectionViewCell.swift",
+      "line": 79,
+      "symbol": "ParallaxCollectionViewCell.layoutSubviews()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/ParallaxView/ParallaxView/Sources/Views/ParallaxCollectionViewCell.swift",
+      "line": 93,
+      "symbol": "ParallaxCollectionViewCell.pressesBegan(_:with:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/ParallaxView/ParallaxView/Sources/Views/ParallaxCollectionViewCell.swift",
+      "line": 99,
+      "symbol": "ParallaxCollectionViewCell.pressesCancelled(_:with:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/ParallaxView/ParallaxView/Sources/Views/ParallaxCollectionViewCell.swift",
+      "line": 105,
+      "symbol": "ParallaxCollectionViewCell.pressesEnded(_:with:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/ParallaxView/ParallaxView/Sources/Views/ParallaxCollectionViewCell.swift",
+      "line": 111,
+      "symbol": "ParallaxCollectionViewCell.pressesChanged(_:with:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/ParallaxView/ParallaxView/Sources/Views/ParallaxCollectionViewCell.swift",
+      "line": 117,
+      "symbol": "ParallaxCollectionViewCell.didUpdateFocus(in:with:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/ParallaxView/ParallaxView/Sources/Views/ParallaxView.swift",
+      "line": 18,
+      "symbol": "ParallaxView.parallaxViewActions",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/ParallaxView/ParallaxView/Sources/Views/ParallaxView.swift",
+      "line": 22,
+      "symbol": "ParallaxView.init(frame:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/ParallaxView/ParallaxView/Sources/Views/ParallaxView.swift",
+      "line": 29,
+      "symbol": "ParallaxView.init(coder:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/ParallaxView/ParallaxView/Sources/Views/ParallaxView.swift",
+      "line": 52,
+      "symbol": "ParallaxView.canBecomeFocused",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/ParallaxView/ParallaxView/Sources/Views/ParallaxView.swift",
+      "line": 56,
+      "symbol": "ParallaxView.layoutSubviews()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/ParallaxView/ParallaxView/Sources/Views/ParallaxView.swift",
+      "line": 70,
+      "symbol": "ParallaxView.pressesBegan(_:with:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/ParallaxView/ParallaxView/Sources/Views/ParallaxView.swift",
+      "line": 76,
+      "symbol": "ParallaxView.pressesCancelled(_:with:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/ParallaxView/ParallaxView/Sources/Views/ParallaxView.swift",
+      "line": 82,
+      "symbol": "ParallaxView.pressesEnded(_:with:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/ParallaxView/ParallaxView/Sources/Views/ParallaxView.swift",
+      "line": 88,
+      "symbol": "ParallaxView.pressesChanged(_:with:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/ParallaxView/ParallaxView/Sources/Views/ParallaxView.swift",
+      "line": 94,
+      "symbol": "ParallaxView.didUpdateFocus(in:with:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/runner/work/ParallaxView/ParallaxView"
+}

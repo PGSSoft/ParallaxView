@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ParallaxView  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+    <script src="js/lunr.min.js" defer></script>
+    <script src="js/typeahead.jquery.js" defer></script>
+    <script src="js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+    <a title="ParallaxView  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">ParallaxView 3.1.2 Docs</a> (65% documented)</p>
+        <p class="header-right">
+          <form role="search" action="search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">ParallaxView Reference</a>
+        <img id="carat" src="img/carat.png" />
+        ParallaxView  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/ParallaxCollectionViewCell.html">ParallaxCollectionViewCell</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ParallaxMotionEffect.html">ParallaxMotionEffect</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ParallaxView.html">ParallaxView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ParallaxViewActions.html">ParallaxViewActions</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/SubviewsParallaxMode.html">SubviewsParallaxMode</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Extensions/UIView.html">UIView</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/AnyParallaxableView.html">AnyParallaxableView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/ParallaxableView.html">ParallaxableView</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs/ParallaxEffectOptions.html">ParallaxEffectOptions</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/ParallaxEffectOptions/GlowPosition.html">– GlowPosition</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            
+            <p><img src="https://github.com/PGSSoft/ParallaxView/raw/master/Assets/pgssoft-logo.png" alt="PGS Software"> </p>
+<h1 id='parallaxview' class='heading'>ParallaxView</h1>
+
+<p><a href="https://swift.org/"><img src="https://img.shields.io/badge/Swift-5.0-orange.svg?style=flat" alt="Swift 5.0"></a>
+<a href="https://cocoapods.org/pods/ParallaxView"><img src="https://img.shields.io/cocoapods/v/ParallaxView.svg" alt="CocoaPods Compatible"></a>
+<a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage Compatible"></a>
+<a href="https://swift.org/package-manager/"><img src="https://img.shields.io/badge/SPM-supported-DE5C43.svg?style=flat" alt="SPM Compatible"></a>
+<a href="http://cocoadocs.org/docsets/ParallaxView"><img src="https://img.shields.io/cocoapods/p/ParallaxView.svg" alt="Platform"></a>
+<a href="https://github.com/PGSSoft/ParallaxView/LICENSE.md"><img src="https://img.shields.io/cocoapods/l/ParallaxView.svg" alt="License"></a></p>
+<h2 id='summary' class='heading'>Summary</h2>
+
+<p><strong>Easy to use <code>UIView</code>, <code>UICollectionViewCell</code> with parallax effect and extensions to add this effect to any <code>UIView</code>. Rotate view using Apple TV remote. Works confusingly similar to tiles in the home screen of the Apple TV.</strong></p>
+
+<p><img src="https://github.com/PGSSoft/ParallaxView/raw/master/Assets/parallax_view.gif" alt="ParallaxView">
+<img src="https://github.com/PGSSoft/ParallaxView/raw/master/Assets/parallax_collection_view_cell.gif" alt="ParallaxView"></p>
+<h3 id='parallaxview' class='heading'>ParallaxView</h3>
+
+<p>Open your storyboard or xib and drag and drop <code>UIView</code> control.
+Change custom class to <code><a href="Classes/ParallaxView.html">ParallaxView</a></code> in <em>Identity inspector</em>.
+You can also create control from code.</p>
+<h3 id='parallaxcollectionviewcell' class='heading'>ParallaxCollectionViewCell</h3>
+
+<p>In <em>Interface builder</em> change collection view cell class to <code><a href="Classes/ParallaxCollectionViewCell.html">ParallaxCollectionViewCell</a></code> or do it from code.</p>
+
+<p>You can also create subclass of <code><a href="Classes/ParallaxCollectionViewCell.html">ParallaxCollectionViewCell</a></code> insted of <code>UICollectionViewCell</code> and use it as normal collection view cell.</p>
+<h3 id='extension' class='heading'>Extension</h3>
+
+<p>If <code><a href="Classes/ParallaxView.html">ParallaxView</a></code> and <code><a href="Classes/ParallaxCollectionViewCell.html">ParallaxCollectionViewCell</a></code> don&rsquo;t fit to your needs you can use extension that can be used with any <code>UIView</code>. In many cases it can look like in this example:</p>
+<pre class="highlight swift"><code><span class="k">override</span> <span class="kd">func</span> <span class="nf">didUpdateFocus</span><span class="p">(</span><span class="k">in</span> <span class="nv">context</span><span class="p">:</span> <span class="kt">UIFocusUpdateContext</span><span class="p">,</span> <span class="n">with</span> <span class="nv">coordinator</span><span class="p">:</span> <span class="kt">UIFocusAnimationCoordinator</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">coordinator</span><span class="o">.</span><span class="nf">addCoordinatedAnimations</span><span class="p">({</span>
+        <span class="k">if</span> <span class="n">context</span><span class="o">.</span><span class="n">nextFocusedView</span> <span class="o">===</span> <span class="n">yourCustomView</span> <span class="p">{</span>
+            <span class="n">yourCustomView</span><span class="o">.</span><span class="nf">addParallaxMotionEffects</span><span class="p">()</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="n">context</span><span class="o">.</span><span class="n">previouslyFocusedView</span> <span class="o">===</span> <span class="n">yourCustomView</span> <span class="p">{</span>
+            <span class="n">yourCustomView</span><span class="o">.</span><span class="nf">removeParallaxMotionEffects</span><span class="p">()</span>
+        <span class="p">}</span>
+    <span class="p">},</span> <span class="nv">completion</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>It is important to add and remove parallax effect inside the animation block to avoid the glitches.
+<code><a href="Classes/ParallaxView.html">ParallaxView</a></code> and <code><a href="Classes/ParallaxCollectionViewCell.html">ParallaxCollectionViewCell</a></code> internally use the same methods.
+For more details look into example.</p>
+<h2 id='customisation' class='heading'>Customisation</h2>
+
+<p>The component is documented in code, also look into example for more details.</p>
+
+<p><a href="https://pgssoft.github.io/ParallaxView/">Documentation</a></p>
+<h3 id='properties' class='heading'>Properties</h3>
+
+<p><code><a href="Classes/ParallaxView.html">ParallaxView</a></code> and <code><a href="Classes/ParallaxCollectionViewCell.html">ParallaxCollectionViewCell</a></code> have the same properties for customisation.</p>
+
+<ul>
+<li><code>parallaxEffectOptions</code> - using this property you can customize parallax effect.
+
+<ul>
+<li><code>parallaxMotionEffect</code> - configure parallax effect (pan, angles, etc.)</li>
+<li><code>subviewsParallaxMode</code> - enum that allow you to configure parallax effect for subviews of the <code><a href="Classes/ParallaxView.html">ParallaxView</a></code></li>
+<li><code>shadowPanDeviation</code> - maximal value of points that shadow of the <code><a href="Classes/ParallaxView.html">ParallaxView</a></code> will be moved during parallax effect</li>
+<li><code>glowAlpha</code> - configure alpha of the glow effect (if is equal to 0.0 then the glow effect will be not added)</li>
+<li><code>parallaxSubviewsContainer</code> - custom container view that will be usead to apply subviews parallax effect. By default it will be parallaxable view by itself.</li>
+<li><code>glowContainerView</code> - view that will be used as the container for the glow effect. You don&rsquo;t have to configure this because for <code><a href="Classes/ParallaxView.html">ParallaxView</a></code> it will be automatically created a subview for this purpose, while for <code><a href="Classes/ParallaxCollectionViewCell.html">ParallaxCollectionViewCell</a></code> it will be used <code>contentView</code> of the cell. Also by default it is nil when you use extension (<code>self</code> will be used as the glow container but only if <code>glowAlpha</code> is bigger than 0.0). But if you want to, you can define custom view - look into example project for more details.</li>
+<li><code>glowImageView</code> - image view that will be used as the glow effect. <code><a href="Classes/ParallaxView.html">ParallaxView</a></code> framework provides default image that will be set.</li>
+</ul></li>
+<li><p><code>glowPosition</code> - (<code>.top</code> default) - allows to customize position of the glow effect related to the <code>glowImageContainer</code>. You can provide custom setup by creating <code>GlowPosition</code> instance. </p></li>
+<li><p><code>parallaxViewActions</code> - use properties of this property to change default behaviours of the parallax view. Internally both <code><a href="Classes/ParallaxView.html">ParallaxView</a></code> and <code><a href="Classes/ParallaxCollectionViewCell.html">ParallaxCollectionViewCell</a></code> calls callbacks.</p>
+
+<ul>
+<li><code>setupUnfocusedState</code> - closure will be called in animation block when view should change its appearance to the focused state</li>
+<li><code>setupFocusedState</code> - closure will be called in animation block when view should change its appearance to the unfocused state</li>
+<li><code>beforeBecomeFocusedAnimation</code> - closure will be called before the animation to the focused change start</li>
+<li><code>beforeResignFocusAnimation</code> - closure will be called before the animation to the unfocused change start</li>
+<li><code>becomeFocused</code> - closure will be called when didFocusChange happened. In most cases default implementation should work</li>
+<li><code>resignFocus</code> - closure will be called when didFocusChange happened. In most cases default implementation should work.</li>
+<li><code>animatePressIn</code> - default implementation of the press begin animation</li>
+<li><code>animatePressOut</code> - default implementation of the press ended animation</li>
+</ul></li>
+<li><p><code>cornerRadius</code> - use this value insted of <code>self.view.layer.cornerRadius</code>. This will automatically correct radius for glow effect view if it is necessary</p></li>
+</ul>
+<h2 id='requirements' class='heading'>Requirements</h2>
+
+<p>Swift 5.0, tvOS 9.0</p>
+<h2 id='installation' class='heading'>Installation</h2>
+
+<ul>
+<li>#### <a href="https://cocoapods.org/">CocoaPods</a></li>
+</ul>
+
+<p>Add line to Podfile </p>
+<pre class="highlight ruby"><code><span class="c1"># ...</span>
+<span class="n">target</span> <span class="s1">'MyApp'</span> <span class="k">do</span>
+  <span class="c1"># your other pod</span>
+  <span class="c1"># ...</span>
+  <span class="n">pod</span> <span class="s1">'ParallaxView'</span>
+<span class="k">end</span>
+<span class="c1"># ...</span>
+</code></pre>
+
+<ul>
+<li>#### <a href="https://github.com/Carthage/Carthage">Carthage</a></li>
+</ul>
+
+<p>Add a line to <code>Cartfile</code>:</p>
+<pre class="highlight plaintext"><code>github "PGSSoft/ParallaxView"
+</code></pre>
+
+<ul>
+<li>#### <a href="https://swift.org/package-manager/">Swift Package Manager (SPM)</a></li>
+</ul>
+
+<p><strong>Xcode 12 (Swift 5.3) required!</strong></p>
+
+<p>In Xcode: </p>
+
+<p><strong><em>Select File &gt; Swift Packages &gt; Add Package Dependency. Enter <a href="https://github.com/PGSSoft/ParallaxView">https://github.com/PGSSoft/ParallaxView</a></em></strong></p>
+
+<p>If you would like to check more details please visit the Apple&rsquo;s <a href="https://developer.apple.com/documentation/xcode/adding_package_dependencies_to_your_app">documentation</a></p>
+
+<ul>
+<li>#### Manual</li>
+</ul>
+
+<p>You can download the latest files from our <a href="https://github.com/PGSSoft/ParallaxView/releases">Releases page</a>. After doing so, drag <code>ParallaxView.xcodeproj</code> into your project in Xcode, and for your project target on <strong><em>General</em></strong> tab in <strong><em>Embedded Binaries</em></strong> section add <code>ParallaxView.framework</code>. Example project is configured the same way, so you have the crib sheet.</p>
+<h2 id='usage' class='heading'>Usage</h2>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">ParallaxView</span>
+</code></pre>
+<h2 id='contributing' class='heading'>Contributing</h2>
+
+<p>Bug reports and pull requests are welcome on GitHub at <a href="https://github.com/PGSSoft/ParallaxView">https://github.com/PGSSoft/ParallaxView</a>.</p>
+<h2 id='license' class='heading'>License</h2>
+
+<p>The project is available as open source under the terms of the <a href="http://opensource.org/licenses/MIT">MIT License</a>.</p>
+<h2 id='about' class='heading'>About</h2>
+
+<p>The project maintained by <a href="https://www.pgs-soft.com/">software development agency</a> <a href="https://www.pgs-soft.com/">PGS Software</a>.
+See our other <a href="https://github.com/PGSSoft">open-source projects</a> or <a href="https://www.pgs-soft.com/contact-us/">contact us</a> to develop your product.</p>
+<h2 id='follow-us' class='heading'>Follow us</h2>
+
+<p><a href="https://twitter.com/intent/tweet?text=https://github.com/PGSSoft/InAppPurchaseButton"><img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social" alt="Twitter URL"></a><br>
+<a href="https://twitter.com/pgssoftware"><img src="https://img.shields.io/twitter/follow/pgssoftware.svg?style=social&label=Follow" alt="Twitter Follow"></a></p>
+
+          </section>
+        </section>
+        <section id="footer">
+          <p>Copyright 2020 PGS Software</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

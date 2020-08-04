@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ParallaxViewActions Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/ParallaxViewActions" class="dashAnchor"></a>
+    <a title="ParallaxViewActions Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">ParallaxView 3.1.2 Docs</a> (65% documented)</p>
+        <p class="header-right">
+          <form role="search" action="../search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">ParallaxView Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        ParallaxViewActions Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/ParallaxCollectionViewCell.html">ParallaxCollectionViewCell</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ParallaxMotionEffect.html">ParallaxMotionEffect</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ParallaxView.html">ParallaxView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ParallaxViewActions.html">ParallaxViewActions</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/SubviewsParallaxMode.html">SubviewsParallaxMode</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/UIView.html">UIView</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/AnyParallaxableView.html">AnyParallaxableView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ParallaxableView.html">ParallaxableView</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/ParallaxEffectOptions.html">ParallaxEffectOptions</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ParallaxEffectOptions/GlowPosition.html">– GlowPosition</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>ParallaxViewActions</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">ParallaxViewActions</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt">UIView</span><span class="p">,</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/ParallaxableView.html">ParallaxableView</a></span></code></pre>
+
+                </div>
+              </div>
+            <p>Actions for a parallax view</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12ParallaxView0aB7ActionsC19setupUnfocusedStateyxcSgvp"></a>
+                    <a name="//apple_ref/swift/Property/setupUnfocusedState" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12ParallaxView0aB7ActionsC19setupUnfocusedStateyxcSgvp">setupUnfocusedState</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Closure will be called in animation block by ParallaxableView when view should change its appearance to the focused state</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">setupUnfocusedState</span><span class="p">:</span> <span class="p">((</span><span class="kt">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12ParallaxView0aB7ActionsC17setupFocusedStateyxcSgvp"></a>
+                    <a name="//apple_ref/swift/Property/setupFocusedState" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12ParallaxView0aB7ActionsC17setupFocusedStateyxcSgvp">setupFocusedState</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Closure will be called in animation block by ParallaxableView when view should change its appearance to the unfocused state</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">setupFocusedState</span><span class="p">:</span> <span class="p">((</span><span class="kt">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12ParallaxView0aB7ActionsC28beforeBecomeFocusedAnimationyxcSgvp"></a>
+                    <a name="//apple_ref/swift/Property/beforeBecomeFocusedAnimation" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12ParallaxView0aB7ActionsC28beforeBecomeFocusedAnimationyxcSgvp">beforeBecomeFocusedAnimation</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Closure will be called by ParallaxableView before the animation to the focused state start</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">beforeBecomeFocusedAnimation</span><span class="p">:</span> <span class="p">((</span><span class="kt">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12ParallaxView0aB7ActionsC26beforeResignFocusAnimationyxcSgvp"></a>
+                    <a name="//apple_ref/swift/Property/beforeResignFocusAnimation" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12ParallaxView0aB7ActionsC26beforeResignFocusAnimationyxcSgvp">beforeResignFocusAnimation</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Closure will be called by ParallaxableView before the animation to the unfocused state start</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">beforeResignFocusAnimation</span><span class="p">:</span> <span class="p">((</span><span class="kt">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12ParallaxView0aB7ActionsC13becomeFocusedyx_So20UIFocusUpdateContextCSo0F20AnimationCoordinatorCtcSgvp"></a>
+                    <a name="//apple_ref/swift/Property/becomeFocused" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12ParallaxView0aB7ActionsC13becomeFocusedyx_So20UIFocusUpdateContextCSo0F20AnimationCoordinatorCtcSgvp">becomeFocused</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Closure will be called when didFocusChange happened. In most cases default implementation should work</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">becomeFocused</span><span class="p">:</span> <span class="p">((</span><span class="kt">T</span><span class="p">,</span> <span class="n">_</span> <span class="nv">context</span><span class="p">:</span> <span class="kt">UIFocusUpdateContext</span><span class="p">,</span> <span class="n">_</span> <span class="nv">animationCoordinator</span><span class="p">:</span> <span class="kt">UIFocusAnimationCoordinator</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12ParallaxView0aB7ActionsC11resignFocusyx_So20UIFocusUpdateContextCSo0F20AnimationCoordinatorCtcSgvp"></a>
+                    <a name="//apple_ref/swift/Property/resignFocus" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12ParallaxView0aB7ActionsC11resignFocusyx_So20UIFocusUpdateContextCSo0F20AnimationCoordinatorCtcSgvp">resignFocus</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Closure will be called when didFocusChange happened. In most cases default implementation should work</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">resignFocus</span><span class="p">:</span> <span class="p">((</span><span class="kt">T</span><span class="p">,</span> <span class="n">_</span> <span class="nv">context</span><span class="p">:</span> <span class="kt">UIFocusUpdateContext</span><span class="p">,</span> <span class="n">_</span> <span class="nv">animationCoordinator</span><span class="p">:</span> <span class="kt">UIFocusAnimationCoordinator</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12ParallaxView0aB7ActionsC14animatePressInyx_ShySo7UIPressCGSo14UIPressesEventCSgtcSgvp"></a>
+                    <a name="//apple_ref/swift/Property/animatePressIn" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12ParallaxView0aB7ActionsC14animatePressInyx_ShySo7UIPressCGSo14UIPressesEventCSgtcSgvp">animatePressIn</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Default implementation of the press begin animation for the ParallaxableView</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">animatePressIn</span><span class="p">:</span> <span class="p">((</span><span class="kt">T</span><span class="p">,</span> <span class="n">_</span> <span class="nv">presses</span><span class="p">:</span> <span class="kt">Set</span><span class="o">&lt;</span><span class="kt">UIPress</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">_</span> <span class="nv">event</span><span class="p">:</span> <span class="kt">UIPressesEvent</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12ParallaxView0aB7ActionsC15animatePressOutyx_ShySo7UIPressCGSo14UIPressesEventCSgtcSgvp"></a>
+                    <a name="//apple_ref/swift/Property/animatePressOut" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12ParallaxView0aB7ActionsC15animatePressOutyx_ShySo7UIPressCGSo14UIPressesEventCSgtcSgvp">animatePressOut</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Default implementation of the press ended animation for the ParallaxableView</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">animatePressOut</span><span class="p">:</span> <span class="p">((</span><span class="kt">T</span><span class="p">,</span> <span class="n">_</span> <span class="nv">presses</span><span class="p">:</span> <span class="kt">Set</span><span class="o">&lt;</span><span class="kt">UIPress</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">_</span> <span class="nv">event</span><span class="p">:</span> <span class="kt">UIPressesEvent</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12ParallaxView0aB7ActionsCACyxGycfc"></a>
+                    <a name="//apple_ref/swift/Method/init()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12ParallaxView0aB7ActionsCACyxGycfc">init()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates actions for parallax view with default behaviours</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>Copyright 2020 PGS Software</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
