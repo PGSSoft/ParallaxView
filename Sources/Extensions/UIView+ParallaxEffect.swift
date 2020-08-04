@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// A type of a view that can have parallax effect
 public protocol AnyParallaxableView {
     func addParallaxMotionEffects()
     func addParallaxMotionEffects(with options: inout ParallaxEffectOptions)
@@ -15,12 +16,15 @@ public protocol AnyParallaxableView {
 }
 
 extension UIView: AnyParallaxableView {
-    
+
+    /// Adds parallax motion effect to the view with default motion effect options
     public func addParallaxMotionEffects() {
         var options = ParallaxEffectOptions()
         addParallaxMotionEffects(with: &options)
     }
 
+    /// Adds parallax motion effect to the view with passed options
+    /// - Parameter options: Parallax motion effect options to customize the effect
     public func addParallaxMotionEffects(with options: inout ParallaxEffectOptions) {
         // If glow have to be visible and glowContainerView is not given then set it to self
         if options.glowContainerView == nil && options.glowAlpha > 0.0 {
@@ -122,7 +126,10 @@ extension UIView: AnyParallaxableView {
             }
         }
     }
-    
+
+    /// Removes parallax motion effect from the view
+    /// - Parameter options: If parallax motion effect was added with custom options, the same options should be
+    ///                      passed in this paramter to properly remove the effect
     public func removeParallaxMotionEffects(with options: ParallaxEffectOptions? = nil) {
         motionEffects.removeAll()
         (options?.parallaxSubviewsContainer ?? self).subviews

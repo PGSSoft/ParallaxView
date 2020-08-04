@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class SkipFirstOffsetInterpolatingMotionEffectDecorator: UIMotionEffect {
+internal final class SkipFirstOffsetInterpolatingMotionEffectDecorator: UIMotionEffect {
 
     private let decoratee: UIMotionEffect
     private var motionDidNotStart: Bool = true
@@ -27,11 +27,12 @@ final class SkipFirstOffsetInterpolatingMotionEffectDecorator: UIMotionEffect {
         if motionDidNotStart, viewerOffset.horizontal + viewerOffset.vertical != 0 {
             return nil
         }
+        
         return decoratee.keyPathsAndRelativeValues(forViewerOffset: viewerOffset)
     }
 }
 
-extension UIMotionEffect {
+internal extension UIMotionEffect {
 
     func decorateWithSkipFirstOffset() -> UIMotionEffect {
         return SkipFirstOffsetInterpolatingMotionEffectDecorator(decoratee: self)

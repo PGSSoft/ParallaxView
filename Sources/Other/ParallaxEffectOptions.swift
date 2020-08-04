@@ -8,10 +8,10 @@
 
 import UIKit
 
-/// A type that allows to customize parallax effet
+/// A type that allows to customize parallax effect
 public struct ParallaxEffectOptions {
     
-    /// Property allow to customize parallax effect (pan, angles, etc.)
+    /// A property to allow customize parallax effect (pan, angles, etc.)
     ///
     /// - seealso:
     ///  [ParallaxMotionEffect](ParallaxMotionEffect)
@@ -74,6 +74,7 @@ extension ParallaxEffectOptions {
             glowImageView.center = CGPoint(x: glowEffectContainerView.frame.width/2, y: -glowImageView.frame.height/2)
         })
     }
+
 }
 
 internal let glowImageAccessibilityIdentifier = "com.pgs-soft.parallaxview.gloweffect"

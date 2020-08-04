@@ -7,7 +7,7 @@
 
 import UIKit
 
-/// It provides default implementation of the parallax effect for the `UICollectionViewCell`.
+/// An object that provides default implementation of the parallax effect for the `UICollectionViewCell`.
 /// Most of the time you will subclass this class as you would with `UICollectionViewCell` to provide custom content.
 /// If you will override `init` method it is important to provide default setup for the unfocused state of the view
 /// e.g. `parallaxViewActions.setupUnfocusedState?(self)`

@@ -8,7 +8,8 @@
 
 import UIKit
 
-open class ParallaxViewActions<T: UIView> where T:ParallaxableView {
+/// Actions for a parallax view
+open class ParallaxViewActions<T: UIView> where T: ParallaxableView {
 
     /// Closure will be called in animation block by ParallaxableView when view should change its appearance to the focused state
     open var setupUnfocusedState: ((T) -> Void)?
@@ -27,20 +28,27 @@ open class ParallaxViewActions<T: UIView> where T:ParallaxableView {
     /// Default implementation of the press ended animation for the ParallaxableView
     open var animatePressOut: ((T, _ presses: Set<UIPress>, _ event: UIPressesEvent?) -> Void)?
 
+    /// Creates actions for parallax view with default behaviours
     public init() {
         becomeFocused = { [weak self] (view: T, context, coordinator) in
             self?.beforeBecomeFocusedAnimation?(view)
 
             if #available(tvOS 11.0, *) {
-                coordinator.addCoordinatedFocusingAnimations({ (context) in
-                    self?.setupFocusedState?(view)
-                    view.addParallaxMotionEffects(with: &view.parallaxEffectOptions)
-                }, completion: nil)
+                coordinator.addCoordinatedFocusingAnimations(
+                    { (context) in
+                        self?.setupFocusedState?(view)
+                        view.addParallaxMotionEffects(with: &view.parallaxEffectOptions)
+                    },
+                    completion: nil
+                )
             } else {
-                coordinator.addCoordinatedAnimations({
-                    view.addParallaxMotionEffects(with: &view.parallaxEffectOptions)
-                    self?.setupFocusedState?(view)
-                    }, completion: nil)
+                coordinator.addCoordinatedAnimations(
+                    {
+                        view.addParallaxMotionEffects(with: &view.parallaxEffectOptions)
+                        self?.setupFocusedState?(view)
+                    },
+                    completion: nil
+                )
             }
         }
 
@@ -48,24 +56,33 @@ open class ParallaxViewActions<T: UIView> where T:ParallaxableView {
             self?.beforeResignFocusAnimation?(view)
 
             if #available(tvOS 11.0, *) {
-                coordinator.addCoordinatedUnfocusingAnimations({ (context) in
-                    view.removeParallaxMotionEffects(with: view.parallaxEffectOptions)
-                    self?.setupUnfocusedState?(view)
-                }, completion: nil)
+                coordinator.addCoordinatedUnfocusingAnimations(
+                    { (context) in
+                        view.removeParallaxMotionEffects(with: view.parallaxEffectOptions)
+                        self?.setupUnfocusedState?(view)
+                    },
+                    completion: nil
+                )
             } else {
-                coordinator.addCoordinatedAnimations({
-                    view.removeParallaxMotionEffects(with: view.parallaxEffectOptions)
-                    self?.setupUnfocusedState?(view)
-                    }, completion: nil)
+                coordinator.addCoordinatedAnimations(
+                    {
+                        view.removeParallaxMotionEffects(with: view.parallaxEffectOptions)
+                        self?.setupUnfocusedState?(view)
+                    },
+                    completion: nil
+                )
             }
         }
 
         animatePressIn = { (view: T, presses, event) in
             for press in presses {
                 if case .select = press.type {
-                    UIView.animate(withDuration: 0.12, animations: {
-                        view.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
-                    })
+                    UIView.animate(
+                        withDuration: 0.12,
+                        animations: {
+                            view.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+                        }
+                    )
                 }
             }
         }
@@ -73,15 +90,18 @@ open class ParallaxViewActions<T: UIView> where T:ParallaxableView {
         animatePressOut = { [weak self] (view: T, presses, event) in
             for press in presses {
                 if case .select = press.type {
-                    UIView.animate(withDuration: 0.12, animations: {
-                        if view.isFocused {
-                            view.transform = CGAffineTransform.identity
-                            self?.setupFocusedState?(view)
-                        } else {
-                            view.transform = CGAffineTransform.identity
-                            self?.setupUnfocusedState?(view)
+                    UIView.animate(
+                        withDuration: 0.12,
+                        animations: {
+                            if view.isFocused {
+                                view.transform = CGAffineTransform.identity
+                                self?.setupFocusedState?(view)
+                            } else {
+                                view.transform = CGAffineTransform.identity
+                                self?.setupUnfocusedState?(view)
+                            }
                         }
-                    })
+                    )
                 }
             }
         }
@@ -89,12 +109,12 @@ open class ParallaxViewActions<T: UIView> where T:ParallaxableView {
 
 }
 
-public extension ParallaxableView where Self: UIView {
+extension ParallaxableView where Self: UIView {
 
     // MARK: Properties
 
-    /// Configure radius for parallaxView and glow effect if needed
-    var cornerRadius: CGFloat {
+    /// The corner radius for the parallax view and if applicable also applied to the glow effect
+    public var cornerRadius: CGFloat {
         get {
             return self.layer.cornerRadius
         }
@@ -102,7 +122,9 @@ public extension ParallaxableView where Self: UIView {
             self.layer.cornerRadius = newValue
 
             // Change the glowEffectContainerView corner radius only if it is a direct subview of the parallax view
-            if let glowEffectContainerView = parallaxEffectOptions.glowContainerView , self.subviews.contains(glowEffectContainerView) {
+            if let glowEffectContainerView = parallaxEffectOptions.glowContainerView,
+                self.subviews.contains(glowEffectContainerView)
+            {
                 glowEffectContainerView.layer.cornerRadius = newValue
             }
         }
@@ -110,19 +132,19 @@ public extension ParallaxableView where Self: UIView {
 
     // MARK: ParallaxableView
 
-    /**
-     Get the glow image view that can be used to create the glow effect
-
-     - returns: Image with radial gradient/shadow to imitate glow
-     */
-    func getGlowImageView() -> UIImageView? {
-        return parallaxEffectOptions.glowContainerView?.subviews.filter({ (view) -> Bool in
-            if let glowImageView = view as? UIImageView,
-                let glowImage = glowImageView.image , glowImage.accessibilityIdentifier == glowImageAccessibilityIdentifier {
-                return true
-            }
-            return false
-        }).first as? UIImageView
+    /// Get the glow image view that can be used to create the glow effect
+    /// - Returns: Image with radial gradient/shadow to imitate glow
+    public func getGlowImageView() -> UIImageView? {
+        return
+            parallaxEffectOptions.glowContainerView?.subviews.filter({ (view) -> Bool in
+                if let glowImageView = view as? UIImageView,
+                    let glowImage = glowImageView.image,
+                    glowImage.accessibilityIdentifier == glowImageAccessibilityIdentifier
+                {
+                    return true
+                }
+                return false
+            }).first as? UIImageView
     }
 
 }

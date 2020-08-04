@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Modes of parallax motion effect that will be used for the subviews of the parallax view
 public enum SubviewsParallaxMode {
     /// maxParallaxOffset will be divided by the index of the subview inside `ParallaxView`.
     /// So view that is the last subview of the `ParallaxView` will be have the biggest offset equal to `maxParallaxOffset`

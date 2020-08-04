@@ -7,7 +7,7 @@
 
 import UIKit
 
-/// It provides default implementation of the parallax effect for the `UIView`.
+/// An object that provides default implementation of the parallax effect for the `UIView`.
 /// If you will override `init` method it is important to provide default setup for the unfocused state of the view
 /// e.g. `parallaxViewActions.setupUnfocusedState?(self)`
 open class ParallaxView: UIView, ParallaxableView {
