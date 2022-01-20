@@ -23,9 +23,8 @@ public struct ParallaxEffectOptions {
     /// Custom container view that will be usead to apply subviews parallax effect
     public var parallaxSubviewsContainer: UIView?
     /// A view that will be a container for the glow effect
-    public weak var glowContainerView: UIView? {
-        didSet { oldValue?.removeFromSuperview() }
-    }
+    public weak var glowContainerView: UIView?
+
     /// Minimum vertical value at the most top position can be adjusted by this multipler
     public var minVerticalPanGlowMultipler: Double = 0.2
     /// Maximum vertical value at the most bottom position can be adjusted by this multipler
