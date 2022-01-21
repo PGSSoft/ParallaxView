@@ -5,7 +5,7 @@ import PackageDescription
 let package = Package(
     name: "ParallaxView",
     platforms: [
-        .tvOS(.v9),
+        .tvOS(.v13),
     ],
     products: [
         .library(
